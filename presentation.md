@@ -1005,6 +1005,18 @@ A livello enterprise, OpenSpec può dialogare (es. tramite protocolli MCP) con s
 
 ---
 
+# Impatto strategico: qualità del software e scalabilità umano-AI
+
+## Determinismo nell'esecuzione + Resilienza dell'intento = Scalabilità umano-AI
+
+| Precisione | Resilienza | Evoluzione del ruolo |
+| --- | --- | --- |
+| L'esecuzione guidata da specifiche aumenta la first-try accuracy e riduce rilavorazioni e regressioni. | La conoscenza architetturale non muore nella chat: entra nel patrimonio del team e resiste al turnover. | Il valore umano si sposta dal "scrivere tutto" al garantire che il codice generato sia esattamente quello necessario. |
+
+**Sintesi:** quando l'implementazione è deterministica e l'intento rimane persistente, il sistema scala senza perdere qualità.
+
+---
+
 # L'Impatto Strategico
 La SDD trasforma l'incertezza dei prompt in un processo ingegneristico prevedibile.
 * Accuratezza al primo tentativo elevatissima.

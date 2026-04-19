@@ -558,6 +558,21 @@ Le specifiche vivono in Git: il valore resta tuo, non del vendor.
 
 ---
 
+# Ecosistema agnostico: zero lock-in come scelta strategica
+
+| Nodo centrale | Ecosistema collegabile |
+| --- | --- |
+| **OpenSpec** come livello stabile di intento e governance nel repository | Kilo Code, Cursor, Claude Code, Windsurf, GitHub Copilot e altri agenti compatibili |
+
+| Capacità | Impatto operativo |
+| --- | --- |
+| **Integrazioni intensive** | Uso tramite CLI e slash commands nativi nei principali IDE/LLM, senza riscrivere le specifiche |
+| **Supporto universale (`AGENTS.md`)** | Le istruzioni restano leggibili da assistenti diversi (anche futuri), preservando storico e coerenza del processo |
+
+**Risultato:** cambi strumento quando vuoi, senza perdere memoria progettuale né controllo sull'intento.
+
+---
+
 # Approccio "Brownfield-First"
 Molti framework AI sono ottimizzati per progetti nuovi (greenfield, 0→1).
 OpenSpec brilla nei progetti esistenti (brownfield, 1→n), dove l'integrazione di nuove funzionalità senza rompere le vecchie è cruciale.

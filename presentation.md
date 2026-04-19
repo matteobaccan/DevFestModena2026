@@ -3,7 +3,7 @@ marp: true
 theme: default
 paginate: true
 header: '**TBD TITLE**'
-footer: 'TBD | Matteo Baccan'
+footer: 'TBD | Matteo Baccan | versione del %date% %time%'
 backgroundImage: url('img/background.svg');
 style: |
   /* ===== BASE ===== */
@@ -387,18 +387,21 @@ Il debito tecnico diventa difficilmente tracciabile e manutenibile nel tempo.
 # 8. Un Nuovo Approccio: Spec-Driven Development
 La Spec-Driven Development (SDD) inverte il paradigma: **la struttura prima del codice**.
 L'intento deve essere formalizzato in specifiche chiare e leggibili dalle macchine prima che venga scritta una singola riga di codice.
+Il punto non e' generare piu' codice con l'AI, ma rendere l'intento esplicito, portabile e verificabile fin dall'inizio.
 
 ---
 
 # 9. Cos'è OpenSpec?
 OpenSpec è un framework open-source progettato per la Spec-Driven Development.
-Non è vincolato a un IDE specifico o a un singolo vendor AI. È un sistema basato su file Markdown che funge da "controllo di versione per l'intento".
+Non richiede paywall o API key proprietarie per esistere come metodo, non e' vincolato a un IDE specifico o a un singolo vendor AI.
+E' un sistema basato su file Markdown che funge da "controllo di versione per l'intento": **zero lock-in**, specifiche portabili, valore che resta nel repository.
 
 ---
 
 # 10. La Filosofia di OpenSpec
 L'idea centrale è che la specifica sia la "fonte della verità", non il codice.
 I documenti fungono da istruzioni eseguibili e vincolanti per gli agenti AI, non solo come suggerimenti o linee guida.
+Il risultato non nasce da un'interpretazione libera: con OpenSpec c'e' **solo intento deterministico**, espresso in un contratto scritto che l'agente deve seguire.
 
 ---
 
@@ -415,8 +418,9 @@ OpenSpec porta le specifiche direttamente nel repository, dove l'agente opera.
 ---
 
 # 13. Indipendenza dagli Strumenti AI
-OpenSpec è universale. Supporta decine di agenti e ambienti di sviluppo diversi.
-Se un team decide di cambiare modello AI o estensione IDE, i processi e le specifiche rimangono intatti e validi.
+OpenSpec è universale. Supporta decine di agenti e ambienti di sviluppo diversi senza legarsi a un ecosistema proprietario.
+Se un team decide di cambiare modello AI, estensione IDE o piattaforma, processi e specifiche rimangono intatti e validi.
+Le specifiche vivono in Git: il valore resta tuo, non del vendor.
 
 ---
 

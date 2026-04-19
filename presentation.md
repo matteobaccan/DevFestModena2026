@@ -1,4 +1,4 @@
----
+﻿---
 marp: true
 theme: default
 paginate: true
@@ -80,7 +80,7 @@ style: |
     margin: 0.8em 0;
   }
   code {
-    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    font-family: 'Cascadia Codè, 'Fira Codè, 'Consolas', monospace;
     color: #c62828;
     background-color: rgba(0,34,68,0.06);
     padding: 2px 6px;
@@ -487,17 +487,17 @@ Il debito tecnico diventa difficilmente tracciabile e manutenibile nel tempo.
 # Un Nuovo Approccio: Spec-Driven Development
 La Spec-Driven Development (SDD) inverte il paradigma: **la struttura prima del codice**.
 L'intento deve essere formalizzato in specifiche chiare e leggibili dalle macchine prima che venga scritta una singola riga di codice.
-Il punto non e' generare piu' codice con l'AI, ma rendere l'intento esplicito, portabile e verificabile fin dall'inizio.
+Il punto non è generare più codice con l'AI, ma rendere l'intento esplicito, portabile e verificabile fin dall'inizio.
 
 ---
 
-# Spec-Driven Development (SDD): l'inversione della fonte della verita'
+# Spec-Driven Development (SDD): l'inversione della fonte della verità
 
 | **Approccio Tradizionale (Chat-Driven)** | **OpenSpec (Spec-Driven)** |
 | --- | --- |
-| **Focus**<br>Output immediato (codice come verita'). | **Focus**<br>Definizione strutturata dell'intento (design come verita'). |
+| **Focus**<br>Output immediato (codice come verità). | **Focus**<br>Definizione strutturata dell'intento (design come verità). |
 | **Ruolo della documentazione**<br>Onere post-sviluppo, spesso obsoleto prima del rilascio. | **Ruolo della documentazione**<br>Istruzioni primarie ed eseguibili per l'AI. Guardrail architetturico. |
-| **Risultato**<br>Due fonti di verita' divergenti: ticket e codice. | **Risultato**<br>Il codice viene derivato in modo deterministico dalle specifiche. |
+| **Risultato**<br>Due fonti di verità divergenti: ticket e codice. | **Risultato**<br>Il codice viene derivato in modo deterministico dalle specifiche. |
 
 In OpenSpec, la documentazione non rincorre il codice: lo precede e lo vincola.
 
@@ -505,8 +505,8 @@ In OpenSpec, la documentazione non rincorre il codice: lo precede e lo vincola.
 
 # Cos'è OpenSpec?
 OpenSpec è un framework open-source progettato per la Spec-Driven Development.
-Non richiede paywall o API key proprietarie per esistere come metodo, non e' vincolato a un IDE specifico o a un singolo vendor AI.
-E' un sistema basato su file Markdown che funge da "controllo di versione per l'intento": **zero lock-in**, specifiche portabili, valore che resta nel repository.
+Non richiede paywall o API key proprietarie per esistere come metodo, non è vincolato a un IDE specifico o a un singolo vendor AI.
+È un sistema basato su file Markdown che funge da "controllo di versione per l'intento": **zero lock-in**, specifiche portabili, valore che resta nel repository.
 
 ---
 
@@ -526,7 +526,7 @@ E' un sistema basato su file Markdown che funge da "controllo di versione per l'
   <div class="pillar-card">
     <h2>Pilastro 3: Agnosticismo Totale</h2>
     <p>Zero lock-in verso IDE, modelli o vendor: il valore vive nelle specifiche, non nella piattaforma.</p>
-    <p>Se cambi agente o ambiente, il processo resta intatto perche' l'intento rimane nel repository.</p>
+    <p>Se cambi agente o ambiente, il processo resta intatto perché l'intento rimane nel repository.</p>
   </div>
 </div>
 
@@ -535,7 +535,7 @@ E' un sistema basato su file Markdown che funge da "controllo di versione per l'
 # La Filosofia di OpenSpec
 L'idea centrale è che la specifica sia la "fonte della verità", non il codice.
 I documenti fungono da istruzioni eseguibili e vincolanti per gli agenti AI, non solo come suggerimenti o linee guida.
-Il risultato non nasce da un'interpretazione libera: con OpenSpec c'e' **solo intento deterministico**, espresso in un contratto scritto che l'agente deve seguire.
+Il risultato non nasce da un'interpretazione libera: con OpenSpec c'è **solo intento deterministico**, espresso in un contratto scritto che l'agente deve seguire.
 
 ---
 
@@ -597,7 +597,7 @@ Questa distinzione garantisce transizioni sicure e modifiche parallele.
     <div class="dual-head">Il Divenire</div>
     <div class="dual-sub">openspec/changes/</div>
     <div class="dual-body">
-      <p class="dual-note"><strong>The Change Workspace.</strong> Il laboratorio isolato per le modifiche. Nessun conflitto con le specifiche principali finche' non si archivia.</p>
+      <p class="dual-note"><strong>The Change Workspace.</strong> Il laboratorio isolato per le modifiche. Nessun conflitto con le specifiche principali finché non si archivia.</p>
       <ul class="dual-list">
         <li><code>changes/add-oauth-login/</code></li>
         <li><code>proposal.md</code></li>
@@ -658,9 +658,9 @@ Una cartella di modifica genera sempre un set standard di artefatti Markdown:
 
 | Fase | File | Domanda chiave | Ruolo operativo |
 | --- | --- | --- | --- |
-| 1 | `proposal.md` | Perche' / Cosa stiamo cambiando? | Definisce intento strategico e ambito lavori (business case iniziale). |
+| 1 | `proposal.md` | Perché / Cosa stiamo cambiando? | Definisce intento strategico e ambito lavori (business case iniziale). |
 | 2 | `design.md` | Come lo realizziamo? | Fissa decisioni tecniche: architettura, flussi dati, librerie e vincoli. |
-| 3 | `tasks.md` | Come eseguiamo in modo verificabile? | Scompone in task atomici e sequenziali, eseguibili dall'agente senza ambiguita'. |
+| 3 | `tasks.md` | Come eseguiamo in modo verificabile? | Scompone in task atomici e sequenziali, eseguibili dall'agente senza ambiguità. |
 | 4 | Delta Specs | Cosa cambia nella Source of Truth? | Applica patch ai requisiti con sezioni `ADDED`, `MODIFIED`, `REMOVED`. |
 
 **Flusso completo:** `proposal.md` -> `design.md` -> `tasks.md` -> Delta Specs -> consolidamento in `specs/`.
@@ -733,6 +733,19 @@ Devono descrivere il comportamento osservabile del sistema dall'esterno. Sono co
 
 ---
 
+# Il linguaggio dell'intento: EARS + BDD
+
+| Asse | EARS (obbligazione) | BDD (esecuzione) |
+| --- | --- | --- |
+| Scopo | Ridurre ambiguità nei requisiti | Rendere verificabili i comportamenti |
+| Forma | Parole chiave normative: `SHALL`, `MUST`, `SHOULD` | Struttura scenario: `GIVEN`, `WHEN`, `THEN` |
+| Domanda a cui risponde | "Cosa è obbligatorio?" | "Come si osserva il risultato?" |
+| Esito pratico | Contratti chiari per l'agente | Test di accettazione derivabili |
+
+**Regola operativa:** prima definiamo il vincolo con EARS, poi ne proviamo l'esecuzione con BDD.
+
+---
+
 # Sintassi EARS
 OpenSpec adotta l'approccio EARS (Easy Approach to Requirements Syntax).
 L'obiettivo è minimizzare l'ambiguità utilizzando parole chiave vincolanti per definire i livelli di obbligazione.
@@ -770,10 +783,23 @@ Con una struttura GIVEN/WHEN/THEN chiara, l'agente AI è in grado di generare au
 ---
 
 # Il Ciclo Operativo (Workflow)
-OpenSpec definisce un ciclo di vita immutabile a tre fasi per ogni modifica:
+OpenSpec definisce una macchina a stati immutabile a tre fasi per ogni modifica:
 1. Propose
 2. Apply
 3. Archive
+Ogni transizione ha un output verificabile e impedisce di passare alla fase successiva senza allineamento.
+
+---
+
+# La macchina a stati di OpenSpec: Propose → Apply → Archive
+
+| Fase | Obiettivo | Output della fase | Gate di passaggio |
+| --- | --- | --- | --- |
+| Propose | Allineare intento e ambito prima del codice | Cartella in `changes/` con `proposal.md`, `design.md`, `tasks.md`, Delta Specs | Revisione umana dell'intento |
+| Apply | Implementare senza deviazioni dai vincoli | Codice + test aderenti a `design.md` e `tasks.md` | Verifica qualità su MUST/SHALL |
+| Archive | Consolidare la modifica nella verità di sistema | Fusione Delta Specs in `specs/` + archivio storico della change | Stato aggiornato e audit trail persistente |
+
+**Logica del ciclo:** cattura presto il disallineamento (Propose), esegui in modo deterministico (Apply), consolida nella Source of Truth (Archive).
 
 ---
 
@@ -927,3 +953,5 @@ L'arte di definire l'intento è la competenza più preziosa del futuro.
 - NotebookLM: per la prima scaletta e i riassunti dei podcast e video
 - VSCode: per gestire il progetto GitHub
 - Marp: per la presentazione
+
+

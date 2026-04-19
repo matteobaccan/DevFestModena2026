@@ -2,8 +2,8 @@
 marp: true
 theme: default
 paginate: true
-header: '**TBD TITLE**'
-footer: 'TBD | Matteo Baccan | versione del %date% %time%'
+header: '**OpenSpec**'
+footer: 'OpenSpec | Matteo Baccan'
 backgroundImage: url('img/background.svg');
 style: |
   /* ===== BASE ===== */
@@ -463,7 +463,6 @@ style: |
 **Un nuovo paradigma per la collaborazione tra Umani e Intelligenza Artificiale**
 
 **Speaker:** Matteo Baccan
-**Evento:** TBD
 
 ---
 
@@ -511,6 +510,14 @@ L'output del vibe coding genera un codice che funziona al momento, ma di cui nes
 Il debito tecnico diventa difficilmente tracciabile e manutenibile nel tempo.
 
 ---
+
+<!-- class: section-title -->
+
+# Dal Caos al Metodo
+
+---
+
+<!-- class: lead -->
 
 # Un Nuovo Approccio: Spec-Driven Development
 La Spec-Driven Development (SDD) inverte il paradigma: **la struttura prima del codice**.
@@ -573,7 +580,7 @@ Non diventano mai obsolete perché si evolvono in parallelo al sistema, rendendo
 
 ---
 
-# OpenSpec vs Tool di Project Management
+# OpenSpec vs Strumenti di Project Management
 I ticket nei sistemi tradizionali (come Jira o Linear) sono ottimi per gli umani, ma difficili da consultare in tempo reale dagli agenti AI.
 OpenSpec porta le specifiche direttamente nel repository, dove l'agente opera.
 
@@ -607,6 +614,14 @@ OpenSpec brilla nei progetti esistenti (brownfield, 1→n), dove l'integrazione 
 
 ---
 
+<!-- class: section-title -->
+
+# La Meccanica di OpenSpec
+
+---
+
+<!-- class: lead -->
+
 # L'Architettura del Framework
 Tutto risiede in una singola directory radice all'interno del progetto: `openspec/`.
 Questa directory agisce come la memoria a lungo termine dell'agente AI.
@@ -628,7 +643,7 @@ Questa distinzione garantisce transizioni sicure e modifiche parallele.
     <div class="dual-head">L'Essere</div>
     <div class="dual-sub">openspec/specs/</div>
     <div class="dual-body">
-      <p class="dual-note"><strong>The Source of Truth.</strong> La documentazione del comportamento attuale, organizzata per domini logici.</p>
+      <p class="dual-note"><strong>La fonte della verità.</strong> Documentazione del comportamento attuale, organizzata per domini logici.</p>
       <ul class="dual-list">
         <li><code>specs/auth/spec.md</code></li>
         <li><code>specs/payments/spec.md</code></li>
@@ -640,7 +655,7 @@ Questa distinzione garantisce transizioni sicure e modifiche parallele.
     <div class="dual-head">Il Divenire</div>
     <div class="dual-sub">openspec/changes/</div>
     <div class="dual-body">
-      <p class="dual-note"><strong>The Change Workspace.</strong> Il laboratorio isolato per le modifiche. Nessun conflitto con le specifiche principali finché non si archivia.</p>
+      <p class="dual-note"><strong>Il workspace di modifica.</strong> Laboratorio isolato per le modifiche. Nessun conflitto con le specifiche principali finché non si archivia.</p>
       <ul class="dual-list">
         <li><code>changes/add-oauth-login/</code></li>
         <li><code>proposal.md</code></li>
@@ -782,6 +797,14 @@ Garantisce che il codice morto venga eliminato e che i vecchi test associati ven
 
 ---
 
+<!-- class: section-title -->
+
+# Il Linguaggio dell'Intento
+
+---
+
+<!-- class: lead -->
+
 # Scrivere Specifiche Efficaci
 Le specifiche non devono essere istruzioni di programmazione step-by-step.
 Devono descrivere il comportamento osservabile del sistema dall'esterno. Sono contratti di business, non tutorial di codice.
@@ -836,6 +859,14 @@ Forniscono all'agente esempi inequivocabili di successo e fallimento.
 Con una struttura GIVEN/WHEN/THEN chiara, l'agente AI è in grado di generare automaticamente i test unitari o e2e corrispondenti, chiudendo il ciclo della qualità del software.
 
 ---
+
+<!-- class: section-title -->
+
+# Il Ciclo di Esecuzione
+
+---
+
+<!-- class: lead -->
 
 # Il Ciclo Operativo (Workflow)
 OpenSpec definisce una macchina a stati immutabile a tre fasi per ogni modifica:
@@ -932,6 +963,20 @@ OpenSpec si abbina perfettamente a Git Worktrees, permettendo agli agenti AI di 
 
 ---
 
+# Sincronizzazione con il Project Management
+A livello enterprise, OpenSpec può dialogare tramite protocolli MCP con strumenti di ticket come Linear o Jira.
+Il backlog aziendale resta allineato con lo stato reale del codice, riducendo il lavoro amministrativo e i disallineamenti tra piano e implementazione.
+
+---
+
+<!-- class: section-title -->
+
+# Dal Team al Legacy
+
+---
+
+<!-- class: lead -->
+
 # Il Problema del Codice Legacy
 Come si introduce OpenSpec in un progetto esistente di 100.000 righe di codice senza documentazione?
 **Non riscrivendo tutto da zero.**
@@ -977,7 +1022,7 @@ L'uso di tool di supporto (come motori di `spec-gen`) permette di analizzare sta
   <div class="risk-card">
     <h2>Burocrazia per modifiche banali</h2>
     <p><strong>Problema:</strong> usare una SDD completa per un cambio minimo e non rischioso.</p>
-    <p><strong>Fix:</strong> applicare progressive rigor e mantenere un approccio lightweight.</p>
+    <p><strong>Fix:</strong> applicare progressive rigor e mantenere un approccio leggero.</p>
   </div>
   <div class="risk-card">
     <h2>Ignorare la formattazione Delta</h2>
@@ -994,16 +1039,31 @@ Creare modifiche che rimangono perennemente in sospeso distrugge l'affidabilità
 
 ---
 
-# Anti-Pattern 2: Eccesso di Dettagli
-Scrivere 100 righe di requisiti per cambiare un colore CSS è uno spreco.
-Le specifiche devono essere "leggere" (progressive rigor). L'obiettivo è la chiarezza, non l'enciclopedia.
+# Anti-Pattern 2: Micro-management dell'AI
+Scrivere dettagli implementativi nelle specifiche principali significa trasformare i requisiti in pseudo-codice.
+Le specifiche devono descrivere il comportamento; il "come" va spostato in `design.md`, lasciando all'agente solo esecuzione e verifica.
 
 ---
 
-# Sincronizzazione con il Project Management
-A livello enterprise, OpenSpec può dialogare (es. tramite protocolli MCP) con strumenti di ticket (come Linear/Jira), mantenendo allineato il backlog aziendale con l'esecuzione del codice.
+# Anti-Pattern 3: Burocrazia per modifiche banali
+Usare una SDD completa per un cambiamento minimo e non rischioso introduce attrito inutile.
+Serve progressive rigor: più la modifica è piccola, più il processo deve restare leggero e orientato alla chiarezza.
 
 ---
+
+# Anti-Pattern 4: Ignorare la formattazione Delta
+Saltare i tag `ADDED`, `MODIFIED`, `REMOVED` rompe il meccanismo di consolidamento e rende i merge meno affidabili.
+Le Delta Specs non sono un vezzo sintattico: sono il contratto strutturale che permette fusioni pulite nella Source of Truth.
+
+---
+
+<!-- class: section-title -->
+
+# Perché Tutto Questo Conta
+
+---
+
+<!-- class: lead -->
 
 # Impatto strategico: qualità del software e scalabilità umano-AI
 
@@ -1011,7 +1071,7 @@ A livello enterprise, OpenSpec può dialogare (es. tramite protocolli MCP) con s
 
 | Precisione | Resilienza | Evoluzione del ruolo |
 | --- | --- | --- |
-| L'esecuzione guidata da specifiche aumenta la first-try accuracy e riduce rilavorazioni e regressioni. | La conoscenza architetturale non muore nella chat: entra nel patrimonio del team e resiste al turnover. | Il valore umano si sposta dal "scrivere tutto" al garantire che il codice generato sia esattamente quello necessario. |
+| L'esecuzione guidata da specifiche aumenta l'accuratezza al primo tentativo e riduce rilavorazioni e regressioni. | La conoscenza architetturale non muore nella chat: entra nel patrimonio del team e resiste al turnover. | Il valore umano si sposta dal "scrivere tutto" al garantire che il codice generato sia esattamente quello necessario. |
 
 **Sintesi:** quando l'implementazione è deterministica e l'intento rimane persistente, il sistema scala senza perdere qualità.
 
@@ -1028,27 +1088,6 @@ La SDD trasforma l'incertezza dei prompt in un processo ingegneristico prevedibi
 # Conclusione
 OpenSpec non riguarda lo scrivere meno codice, ma garantire che il codice generato dalle intelligenze artificiali sia **esattamente quello necessario**.
 L'arte di definire l'intento è la competenza più preziosa del futuro.
-
----
-
-# Installazione su Windows
-
-Per installare OpenSpec su Windows serve prima di tutto **Node.js 20.19.0 o superiore**.
-
-```powershell
-node --version
-npm install -g @fission-ai/openspec@latest
-openspec --version
-```
-
-```powershell
-cd your-project
-openspec init
-```
-
-Link ufficiali:
-- Installazione: <https://github.com/Fission-AI/OpenSpec/blob/main/docs/installation.md>
-- Documentazione generale: <https://github.com/Fission-AI/OpenSpec/tree/main/docs>
 
 ---
 
@@ -1077,11 +1116,31 @@ Link ufficiali:
     <p><https://www.baccan.it></p>
   </div>
   <div class="qr-card">
-    <img src="img/xxxxx.png" alt="QR code per il repository GitHub delle slide" />
     <strong>Repo GitHub</strong>
-    <p><https://github.com/matteobaccan/xxxxx></p>
+    <p><https://github.com/matteobaccan/OpenSpec></p>
   </div>
 </div>
+
+---
+
+# Installazione su Windows
+
+Per installare OpenSpec su Windows serve prima di tutto **Node.js 20.19.0 o superiore**.
+
+```powershell
+node --version
+npm install -g @fission-ai/openspec@latest
+openspec --version
+```
+
+```powershell
+cd your-project
+openspec init
+```
+
+Link ufficiali:
+- Installazione: <https://github.com/Fission-AI/OpenSpec/blob/main/docs/installation.md>
+- Documentazione generale: <https://github.com/Fission-AI/OpenSpec/tree/main/docs>
 
 ---
 

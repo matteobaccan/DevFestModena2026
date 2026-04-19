@@ -355,6 +355,77 @@ style: |
   .pillar-card p:last-child {
     margin-bottom: 0;
   }
+
+  .dual-grid {
+    display: flex;
+    gap: 22px;
+    margin-top: 0.9em;
+    align-items: stretch;
+  }
+  .dual-card {
+    flex: 1 1 0;
+    padding: 0;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.94);
+    box-shadow: 0 8px 22px rgba(0,34,68,0.10);
+    overflow: hidden;
+    border: 2px solid rgba(0,34,68,0.14);
+  }
+  .dual-card.teal {
+    border-color: rgba(0,150,170,0.70);
+  }
+  .dual-card.gold {
+    border-color: rgba(214,158,46,0.78);
+  }
+  .dual-head {
+    padding: 14px 18px;
+    font-size: 1.7em;
+    font-weight: 800;
+    color: #24384b;
+    text-align: center;
+    border-bottom: 2px solid rgba(0,34,68,0.10);
+  }
+  .dual-card.teal .dual-head {
+    background: rgba(0,150,170,0.08);
+    border-bottom-color: rgba(0,150,170,0.40);
+  }
+  .dual-card.gold .dual-head {
+    background: rgba(214,158,46,0.08);
+    border-bottom-color: rgba(214,158,46,0.40);
+  }
+  .dual-sub {
+    padding: 10px 18px 0 18px;
+    text-align: center;
+    font-size: 1em;
+    font-weight: 700;
+    color: #1a1a2e;
+  }
+  .dual-body {
+    padding: 16px 18px 18px 18px;
+  }
+  .dual-note {
+    margin: 0 0 0.9em 0;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.98);
+    border: 1px solid rgba(0,34,68,0.18);
+    font-size: 0.86em;
+    line-height: 1.28;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  }
+  .dual-list {
+    margin: 0;
+    padding-left: 1.1em;
+    font-size: 0.84em;
+    line-height: 1.3;
+  }
+  .dual-flow {
+    margin-top: 0.8em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 700;
+    color: #245d73;
+  }
 ---
 
 <!-- class: lead -->
@@ -507,6 +578,37 @@ Questa distinzione garantisce transizioni sicure e modifiche parallele.
 
 ---
 
+# L'architettura a due cartelle
+
+<div class="dual-grid">
+  <div class="dual-card teal">
+    <div class="dual-head">L'Essere</div>
+    <div class="dual-sub">openspec/specs/</div>
+    <div class="dual-body">
+      <p class="dual-note"><strong>The Source of Truth.</strong> La documentazione del comportamento attuale, organizzata per domini logici.</p>
+      <ul class="dual-list">
+        <li><code>specs/auth/spec.md</code></li>
+        <li><code>specs/payments/spec.md</code></li>
+        <li><code>specs/ui/spec.md</code></li>
+      </ul>
+    </div>
+  </div>
+  <div class="dual-card gold">
+    <div class="dual-head">Il Divenire</div>
+    <div class="dual-sub">openspec/changes/</div>
+    <div class="dual-body">
+      <p class="dual-note"><strong>The Change Workspace.</strong> Il laboratorio isolato per le modifiche. Nessun conflitto con le specifiche principali finche' non si archivia.</p>
+      <ul class="dual-list">
+        <li><code>changes/add-oauth-login/</code></li>
+        <li><code>proposal.md</code></li>
+        <li><code>specs/...</code></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+---
+
 # Il Cuore: La Directory `specs/`
 Contiene la documentazione consolidata del comportamento attuale del software.
 È la **"Source of Truth"** a cui l'agente deve attenersi prima di proporre o scrivere codice.
@@ -549,6 +651,19 @@ Una cartella di modifica genera sempre un set standard di artefatti Markdown:
 * `design.md`
 * `tasks.md`
 * Le Delta Specs
+
+---
+
+# Anatomia end-to-end di una proposta
+
+| Fase | File | Domanda chiave | Ruolo operativo |
+| --- | --- | --- | --- |
+| 1 | `proposal.md` | Perche' / Cosa stiamo cambiando? | Definisce intento strategico e ambito lavori (business case iniziale). |
+| 2 | `design.md` | Come lo realizziamo? | Fissa decisioni tecniche: architettura, flussi dati, librerie e vincoli. |
+| 3 | `tasks.md` | Come eseguiamo in modo verificabile? | Scompone in task atomici e sequenziali, eseguibili dall'agente senza ambiguita'. |
+| 4 | Delta Specs | Cosa cambia nella Source of Truth? | Applica patch ai requisiti con sezioni `ADDED`, `MODIFIED`, `REMOVED`. |
+
+**Flusso completo:** `proposal.md` -> `design.md` -> `tasks.md` -> Delta Specs -> consolidamento in `specs/`.
 
 ---
 

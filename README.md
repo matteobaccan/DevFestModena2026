@@ -1,14 +1,14 @@
 # OpenSpec: Spec-Driven Development nell'era degli Agenti AI
 
-Repository della presentazione di Matteo Baccan dedicata a OpenSpec e allo Spec-Driven Development come approccio operativo per lavorare con agenti AI in modo rigoroso, ripetibile e verificabile.
+In questo repository raccolgo la mia presentazione dedicata a OpenSpec e allo Spec-Driven Development come approccio operativo per lavorare con agenti AI in modo rigoroso, ripetibile e verificabile.
 
-L'idea centrale e' semplice: il problema non e' "usare l'AI per scrivere codice", ma evitare che il codice venga generato da prompt vaghi, contesto volatile e decisioni non tracciate. OpenSpec sposta il baricentro su specifiche versionate, leggibili dagli umani e vincolanti per gli agenti.
+L'idea centrale che porto avanti e' semplice: il problema non e' "usare l'AI per scrivere codice", ma evitare che il codice venga generato da prompt vaghi, contesto volatile e decisioni non tracciate. In questa presentazione mostro come OpenSpec sposti il baricentro su specifiche versionate, leggibili dagli umani e vincolanti per gli agenti.
 
 ## Tesi
 
-La presentazione sostiene che il vero salto non sia la velocita' di generazione del codice, ma il controllo dell'intento.
+La tesi che sostengo e' che il vero salto non sia la velocita' di generazione del codice, ma il controllo dell'intento.
 
-OpenSpec viene presentato come un sistema che trasforma conversazioni effimere in artefatti persistenti:
+Presento OpenSpec come un sistema che trasforma conversazioni effimere in artefatti persistenti:
 
 - nessuna dipendenza da paywall o API key proprietarie come metodo di lavoro;
 - zero lock-in verso IDE, modelli o vendor AI;
@@ -16,25 +16,25 @@ OpenSpec viene presentato come un sistema che trasforma conversazioni effimere i
 
 ## Cosa racconta la presentazione
 
-Il deck si sviluppa in sei blocchi principali:
+Ho costruito il deck in sei blocchi principali:
 
 1. Dal problema al metodo.
-   Vibe coding, perdita del contesto, deriva dei requisiti e debito tecnico nascosto mostrano perche' un approccio puramente conversazionale non scala.
+   Parto dal vibe coding, dalla perdita del contesto, dalla deriva dei requisiti e dal debito tecnico nascosto per mostrare perche' un approccio puramente conversazionale non scala.
 
 2. Che cos'e' OpenSpec.
-   OpenSpec e' un framework open source basato su Markdown e Git, pensato per mantenere l'intento sotto controllo di versione e renderlo eseguibile dagli agenti.
+   Spiego OpenSpec come framework open source basato su Markdown e Git, pensato per mantenere l'intento sotto controllo di versione e renderlo eseguibile dagli agenti.
 
 3. La meccanica del framework.
-   La separazione tra `specs/` e `changes/`, l'uso di `config.yaml` e gli artefatti di pianificazione costruiscono la memoria operativa del progetto.
+   Descrivo come la separazione tra `specs/` e `changes/`, l'uso di `config.yaml` e gli artefatti di pianificazione costruiscano la memoria operativa del progetto.
 
 4. Il linguaggio dell'intento.
-   EARS definisce l'obbligazione (`SHALL`, `MUST`, `SHOULD`), BDD ne definisce la verifica (`GIVEN`, `WHEN`, `THEN`).
+   Mostro come EARS definisca l'obbligazione (`SHALL`, `MUST`, `SHOULD`) e BDD ne definisca la verifica (`GIVEN`, `WHEN`, `THEN`).
 
 5. Il ciclo di esecuzione.
-   OpenSpec viene descritto come una macchina a stati: `Propose -> Apply -> Archive`, con gate chiari tra allineamento, implementazione e consolidamento.
+   Descrivo OpenSpec come una macchina a stati: `Propose -> Apply -> Archive`, con gate chiari tra allineamento, implementazione e consolidamento.
 
 6. Scala, rischi e impatto.
-   Il deck chiude su brownfield adoption, sviluppo parallelo, sincronizzazione con tool aziendali, anti-pattern e impatto strategico su qualita' e scalabilita' umano-AI.
+   Chiudo su brownfield adoption, sviluppo parallelo, sincronizzazione con tool aziendali, anti-pattern e impatto strategico su qualita' e scalabilita' umano-AI.
 
 ## I tre pilastri
 
@@ -54,20 +54,20 @@ Il deck si sviluppa in sei blocchi principali:
 
 ## Workflow operativo
 
-OpenSpec definisce un ciclo immutabile a tre fasi:
+Nel deck presento OpenSpec come un ciclo immutabile a tre fasi:
 
 1. `Propose`
-   L'agente allinea l'intento e produce la cartella di modifica con proposal, design, tasks e Delta Specs.
+   Mostro come l'agente allinei l'intento e produca la cartella di modifica con proposal, design, tasks e Delta Specs.
 
 2. `Apply`
-   L'agente implementa solo dopo approvazione, restando nei confini definiti da `design.md` e `tasks.md`.
+   Evidenzio che l'agente implementa solo dopo approvazione, restando nei confini definiti da `design.md` e `tasks.md`.
 
 3. `Archive`
-   Le Delta Specs vengono fuse in `specs/` e la modifica entra nell'archivio storico del progetto.
+   Spiego come le Delta Specs vengano fuse in `specs/` e la modifica entri nell'archivio storico del progetto.
 
 ## Perche' e' adatto ai sistemi legacy
 
-Il deck insiste su un punto: OpenSpec non richiede di riscrivere o documentare tutto upfront.
+Insisto su un punto: OpenSpec non richiede di riscrivere o documentare tutto upfront.
 
 L'adozione puo' essere incrementale:
 
@@ -77,7 +77,7 @@ L'adozione puo' essere incrementale:
 
 ## Rischi e anti-pattern
 
-La presentazione evidenzia quattro errori da evitare:
+Evidenzio quattro errori da evitare:
 
 - il cimitero delle proposte: dimenticare la fase di `Archive`;
 - il micro-management dell'AI: scrivere pseudo-codice nelle specifiche principali;
@@ -86,11 +86,11 @@ La presentazione evidenzia quattro errori da evitare:
 
 ## Impatto strategico
 
-La tesi finale della presentazione e' che:
+La formula finale che propongo e' questa:
 
 `determinismo nell'esecuzione` + `resilienza dell'intento` = `scalabilita' umano-AI`
 
-Tradotto in pratica:
+Nel concreto, questo significa:
 
 - maggiore accuratezza al primo tentativo;
 - protezione del know-how architetturale;
@@ -105,7 +105,7 @@ Tradotto in pratica:
 
 ## Generazione delle slide
 
-Per rigenerare il PDF e' sufficiente avere Node.js disponibile e lanciare:
+Per rigenerare il PDF uso Node.js e questo comando:
 
 ```powershell
 npx @marp-team/marp-cli presentation.md --pdf --allow-local-files
@@ -113,7 +113,7 @@ npx @marp-team/marp-cli presentation.md --pdf --allow-local-files
 
 ## Installazione di OpenSpec su Windows
 
-Per installare OpenSpec su Windows servono Node.js `20.19.0` o superiore e un package manager supportato.
+Per installare OpenSpec su Windows considero necessari Node.js `20.19.0` o superiore e un package manager supportato.
 
 Comandi principali:
 
@@ -125,7 +125,7 @@ cd your-project
 openspec init
 ```
 
-Documentazione ufficiale:
+Riferimenti ufficiali:
 
 - Installazione: <https://github.com/Fission-AI/OpenSpec/blob/main/docs/installation.md>
 - Documentazione generale: <https://github.com/Fission-AI/OpenSpec/tree/main/docs>
@@ -133,7 +133,7 @@ Documentazione ufficiale:
 
 ## Crediti
 
-Materiali e strumenti citati nelle slide:
+Per preparare queste slide ho usato:
 
 - Gemini per la riformattazione.
 - Nano Banana Pro per le immagini.

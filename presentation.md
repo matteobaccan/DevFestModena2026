@@ -877,9 +877,33 @@ OpenSpec si abbina perfettamente a Git Worktrees, permettendo agli agenti AI di 
 
 ---
 
+# Scalabilità per team complessi: parallelismo e sincronizzazione
+
+| Sviluppo parallelo (Git Worktrees) | Integrazione MCP (Model Context Protocol) |
+| --- | --- |
+| Branch multipli isolati sulla stessa codebase, senza contaminare la Source of Truth principale. | Collegamento tra stato OpenSpec e strumenti di tracking (es. Linear/Jira) tramite connettori MCP. |
+| Orchestrazione di attività su feature diverse in contemporanea, con merge guidato dal ciclo `Propose -> Apply -> Archive`. | Backlog e stato reale del codice possono restare allineati, riducendo disallineamenti operativi. |
+| Consolidamento finale nella Source of Truth con audit trail delle decisioni. | Aggiornamenti dei ticket più automatici e meno overhead amministrativo per il team. |
+
+**Messaggio chiave:** OpenSpec scala sia orizzontalmente (più stream di sviluppo in parallelo) sia verticalmente (sincronizzazione governance/prodotto con gli strumenti aziendali).
+
+---
+
 # Il Problema del Codice Legacy
 Come si introduce OpenSpec in un progetto esistente di 100.000 righe di codice senza documentazione?
 **Non riscrivendo tutto da zero.**
+
+---
+
+# Brownfield: adozione incrementale nei sistemi legacy
+
+| La scala dell'adozione | `spec-gen` (reverse engineering) |
+| --- | --- |
+| **1. Non fermare il mondo**<br>Nessun bisogno di produrre specifiche upfront per milioni di righe. | Motore opzionale per accelerare la partenza su moduli complessi o poco documentati. |
+| **2. Sviluppo just-in-time**<br>Usa OpenSpec sulla prossima feature o sul bug critico, dove stai già intervenendo. | Analisi statica + pipeline LLM per estrarre regole di business dal codice esistente. |
+| **3. Accumulo organico**<br>La Source of Truth cresce naturalmente ad ogni ciclo `Propose -> Apply -> Archive`. | Generazione assistita di file `spec.md` retroattivi, da rifinire e validare con il team. |
+
+**Principio guida:** l'adozione parte dal lavoro reale di oggi; `spec-gen` è un acceleratore, non un prerequisito.
 
 ---
 

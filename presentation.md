@@ -645,6 +645,18 @@ Garantisce che l'agente non dimentichi mai lo stack del team.
 
 ---
 
+# Governance attiva: come `config.yaml` guida ogni richiesta
+
+| Blocco in `config.yaml` | Funzione | Effetto sull'agente |
+| --- | --- | --- |
+| `schema` | Definisce workflow e struttura degli artefatti attesi | L'agente non improvvisa formati: produce output conformi |
+| `context` | Fornisce architettura globale, stack, standard tecnici | Ogni piano parte dagli stessi vincoli di progetto |
+| `rules` | Impone guardrail granulari per fase e artefatto | Riduce deviazioni, allucinazioni e scelte fuori policy |
+
+**Risultato operativo:** il file non resta passivo nel repository, viene iniettato nel prompt di pianificazione e rende la conformità tecnica sistematica.
+
+---
+
 # Gli Artefatti della Pianificazione
 Una cartella di modifica genera sempre un set standard di artefatti Markdown:
 * `proposal.md`

@@ -2,11 +2,11 @@
 
 In questo repository raccolgo la mia presentazione dedicata a OpenSpec e allo Spec-Driven Development come approccio operativo per lavorare con agenti AI in modo rigoroso, ripetibile e verificabile.
 
-L'idea centrale che porto avanti e' semplice: il problema non e' "usare l'AI per scrivere codice", ma evitare che il codice venga generato da prompt vaghi, contesto volatile e decisioni non tracciate. In questa presentazione mostro come OpenSpec sposti il baricentro su specifiche versionate, leggibili dagli umani e vincolanti per gli agenti.
+L'idea centrale che porto avanti è semplice: il problema non è "usare l'AI per scrivere codice", ma evitare che il codice venga generato da prompt vaghi, contesto volatile e decisioni non tracciate. In questa presentazione mostro come OpenSpec sposti il baricentro su specifiche versionate, leggibili dagli umani e vincolanti per gli agenti.
 
 ## Tesi
 
-La tesi che sostengo e' che il vero salto non sia la velocita' di generazione del codice, ma il controllo dell'intento.
+La tesi che sostengo è che il vero salto non sia la velocità di generazione del codice, ma il controllo dell'intento.
 
 Presento OpenSpec come un sistema che trasforma conversazioni effimere in artefatti persistenti:
 
@@ -19,9 +19,9 @@ Presento OpenSpec come un sistema che trasforma conversazioni effimere in artefa
 Ho costruito il deck in sei blocchi principali:
 
 1. Dal problema al metodo.
-   Parto dal vibe coding, dalla perdita del contesto, dalla deriva dei requisiti e dal debito tecnico nascosto per mostrare perche' un approccio puramente conversazionale non scala.
+   Parto dal vibe coding, dalla perdita del contesto, dalla deriva dei requisiti e dal debito tecnico nascosto per mostrare perché un approccio puramente conversazionale non scala.
 
-2. Che cos'e' OpenSpec.
+2. Che cos'è OpenSpec.
    Spiego OpenSpec come framework open source basato su Markdown e Git, pensato per mantenere l'intento sotto controllo di versione e renderlo eseguibile dagli agenti.
 
 3. La meccanica del framework.
@@ -34,20 +34,20 @@ Ho costruito il deck in sei blocchi principali:
    Descrivo OpenSpec come una macchina a stati: `Propose -> Apply -> Archive`, con gate chiari tra allineamento, implementazione e consolidamento.
 
 6. Scala, rischi e impatto.
-   Chiudo su brownfield adoption, sviluppo parallelo, sincronizzazione con tool aziendali, anti-pattern e impatto strategico su qualita' e scalabilita' umano-AI.
+   Chiudo su brownfield adoption, sviluppo parallelo, sincronizzazione con tool aziendali, anti-pattern e impatto strategico su qualità e scalabilità umano-AI.
 
 ## I tre pilastri
 
-- `Brownfield-First`: OpenSpec e' pensato per evolvere sistemi esistenti, non solo per prototipi greenfield.
+- `Brownfield-First`: OpenSpec è pensato per evolvere sistemi esistenti, non solo per prototipi greenfield.
 - `Architettura Leggera`: Markdown + Git, senza infrastruttura pesante e senza database complessi.
 - `Agnosticismo Totale`: le specifiche restano nel repository e sopravvivono al cambio di strumento, modello o ambiente.
 
 ## Concetti chiave di OpenSpec
 
-- `specs/`: descrive il comportamento corrente del sistema ed e' la Source of Truth.
+- `specs/`: descrive il comportamento corrente del sistema ed è la Source of Truth.
 - `changes/`: ospita le modifiche proposte in modo isolato, senza contaminare lo stato consolidato.
 - `config.yaml`: raccoglie workflow, contesto e regole da iniettare nel prompt di pianificazione.
-- `proposal.md`: chiarisce perche' e cosa si sta cambiando.
+- `proposal.md`: chiarisce perché e cosa si sta cambiando.
 - `design.md`: fissa il come tecnico, i vincoli e le scelte architetturali.
 - `tasks.md`: spezza il lavoro in task atomici, verificabili ed eseguibili.
 - Delta Specs: formalizzano `ADDED`, `MODIFIED`, `REMOVED` per consolidare le modifiche nella Source of Truth.
@@ -65,15 +65,15 @@ Nel deck presento OpenSpec come un ciclo immutabile a tre fasi:
 3. `Archive`
    Spiego come le Delta Specs vengano fuse in `specs/` e la modifica entri nell'archivio storico del progetto.
 
-## Perche' e' adatto ai sistemi legacy
+## Perché è adatto ai sistemi legacy
 
 Insisto su un punto: OpenSpec non richiede di riscrivere o documentare tutto upfront.
 
-L'adozione puo' essere incrementale:
+L'adozione può essere incrementale:
 
-- si documenta solo cio' che si tocca;
+- si documenta solo ciò che si tocca;
 - la Source of Truth cresce organicamente nel tempo;
-- `spec-gen` puo' accelerare il reverse engineering, ma non e' un prerequisito per partire.
+- `spec-gen` può accelerare il reverse engineering, ma non è un prerequisito per partire.
 
 ## Rischi e anti-pattern
 
@@ -86,15 +86,15 @@ Evidenzio quattro errori da evitare:
 
 ## Impatto strategico
 
-La formula finale che propongo e' questa:
+La formula finale che propongo è questa:
 
-`determinismo nell'esecuzione` + `resilienza dell'intento` = `scalabilita' umano-AI`
+`determinismo nell'esecuzione` + `resilienza dell'intento` = `scalabilità umano-AI`
 
 Nel concreto, questo significa:
 
 - maggiore accuratezza al primo tentativo;
 - protezione del know-how architetturale;
-- un nuovo ruolo per lo sviluppatore, piu' orientato a governare l'intento che a micro-guidare il codice.
+- un nuovo ruolo per lo sviluppatore, più orientato a governare l'intento che a micro-guidare il codice.
 
 ## Struttura del repository
 

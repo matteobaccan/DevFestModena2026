@@ -1031,6 +1031,27 @@ L'arte di definire l'intento è la competenza più preziosa del futuro.
 
 ---
 
+# Installazione su Windows
+
+Per installare OpenSpec su Windows serve prima di tutto **Node.js 20.19.0 o superiore**.
+
+```powershell
+node --version
+npm install -g @fission-ai/openspec@latest
+openspec --version
+```
+
+```powershell
+cd your-project
+openspec init
+```
+
+Link ufficiali:
+- Installazione: <https://github.com/Fission-AI/OpenSpec/blob/main/docs/installation.md>
+- Documentazione generale: <https://github.com/Fission-AI/OpenSpec/tree/main/docs>
+
+---
+
 <!-- _backgroundImage: url('img/qea.webp') -->
 
 ---

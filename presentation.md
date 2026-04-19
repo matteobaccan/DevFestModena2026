@@ -80,7 +80,7 @@ style: |
     margin: 0.8em 0;
   }
   code {
-    font-family: 'Cascadia Codè, 'Fira Codè, 'Consolas', monospace;
+    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
     color: #c62828;
     background-color: rgba(0,34,68,0.06);
     padding: 2px 6px;
@@ -425,6 +425,34 @@ style: |
     font-size: 0.92em;
     font-weight: 700;
     color: #245d73;
+  }
+
+  .risk-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 0.8em;
+  }
+  .risk-card {
+    padding: 16px 18px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.95);
+    border: 2px solid rgba(204,140,33,0.55);
+    box-shadow: 0 6px 18px rgba(0,34,68,0.10);
+  }
+  .risk-card h2 {
+    margin-top: 0;
+    margin-bottom: 0.45em;
+    font-size: 1em;
+    line-height: 1.2;
+  }
+  .risk-card p {
+    margin: 0 0 0.55em 0;
+    font-size: 0.84em;
+    line-height: 1.3;
+  }
+  .risk-card p:last-child {
+    margin-bottom: 0;
   }
 ---
 
@@ -930,6 +958,33 @@ Se si deve modificare il modulo di pagamento, si documenta solo quello. Nel temp
 
 # Reverse Engineering delle Specifiche
 L'uso di tool di supporto (come motori di `spec-gen`) permette di analizzare staticamente il codice sorgente esistente per generare architetture OpenSpec di base tramite AI, accelerando l'adozione.
+
+---
+
+# Mitigazione dei rischi: 4 anti-pattern da evitare
+
+<div class="risk-grid">
+  <div class="risk-card">
+    <h2>Il cimitero delle proposte</h2>
+    <p><strong>Problema:</strong> dimenticare `Archive` e lasciare change mai consolidate.</p>
+    <p><strong>Fix:</strong> integrare l'archiviazione nel workflow operativo e nei controlli di qualità.</p>
+  </div>
+  <div class="risk-card">
+    <h2>Il micro-management dell'AI</h2>
+    <p><strong>Problema:</strong> scrivere dettagli implementativi nelle specifiche principali.</p>
+    <p><strong>Fix:</strong> tenere il comportamento nelle spec e spostare il "come" in `design.md`.</p>
+  </div>
+  <div class="risk-card">
+    <h2>Burocrazia per modifiche banali</h2>
+    <p><strong>Problema:</strong> usare una SDD completa per un cambio minimo e non rischioso.</p>
+    <p><strong>Fix:</strong> applicare progressive rigor e mantenere un approccio lightweight.</p>
+  </div>
+  <div class="risk-card">
+    <h2>Ignorare la formattazione Delta</h2>
+    <p><strong>Problema:</strong> non usare `ADDED`, `MODIFIED`, `REMOVED` in modo strutturato.</p>
+    <p><strong>Fix:</strong> rispettare i metadati Delta per merge puliti e consolidamento affidabile.</p>
+  </div>
+</div>
 
 ---
 

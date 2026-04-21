@@ -1214,6 +1214,25 @@ Link ufficiali:
 
 ---
 
+# Installazione OpenCode
+
+```powershell
+npm i -g opencode-ai
+```
+
+Documentazione ufficiale:
+- <https://opencode.ai/docs/it>
+
+---
+
+# Installazione WezTerm
+
+```powershell
+winget install wez.wezterm
+```
+
+---
+
 # Chi devo ringraziare per queste slide?
 
 - Gemini: per la riformattazione

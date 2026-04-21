@@ -154,8 +154,8 @@ style: |
     flex: 1 1 auto;
   }
   th {
-    background: linear-gradient(135deg, #002244 0%, #003d7a 100%);
-    color: white;
+    background: #d1d3d5;
+    color: #f7fbff;
     padding: 14px 16px;
     text-align: left;
     border: none;
@@ -166,6 +166,11 @@ style: |
   th strong {
     color: inherit;
     font-weight: 800;
+  }
+  th code {
+    color: #f7fbff;
+    background-color: rgba(255,255,255,0.16);
+    font-weight: 700;
   }
   td {
     border-bottom: 1px solid #e0e0e0;
@@ -467,20 +472,26 @@ style: |
 ---
 
 # L'Era degli Agenti AI
+
 Lo sviluppo software sta subendo una trasformazione radicale grazie all'intelligenza artificiale.
 Siamo passati dalla scrittura del codice carattere per carattere all'orchestrazione guidata dagli intenti.
+
 Gli agenti AI non sono più solo strumenti di autocompletamento, ma collaboratori attivi.
 
 ---
 
 # Il Problema: "Vibe Coding"
+
 L'interazione naturale con gli LLM ha generato una pratica definita "vibe coding".
+
 Consiste nel fornire istruzioni informali e non strutturate all'agente in una finestra di chat, sperando che l'output corrisponda all'idea originale.
 
 ---
 
 # I Sintomi del Vibe Coding
+
 Questo approccio non strutturato porta rapidamente a:
+
 * Allucinazioni architetturali.
 * Scelte di librerie non coerenti con il progetto.
 * Difficoltà estreme nell'effettuare una code review sensata.
@@ -488,26 +499,31 @@ Questo approccio non strutturato porta rapidamente a:
 ---
 
 # La Perdita del Contesto
+
 Nel vibe coding, i requisiti vivono esclusivamente nella cronologia della chat.
 Una volta chiusa la sessione, il contesto evapora. Non esiste alcuna documentazione persistente delle decisioni prese.
 
 ---
 
 # Il Limite della Finestra di Contesto
+
 Più le conversazioni diventano lunghe, più gli agenti AI soffrono di "amnesia".
 I dettagli iniziali dei requisiti vengono dimenticati o alterati, degradando drasticamente le prestazioni e l'accuratezza del codice generato.
 
 ---
 
 # Deriva dei Requisiti (Drift)
+
 L'agente interpreta un prompt vago e aggiunge funzionalità non richieste ("mentre ci sono, ottimizzo questo").
 Senza confini chiari, il progetto accumula funzionalità superflue e deviazioni dalla logica di business.
 
 ---
 
 # Il Debito Tecnico Nascosto
+
 L'output del vibe coding genera un codice che funziona al momento, ma di cui nessuno (nemmeno l'agente futuro) conosce i presupposti esatti.
-Il debito tecnico diventa difficilmente tracciabile e manutenibile nel tempo.
+
+Il debito tecnico diventa difficilmente tracciabile e mantenibile nel tempo.
 
 ---
 
@@ -520,13 +536,16 @@ Il debito tecnico diventa difficilmente tracciabile e manutenibile nel tempo.
 <!-- class: lead -->
 
 # Un Nuovo Approccio: Spec-Driven Development
+
 La Spec-Driven Development (SDD) inverte il paradigma: **la struttura prima del codice**.
+
 L'intento deve essere formalizzato in specifiche chiare e leggibili dalle macchine prima che venga scritta una singola riga di codice.
+
 Il punto non è generare più codice con l'AI, ma rendere l'intento esplicito, portabile e verificabile fin dall'inizio.
 
 ---
 
-# Spec-Driven Development (SDD): l'inversione della fonte della verità
+# SDD: l'inversione della fonte della verità
 
 | **Approccio Tradizionale (Chat-Driven)** | **OpenSpec (Spec-Driven)** |
 | --- | --- |
@@ -540,8 +559,14 @@ In OpenSpec, la documentazione non rincorre il codice: lo precede e lo vincola.
 
 # Cos'è OpenSpec?
 OpenSpec è un framework open-source progettato per la Spec-Driven Development.
+
 Non richiede paywall o API key proprietarie per esistere come metodo, non è vincolato a un IDE specifico o a un singolo vendor AI.
-È un sistema basato su file Markdown che funge da "controllo di versione per l'intento": **zero lock-in**, specifiche portabili, valore che resta nel repository.
+
+È un sistema basato su file Markdown che funge da "controllo di versione per l'intento"
+
+- **zero lock-in**
+- specifiche portabili
+- valore che resta nel repository.
 
 ---
 
@@ -568,8 +593,11 @@ Non richiede paywall o API key proprietarie per esistere come metodo, non è vin
 ---
 
 # La Filosofia di OpenSpec
+
 L'idea centrale è che la specifica sia la "fonte della verità", non il codice.
+
 I documenti fungono da istruzioni eseguibili e vincolanti per gli agenti AI, non solo come suggerimenti o linee guida.
+
 Il risultato non nasce da un'interpretazione libera: con OpenSpec c'è **solo intento deterministico**, espresso in un contratto scritto che l'agente deve seguire.
 
 ---
@@ -581,7 +609,9 @@ Non diventano mai obsolete perché si evolvono in parallelo al sistema, rendendo
 ---
 
 # OpenSpec vs Strumenti di Project Management
+
 I ticket nei sistemi tradizionali (come Jira o Linear) sono ottimi per gli umani, ma difficili da consultare in tempo reale dagli agenti AI.
+
 OpenSpec porta le specifiche direttamente nel repository, dove l'agente opera.
 
 ---
@@ -609,7 +639,9 @@ Le specifiche vivono in Git: il valore resta tuo, non del vendor.
 ---
 
 # Approccio "Brownfield-First"
+
 Molti framework AI sono ottimizzati per progetti nuovi (greenfield, 0→1).
+
 OpenSpec brilla nei progetti esistenti (brownfield, 1→n), dove l'integrazione di nuove funzionalità senza rompere le vecchie è cruciale.
 
 ---
@@ -623,13 +655,20 @@ OpenSpec brilla nei progetti esistenti (brownfield, 1→n), dove l'integrazione 
 <!-- class: lead -->
 
 # L'Architettura del Framework
-Tutto risiede in una singola directory radice all'interno del progetto: `openspec/`.
+Tutto risiede in una singola directory radice all'interno del progetto: 
+
+```
+openspec
+```
+
 Questa directory agisce come la memoria a lungo termine dell'agente AI.
 
 ---
 
 # La Separazione dello Stato
+
 Il framework separa fisicamente:
+
 1. La descrizione dello stato attuale del sistema.
 2. Le proposte per le modifiche future.
 Questa distinzione garantisce transizioni sicure e modifiche parallele.
@@ -668,44 +707,56 @@ Questa distinzione garantisce transizioni sicure e modifiche parallele.
 ---
 
 # Il Cuore: La Directory `specs/`
+
 Contiene la documentazione consolidata del comportamento attuale del software.
+
 È la **"Source of Truth"** a cui l'agente deve attenersi prima di proporre o scrivere codice.
 
 ---
 
 # Organizzazione per Domini
+
 I file in `specs/` sono organizzati per domini logici (es. `auth/`, `payments/`, `ui/`).
+
 Ogni cartella ospita un file `spec.md` che descrive esattamente le capacità di quel comparto.
 
 ---
 
 # Il Workspace: La Directory `changes/`
+
 Ospita le proposte di modifica. Ogni nuova feature o bug fix ottiene una propria cartella isolata.
+
 Questo permette al team di preparare modifiche architetturali in modo pulito e strutturato.
 
 ---
 
 # Isolamento delle Modifiche
+
 Lavorare in `changes/` previene i conflitti. 
+
 Più sviluppatori (e più agenti AI) possono preparare funzionalità diverse simultaneamente, senza inquinare la logica base finché non sono pronti.
 
 ---
 
 # Configurazione: Il File `config.yaml`
+
 Funziona come la "costituzione" tecnica del progetto.
+
 Sostituisce configurazioni frammentate fornendo un set di regole chiare, stack tecnologici e convenzioni di sviluppo.
 
 ---
 
 # Iniezione Attiva del Contesto
+
 A differenza di un normale `README`, il contenuto di `config.yaml` viene **iniettato attivamente** nella finestra di contesto dell'agente in ogni interazione di pianificazione.
+
 Garantisce che l'agente non dimentichi mai lo stack del team.
 
 ---
 
 # Governance attiva: come `config.yaml` guida ogni richiesta
 
-| Blocco in `config.yaml` | Funzione | Effetto sull'agente |
+| `config.yaml` | Funzione | Effetto sull'agente |
 | --- | --- | --- |
 | `schema` | Definisce workflow e struttura degli artefatti attesi | L'agente non improvvisa formati: produce output conformi |
 | `context` | Fornisce architettura globale, stack, standard tecnici | Ogni piano parte dagli stessi vincoli di progetto |
@@ -733,46 +784,56 @@ Una cartella di modifica genera sempre un set standard di artefatti Markdown:
 | 3 | `tasks.md` | Come eseguiamo in modo verificabile? | Scompone in task atomici e sequenziali, eseguibili dall'agente senza ambiguità. |
 | 4 | Delta Specs | Cosa cambia nella Source of Truth? | Applica patch ai requisiti con sezioni `ADDED`, `MODIFIED`, `REMOVED`. |
 
-**Flusso completo:** `proposal.md` -> `design.md` -> `tasks.md` -> Delta Specs -> consolidamento in `specs/`.
+**Flusso completo:** `proposal.md`->`design.md`->`tasks.md`->Delta->consolidamento->`specs/`
 
 ---
 
 # L'Artefatto 1: `proposal.md`
+
 Cattura l'intento strategico. Risponde alle domande "perché stiamo facendo questa modifica?" e "qual è lo scopo principale?".
+
 È il punto di allineamento iniziale tra umano e macchina.
 
 ---
 
 # L'Artefatto 2: `design.md`
+
 È l'ancora tecnica. Delinea scelte di database, flussi di dati e specifiche librerie da utilizzare.
 Impedisce all'agente di deviare dai pattern stabiliti "immaginando" soluzioni creative ma errate.
 
 ---
 
 # L'Artefatto 3: `tasks.md`
+
 Una checklist numerata di azioni da compiere.
+
 Funge da registro di avanzamento. L'agente aggiorna le spunte in tempo reale mentre scrive il codice, garantendo totale trasparenza.
 
 ---
 
 # L'Importanza dei Task Atomici
+
 I task in `tasks.md` devono essere sufficientemente piccoli da essere implementati dall'agente in autonomia, senza richiedere costanti chiarimenti o interventi dell'utente.
 
 ---
 
 # L'Artefatto 4: Delta Specs
+
 La vera innovazione di OpenSpec. Invece di riscrivere l'intera specifica di sistema, l'agente crea una specifica "differenziale" (Delta) che mostra solo cosa cambierà.
 
 ---
 
 # Perché usare le Delta Specs?
+
 In codebase enormi, rigenerare tutta la documentazione consumerebbe troppi token e tempo.
 Le Delta Specs si focalizzano solo sull'incremento funzionale, ottimizzando i costi e mantenendo alta l'accuratezza.
 
 ---
 
 # Anatomia di una Delta Spec
+
 Le Delta Specs utilizzano intestazioni chiare per istruire il processo di fusione futuro:
+
 1. `ADDED Requirements`
 2. `MODIFIED Requirements`
 3. `REMOVED Requirements`
@@ -869,15 +930,18 @@ Con una struttura GIVEN/WHEN/THEN chiara, l'agente AI è in grado di generare au
 <!-- class: lead -->
 
 # Il Ciclo Operativo (Workflow)
+
 OpenSpec definisce una macchina a stati immutabile a tre fasi per ogni modifica:
+
 1. Propose
 2. Apply
 3. Archive
+
 Ogni transizione ha un output verificabile e impedisce di passare alla fase successiva senza allineamento.
 
 ---
 
-# La macchina a stati di OpenSpec: Propose → Apply → Archive
+# La macchina a stati di OpenSpec
 
 | Fase | Obiettivo | Output della fase | Gate di passaggio |
 | --- | --- | --- | --- |
@@ -951,15 +1015,15 @@ OpenSpec si abbina perfettamente a Git Worktrees, permettendo agli agenti AI di 
 
 ---
 
-# Scalabilità per team complessi: parallelismo e sincronizzazione
+# Parallelismo e sincronizzazione
 
-| Sviluppo parallelo (Git Worktrees) | Integrazione MCP (Model Context Protocol) |
+| Sviluppo parallelo (Git Worktrees) | MCP (Model Context Protocol) |
 | --- | --- |
 | Branch multipli isolati sulla stessa codebase, senza contaminare la Source of Truth principale. | Collegamento tra stato OpenSpec e strumenti di tracking (es. Linear/Jira) tramite connettori MCP. |
 | Orchestrazione di attività su feature diverse in contemporanea, con merge guidato dal ciclo `Propose -> Apply -> Archive`. | Backlog e stato reale del codice possono restare allineati, riducendo disallineamenti operativi. |
 | Consolidamento finale nella Source of Truth con audit trail delle decisioni. | Aggiornamenti dei ticket più automatici e meno overhead amministrativo per il team. |
 
-**Messaggio chiave:** OpenSpec scala sia orizzontalmente (più stream di sviluppo in parallelo) sia verticalmente (sincronizzazione governance/prodotto con gli strumenti aziendali).
+**Messaggio chiave:** OpenSpec scala sia orizzontalmente, sia verticalmente
 
 ---
 
@@ -978,7 +1042,9 @@ Il backlog aziendale resta allineato con lo stato reale del codice, riducendo il
 <!-- class: lead -->
 
 # Il Problema del Codice Legacy
+
 Come si introduce OpenSpec in un progetto esistente di 100.000 righe di codice senza documentazione?
+
 **Non riscrivendo tutto da zero.**
 
 ---
@@ -991,7 +1057,11 @@ Come si introduce OpenSpec in un progetto esistente di 100.000 righe di codice s
 | **2. Sviluppo just-in-time**<br>Usa OpenSpec sulla prossima feature o sul bug critico, dove stai già intervenendo. | Analisi statica + pipeline LLM per estrarre regole di business dal codice esistente. |
 | **3. Accumulo organico**<br>La Source of Truth cresce naturalmente ad ogni ciclo `Propose -> Apply -> Archive`. | Generazione assistita di file `spec.md` retroattivi, da rifinire e validare con il team. |
 
-**Principio guida:** l'adozione parte dal lavoro reale di oggi; `spec-gen` è un acceleratore, non un prerequisito.
+---
+
+# Principio guida
+
+L'adozione parte dal lavoro reale di oggi; `spec-gen` è un acceleratore, non un prerequisito.
 
 ---
 
@@ -1151,5 +1221,3 @@ Link ufficiali:
 - NotebookLM: per la prima scaletta e i riassunti dei podcast e video
 - VSCode: per gestire il progetto GitHub
 - Marp: per la presentazione
-
-

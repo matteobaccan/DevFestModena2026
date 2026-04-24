@@ -545,6 +545,21 @@ Il punto non è generare più codice con l'AI, ma rendere l'intento esplicito, p
 
 ---
 
+# Il Flusso dello Spec-Driven Development
+
+Il vibe coding promette di saltare direttamente dall'idea al codice.
+Lo SDD ingegnerizza il processo in una sequenza rigorosa e verificabile:
+
+| | Vibe Coding | Spec-Driven Development |
+| --- | --- | --- |
+| **Flusso** | Prompt → Codice | Idea → Specifica → Architettura → Task → Codice |
+| **Artefatti** | Nessuno (solo chat) | `proposal.md`, `design.md`, `tasks.md`, Delta Specs |
+| **Verificabilità** | Impossibile | Ogni fase produce output controllabile |
+
+Il codice arriva **solo** quando l'intento è chiaro, strutturato e validato.
+
+---
+
 # SDD: l'inversione della fonte della verità
 
 | **Approccio Tradizionale (Chat-Driven)** | **OpenSpec (Spec-Driven)** |
@@ -635,6 +650,21 @@ Le specifiche vivono in Git: il valore resta tuo, non del vendor.
 | **Supporto universale (`AGENTS.md`)** | Le istruzioni restano leggibili da assistenti diversi (anche futuri), preservando storico e coerenza del processo |
 
 **Risultato:** cambi strumento quando vuoi, senza perdere memoria progettuale né controllo sull'intento.
+
+---
+
+# OpenSpec nell'Ecosistema SDD
+
+Oltre trenta framework di codifica agentica oggi disponibili. I principali competitor a confronto:
+
+| Metrica | **OpenSpec** (Fission-AI) | **Spec Kit** (GitHub) | **GSD** |
+| --- | --- | --- | --- |
+| Linguaggio nativo | TypeScript | Python | Multiplo / CLI |
+| Comandi AI iniettati | 3 principali | 8 principali | CLI-based |
+| Complessità onboarding | Bassa (~250 righe) | Alta (~800 righe) | Media |
+| Rigidità del flusso | Fluida (azioni reversibili) | Rigida (fasi bloccanti) | Execution-first |
+| Target progettuale | Brownfield + Greenfield | Solo Greenfield | Prototipazione rapida |
+| Gestione branch Git | Manuale | Automatica | Variabile |
 
 ---
 
@@ -964,6 +994,34 @@ Modificare un file Markdown errato richiede pochi secondi. Correggere un'archite
 
 ---
 
+# La Scissione Cognitiva dell'Agente
+
+Perché separare proposta e implementazione aumenta la qualità del codice generato?
+
+Nel vibe coding il modello divide il proprio **budget di attenzione** tra tre compiti contemporaneamente:
+
+1. Risolvere il problema di business
+2. Progettare l'architettura software
+3. Scrivere codice sintatticamente corretto
+
+Risultato: precisione ridotta su tutti e tre i fronti, più iterazioni, più errori architetturali.
+
+---
+
+# Focalizzazione: il 100% su un compito alla volta
+
+Con OpenSpec ogni fase riceve l'intera capacità computazionale del modello:
+
+| Fase | Focus dell'agente |
+| --- | --- |
+| **Propose** | 100% sull'architettura e le decisioni di design |
+| **Apply** | 100% sulla correttezza e completezza del codice |
+| **Archive** | 100% sulla coerenza documentale e la Source of Truth |
+
+**Più focus su un compito → Meno errori → Meno cicli di correzione**
+
+---
+
 # Fase 2: Implementazione (Apply)
 Solo quando gli artefatti sono approvati, l'agente inizia l'implementazione vera e propria.
 Legge i compiti in `tasks.md` e produce il codice rigorosamente entro i confini stabiliti nel `design.md`.
@@ -1033,6 +1091,37 @@ Il backlog aziendale resta allineato con lo stato reale del codice, riducendo il
 
 ---
 
+# Orchestrazione Multi-Agente
+
+OpenSpec non è solo un'interfaccia tra umano e LLM.
+È un livello di astrazione che permette a **team di agenti specializzati** di collaborare autonomamente su sistemi complessi.
+
+Invece di affidarsi a un singolo agente generico, il supervisore umano coordina ruoli distinti.
+
+---
+
+# I Ruoli nel Sistema Multi-Agente
+
+<div class="pillar-grid">
+  <div class="pillar-card">
+    <h2>Agente Architetto</h2>
+    <p>Consuma <code>config.yaml</code> e produce Record di Decisione Architetturale (ADR).</p>
+    <p>Genera la struttura iniziale OpenSpec e pianifica la suddivisione logica del sistema.</p>
+  </div>
+  <div class="pillar-card">
+    <h2>Agente Orchestratore</h2>
+    <p>Legge il <code>tasks.md</code> prodotto dall'architetto e delega il lavoro ai team specializzati.</p>
+    <p>Supervisiona l'avanzamento senza scrivere codice direttamente.</p>
+  </div>
+  <div class="pillar-card">
+    <h2>Team di Sviluppo AI</h2>
+    <p>Agenti iperspecializzati per dominio: Data Access, Business Logic, Frontend.</p>
+    <p>Lavorano in parallelo sui propri task atomici, vincolati alle specifiche.</p>
+  </div>
+</div>
+
+---
+
 <!-- class: section-title -->
 
 # Dal Team al Legacy
@@ -1073,6 +1162,21 @@ Se si deve modificare il modulo di pagamento, si documenta solo quello. Nel temp
 
 # Reverse Engineering delle Specifiche
 L'uso di tool di supporto (come motori di `spec-gen`) permette di analizzare staticamente il codice sorgente esistente per generare architetture OpenSpec di base tramite AI, accelerando l'adozione.
+
+---
+
+# Memoria Episodica per il Codice Legacy
+
+In un contesto brownfield un singolo prompt iniziale non basta.
+OpenSpec supporta un'architettura a **memoria episodica** che trasforma i fallimenti in istruzioni correttive persistenti:
+
+| Componente | Funzione |
+| --- | --- |
+| **Agente Riflettore** | Si attiva ogni N scambi, analizza la cronologia recente, identifica errori architetturali e produce una root-cause analysis |
+| **Agente Curatore** | Legge l'analisi del Riflettore e la traduce in mutazioni di regole (aggiunte, aggiornamenti, rimozioni) |
+| **Playbook Eseguibile** | Regole salvate in un file JSON di sessione: l'agente costruisce il proprio manuale tattico mentre lavora |
+
+**L'agente impara dai propri errori e non li ripete nella stessa sessione.**
 
 ---
 
@@ -1155,6 +1259,22 @@ La SDD trasforma l'incertezza dei prompt in un processo ingegneristico prevedibi
 
 ---
 
+# Il Nuovo Professionista: l'Agentic Engineer
+
+Lo SDD forma una nuova categoria professionale che va oltre il programmatore tradizionale.
+
+Un **ingegnere di sistemi agentici** che padroneggia:
+
+- La progettazione del contesto per gli agenti
+- La segmentazione di carichi di lavoro complessi in task atomici
+- La prevenzione della corruzione della memoria episodica
+- Il coordinamento tra molteplici collaboratori sintetici specializzati
+- La manutenibilità a lungo termine delle infrastrutture software
+
+**Il codice è l'output. La specifica è la competenza.**
+
+---
+
 # Conclusione
 OpenSpec non riguarda lo scrivere meno codice, ma garantire che il codice generato dalle intelligenze artificiali sia **esattamente quello necessario**.
 L'arte di definire l'intento è la competenza più preziosa del futuro.
@@ -1177,17 +1297,13 @@ L'arte di definire l'intento è la competenza più preziosa del futuro.
 
 ---
 
-# Slide e link
+# Chi sono
 
 <div class="qr-grid">
   <div class="qr-card">
     <img src="img/baccan.it.png" alt="QR code per baccan.it" />
     <strong>baccan.it</strong>
     <p><https://www.baccan.it></p>
-  </div>
-  <div class="qr-card">
-    <strong>Repo GitHub</strong>
-    <p><https://github.com/matteobaccan/OpenSpec></p>
   </div>
 </div>
 

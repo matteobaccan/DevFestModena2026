@@ -6,7 +6,6 @@ header: '**OpenSpec**'
 footer: 'OpenSpec | Matteo Baccan'
 backgroundImage: url('img/background.svg');
 style: |
-  /* ===== BASE ===== */
   section {
     font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 26px;
@@ -20,7 +19,6 @@ style: |
     letter-spacing: 0.01em;
   }
 
-  /* ===== HEADINGS ===== */
   h1 {
     color: #002244;
     font-size: 1.65em;
@@ -42,7 +40,6 @@ style: |
     letter-spacing: 0.02em;
   }
 
-  /* ===== LISTS ===== */
   ul, ol {
     margin-left: 0.6em;
     text-align: left;
@@ -59,7 +56,6 @@ style: |
     font-weight: 700;
   }
 
-  /* ===== EMPHASIS ===== */
   strong {
     color: #002244;
     font-weight: 800;
@@ -69,7 +65,6 @@ style: |
     font-style: italic;
   }
 
-  /* ===== CODE BLOCKS ===== */
   pre {
     background: linear-gradient(135deg, #1e1e2e 0%, #252540 100%);
     border: none;
@@ -96,35 +91,10 @@ style: |
     font-size: 0.88em;
     line-height: 1.5;
   }
-  /* Syntax-highlight overrides for dark code blocks */
-  pre code span {
-    color: #e0e0e0;
-  }
-  pre code .hljs-section {
-    color: #82aaff;
-  }
-  pre code .hljs-bullet {
-    color: #c3e88d;
-  }
-  pre code .hljs-emphasis {
-    color: #c792ea;
-    font-style: italic;
-  }
-  pre code .hljs-strong {
-    color: #f78c6c;
-    font-weight: 700;
-  }
-  pre code .hljs-keyword {
-    color: #c792ea;
-  }
-  pre code .hljs-string {
-    color: #c3e88d;
-  }
-  pre code .hljs-comment {
-    color: #7f8c9b;
+  pre, pre * {
+    color: #f4f7fb !important;
   }
 
-  /* ===== BLOCKQUOTES ===== */
   blockquote {
     background: linear-gradient(135deg, rgba(0,34,68,0.06) 0%, rgba(0,102,170,0.06) 100%);
     border-left: 5px solid #0066aa;
@@ -138,7 +108,6 @@ style: |
     text-align: left;
   }
 
-  /* ===== TABLES ===== */
   table {
     border-collapse: separate;
     border-spacing: 0;
@@ -181,12 +150,6 @@ style: |
     text-align: left;
     height: 1px;
   }
-  td strong {
-    color: #002244;
-  }
-  tr {
-    height: 1px;
-  }
   tr:nth-child(even) {
     background-color: rgba(0,102,170,0.04);
   }
@@ -194,7 +157,6 @@ style: |
     border-bottom: none;
   }
 
-  /* ===== HEADER & FOOTER ===== */
   header {
     top: 18px;
     left: 60px;
@@ -210,6 +172,11 @@ style: |
     text-align: left;
     letter-spacing: 0.03em;
     text-transform: uppercase;
+    padding-right: 160px;
+    background-image: url("img/pqe-logo-2024.png");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 92px auto;
   }
   footer {
     bottom: 18px;
@@ -226,7 +193,6 @@ style: |
     text-align: left;
   }
 
-  /* ===== PAGINATION ===== */
   section::after {
     font-size: 14px;
     font-weight: 600;
@@ -236,7 +202,6 @@ style: |
     right: 60px;
   }
 
-  /* ===== LEAD / TITLE SLIDE ===== */
   section.lead {
     background: linear-gradient(160deg, rgba(255,255,255,0.95) 0%, rgba(219,238,255,0.8) 100%);
     color: #002244;
@@ -277,7 +242,6 @@ style: |
     display: none;
   }
 
-  /* ===== SECTION DIVIDER SLIDE ===== */
   section.section-title {
     background-color: #dbeeff;
     justify-content: center;
@@ -291,13 +255,6 @@ style: |
     border-bottom: none;
     margin: 0;
     text-shadow: 0 2px 12px rgba(0,0,0,0.15);
-  }
-  section.section-title p {
-    color: #fff;
-    font-size: 1.3em;
-    margin-top: 0.5em;
-    font-weight: 600;
-    text-shadow: 0 1px 6px rgba(0,0,0,0.3);
   }
 
   .qr-grid {
@@ -361,77 +318,6 @@ style: |
     margin-bottom: 0;
   }
 
-  .dual-grid {
-    display: flex;
-    gap: 22px;
-    margin-top: 0.9em;
-    align-items: stretch;
-  }
-  .dual-card {
-    flex: 1 1 0;
-    padding: 0;
-    border-radius: 16px;
-    background: rgba(255,255,255,0.94);
-    box-shadow: 0 8px 22px rgba(0,34,68,0.10);
-    overflow: hidden;
-    border: 2px solid rgba(0,34,68,0.14);
-  }
-  .dual-card.teal {
-    border-color: rgba(0,150,170,0.70);
-  }
-  .dual-card.gold {
-    border-color: rgba(214,158,46,0.78);
-  }
-  .dual-head {
-    padding: 14px 18px;
-    font-size: 1.7em;
-    font-weight: 800;
-    color: #24384b;
-    text-align: center;
-    border-bottom: 2px solid rgba(0,34,68,0.10);
-  }
-  .dual-card.teal .dual-head {
-    background: rgba(0,150,170,0.08);
-    border-bottom-color: rgba(0,150,170,0.40);
-  }
-  .dual-card.gold .dual-head {
-    background: rgba(214,158,46,0.08);
-    border-bottom-color: rgba(214,158,46,0.40);
-  }
-  .dual-sub {
-    padding: 10px 18px 0 18px;
-    text-align: center;
-    font-size: 1em;
-    font-weight: 700;
-    color: #1a1a2e;
-  }
-  .dual-body {
-    padding: 16px 18px 18px 18px;
-  }
-  .dual-note {
-    margin: 0 0 0.9em 0;
-    padding: 12px 14px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.98);
-    border: 1px solid rgba(0,34,68,0.18);
-    font-size: 0.86em;
-    line-height: 1.28;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-  }
-  .dual-list {
-    margin: 0;
-    padding-left: 1.1em;
-    font-size: 0.84em;
-    line-height: 1.3;
-  }
-  .dual-flow {
-    margin-top: 0.8em;
-    text-align: center;
-    font-size: 0.92em;
-    font-weight: 700;
-    color: #245d73;
-  }
-
   .risk-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -456,9 +342,6 @@ style: |
     font-size: 0.84em;
     line-height: 1.3;
   }
-  .risk-card p:last-child {
-    margin-bottom: 0;
-  }
 ---
 
 <!-- class: lead -->
@@ -468,8 +351,11 @@ style: |
 **Un nuovo paradigma per la collaborazione tra Umani e Intelligenza Artificiale**
 
 **Speaker:** Matteo Baccan
+**Evento:** Corso Spec Driven Development, 28 Aprile 2026
 
 ---
+
+<!-- class: section-title -->
 
 # L'Era degli Agenti AI
 
@@ -527,7 +413,6 @@ Il debito tecnico diventa difficilmente tracciabile e mantenibile nel tempo.
 
 ---
 
-<!-- class: section-title -->
 
 # Dal Caos al Metodo
 
@@ -676,7 +561,6 @@ OpenSpec brilla nei progetti esistenti (brownfield, 1→n), dove l'integrazione 
 
 ---
 
-<!-- class: section-title -->
 
 # La Meccanica di OpenSpec
 
@@ -888,7 +772,6 @@ Garantisce che il codice morto venga eliminato e che i vecchi test associati ven
 
 ---
 
-<!-- class: section-title -->
 
 # Il Linguaggio dell'Intento
 
@@ -951,7 +834,6 @@ Con una struttura GIVEN/WHEN/THEN chiara, l'agente AI è in grado di generare au
 
 ---
 
-<!-- class: section-title -->
 
 # Il Ciclo di Esecuzione
 
@@ -1122,7 +1004,6 @@ Invece di affidarsi a un singolo agente generico, il supervisore umano coordina 
 
 ---
 
-<!-- class: section-title -->
 
 # Dal Team al Legacy
 
@@ -1231,7 +1112,6 @@ Le Delta Specs non sono un vezzo sintattico: sono il contratto strutturale che p
 
 ---
 
-<!-- class: section-title -->
 
 # Perché Tutto Questo Conta
 

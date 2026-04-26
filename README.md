@@ -18,8 +18,8 @@ Presento OpenSpec come un sistema che trasforma conversazioni effimere in artefa
 
 Ho costruito il deck in sei blocchi principali:
 
-1. Dal problema al metodo.
-   Parto dal vibe coding, dalla perdita del contesto, dalla deriva dei requisiti e dal debito tecnico nascosto per mostrare perché un approccio puramente conversazionale non scala.
+1. Dal vibe coding a OpenSpec.
+   In due slide ricapitolo il problema: agenti AI senza struttura generano vibe coding, con contesto volatile, derive dei requisiti e debito tecnico nascosto. Presento subito lo Spec-Driven Development come risposta, con la tabella comparativa flusso/artefatti/verificabilità, prima di entrare nel vivo di OpenSpec.
 
 2. Che cos'è OpenSpec.
    Spiego OpenSpec come framework open source basato su Markdown e Git, pensato per mantenere l'intento sotto controllo di versione e renderlo eseguibile dagli agenti.

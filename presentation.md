@@ -357,103 +357,29 @@ style: |
 
 <!-- class: section-title -->
 
-# L'Era degli Agenti AI
-
-Lo sviluppo software sta subendo una trasformazione radicale grazie all'intelligenza artificiale.
-Siamo passati dalla scrittura del codice carattere per carattere all'orchestrazione guidata dagli intenti.
-
-Gli agenti AI non sono più solo strumenti di autocompletamento, ma collaboratori attivi.
+# Dal Vibe Coding a OpenSpec
 
 ---
 
-# Il Problema: "Vibe Coding"
+# Il Problema: Agenti AI senza struttura
 
-L'interazione naturale con gli LLM ha generato una pratica definita "vibe coding".
+Gli agenti AI sono collaboratori attivi, ma senza struttura generano **vibe coding**: prompt informali, contesto volatile, drift dei requisiti.
 
-Consiste nel fornire istruzioni informali e non strutturate all'agente in una finestra di chat, sperando che l'output corrisponda all'idea originale.
-
----
-
-# I Sintomi del Vibe Coding
-
-Questo approccio non strutturato porta rapidamente a:
-
-* Allucinazioni architetturali.
-* Scelte di librerie non coerenti con il progetto.
-* Difficoltà estreme nell'effettuare una code review sensata.
+* I requisiti vivono solo nella chat: nessuna documentazione persistente
+* Allucinazioni architetturali e scelte inconsistenti
+* Debito tecnico invisibile e difficilmente tracciabile
 
 ---
 
-# La Perdita del Contesto
+# La Soluzione: Spec-Driven Development
 
-Nel vibe coding, i requisiti vivono esclusivamente nella cronologia della chat.
-Una volta chiusa la sessione, il contesto evapora. Non esiste alcuna documentazione persistente delle decisioni prese.
-
----
-
-# Il Limite della Finestra di Contesto
-
-Più le conversazioni diventano lunghe, più gli agenti AI soffrono di "amnesia".
-I dettagli iniziali dei requisiti vengono dimenticati o alterati, degradando drasticamente le prestazioni e l'accuratezza del codice generato.
-
----
-
-# Deriva dei Requisiti (Drift)
-
-L'agente interpreta un prompt vago e aggiunge funzionalità non richieste ("mentre ci sono, ottimizzo questo").
-Senza confini chiari, il progetto accumula funzionalità superflue e deviazioni dalla logica di business.
-
----
-
-# Il Debito Tecnico Nascosto
-
-L'output del vibe coding genera un codice che funziona al momento, ma di cui nessuno (nemmeno l'agente futuro) conosce i presupposti esatti.
-
-Il debito tecnico diventa difficilmente tracciabile e mantenibile nel tempo.
-
----
-
-
-# Dal Caos al Metodo
-
----
-
-<!-- class: lead -->
-
-# Un Nuovo Approccio: Spec-Driven Development
-
-La Spec-Driven Development (SDD) inverte il paradigma: **la struttura prima del codice**.
-
-L'intento deve essere formalizzato in specifiche chiare e leggibili dalle macchine prima che venga scritta una singola riga di codice.
-
-Il punto non è generare più codice con l'AI, ma rendere l'intento esplicito, portabile e verificabile fin dall'inizio.
-
----
-
-# Il Flusso dello Spec-Driven Development
-
-Il vibe coding promette di saltare direttamente dall'idea al codice.
-Lo SDD ingegnerizza il processo in una sequenza rigorosa e verificabile:
+Lo **Spec-Driven Development** inverte il paradigma: **la struttura prima del codice**.
 
 | | Vibe Coding | Spec-Driven Development |
 | --- | --- | --- |
 | **Flusso** | Prompt → Codice | Idea → Specifica → Architettura → Task → Codice |
 | **Artefatti** | Nessuno (solo chat) | `proposal.md`, `design.md`, `tasks.md`, Delta Specs |
 | **Verificabilità** | Impossibile | Ogni fase produce output controllabile |
-
-Il codice arriva **solo** quando l'intento è chiaro, strutturato e validato.
-
----
-
-# SDD: l'inversione della fonte della verità
-
-| **Approccio Tradizionale (Chat-Driven)** | **OpenSpec (Spec-Driven)** |
-| --- | --- |
-| **Focus**<br>Output immediato (codice come verità). | **Focus**<br>Definizione strutturata dell'intento (design come verità). |
-| **Ruolo della documentazione**<br>Onere post-sviluppo, spesso obsoleto prima del rilascio. | **Ruolo della documentazione**<br>Istruzioni primarie ed eseguibili per l'AI. Guardrail architetturico. |
-| **Risultato**<br>Due fonti di verità divergenti: ticket e codice. | **Risultato**<br>Il codice viene derivato in modo deterministico dalle specifiche. |
-
-In OpenSpec, la documentazione non rincorre il codice: lo precede e lo vincola.
 
 ---
 
@@ -538,21 +464,6 @@ Le specifiche vivono in Git: il valore resta tuo, non del vendor.
 
 ---
 
-# OpenSpec nell'Ecosistema SDD
-
-Oltre trenta framework di codifica agentica oggi disponibili. I principali competitor a confronto:
-
-| Metrica | **OpenSpec** (Fission-AI) | **Spec Kit** (GitHub) | **GSD** |
-| --- | --- | --- | --- |
-| Linguaggio nativo | TypeScript | Python | Multiplo / CLI |
-| Comandi AI iniettati | 3 principali | 8 principali | CLI-based |
-| Complessità onboarding | Bassa (~250 righe) | Alta (~800 righe) | Media |
-| Rigidità del flusso | Fluida (azioni reversibili) | Rigida (fasi bloccanti) | Execution-first |
-| Target progettuale | Brownfield + Greenfield | Solo Greenfield | Prototipazione rapida |
-| Gestione branch Git | Manuale | Automatica | Variabile |
-
----
-
 # Approccio "Brownfield-First"
 
 Molti framework AI sono ottimizzati per progetti nuovi (greenfield, 0→1).
@@ -560,7 +471,6 @@ Molti framework AI sono ottimizzati per progetti nuovi (greenfield, 0→1).
 OpenSpec brilla nei progetti esistenti (brownfield, 1→n), dove l'integrazione di nuove funzionalità senza rompere le vecchie è cruciale.
 
 ---
-
 
 # La Meccanica di OpenSpec
 
@@ -585,38 +495,34 @@ Il framework separa fisicamente:
 
 1. La descrizione dello stato attuale del sistema.
 2. Le proposte per le modifiche future.
+
 Questa distinzione garantisce transizioni sicure e modifiche parallele.
 
 ---
 
-# L'architettura a due cartelle
+# L'architettura a due cartelle: `specs/`
 
-<div class="dual-grid">
-  <div class="dual-card teal">
-    <div class="dual-head">L'Essere</div>
-    <div class="dual-sub">openspec/specs/</div>
-    <div class="dual-body">
-      <p class="dual-note"><strong>La fonte della verità.</strong> Documentazione del comportamento attuale, organizzata per domini logici.</p>
-      <ul class="dual-list">
-        <li><code>specs/auth/spec.md</code></li>
-        <li><code>specs/payments/spec.md</code></li>
-        <li><code>specs/ui/spec.md</code></li>
-      </ul>
-    </div>
-  </div>
-  <div class="dual-card gold">
-    <div class="dual-head">Il Divenire</div>
-    <div class="dual-sub">openspec/changes/</div>
-    <div class="dual-body">
-      <p class="dual-note"><strong>Il workspace di modifica.</strong> Laboratorio isolato per le modifiche. Nessun conflitto con le specifiche principali finché non si archivia.</p>
-      <ul class="dual-list">
-        <li><code>changes/add-oauth-login/</code></li>
-        <li><code>proposal.md</code></li>
-        <li><code>specs/...</code></li>
-      </ul>
-    </div>
-  </div>
-</div>
+**L'Essere** — la fonte della verità.
+
+Documentazione del comportamento attuale del sistema, organizzata per domini logici. L'agente la consulta prima di proporre o scrivere codice.
+
+* `specs/auth/spec.md`
+* `specs/payments/spec.md`
+* `specs/ui/spec.md`
+
+---
+
+# L'architettura a due cartelle: `changes/`
+
+**Il Divenire** — il workspace di modifica.
+
+Laboratorio isolato per ogni nuova feature o bug fix. Nessun conflitto con le specifiche principali finché non si archivia.
+
+* `changes/add-oauth-login/`
+  * `proposal.md`
+  * `design.md`
+  * `tasks.md`
+  * `specs/...` (Delta)
 
 ---
 

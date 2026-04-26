@@ -476,8 +476,6 @@ OpenSpec brilla nei progetti esistenti (brownfield, 1→n), dove l'integrazione 
 
 ---
 
-<!-- class: lead -->
-
 # L'Architettura del Framework
 Tutto risiede in una singola directory radice all'interno del progetto: 
 
@@ -683,8 +681,6 @@ Garantisce che il codice morto venga eliminato e che i vecchi test associati ven
 
 ---
 
-<!-- class: lead -->
-
 # Scrivere Specifiche Efficaci
 Le specifiche non devono essere istruzioni di programmazione step-by-step.
 Devono descrivere il comportamento osservabile del sistema dall'esterno. Sono contratti di business, non tutorial di codice.
@@ -744,8 +740,6 @@ Con una struttura GIVEN/WHEN/THEN chiara, l'agente AI è in grado di generare au
 # Il Ciclo di Esecuzione
 
 ---
-
-<!-- class: lead -->
 
 # Il Ciclo Operativo (Workflow)
 

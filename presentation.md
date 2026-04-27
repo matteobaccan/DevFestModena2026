@@ -850,18 +850,20 @@ La separazione in cartelle di modifica (`changes/`) consente di gestire backlog 
 
 ---
 
-# Integrazione con Git Worktrees
-OpenSpec si abbina perfettamente a Git Worktrees, permettendo agli agenti AI di testare modifiche isolate in rami paralleli prima di integrarle e archiviarle nella specifica principale.
+# Sviluppo Parallelo su Branch
+OpenSpec è compatibile con qualsiasi strumento che supporti branch isolati. Team e agenti possono lavorare su specifiche diverse in parallelo, su branch separati, e integrare le modifiche nella Source of Truth principale solo quando pronte.
 
 ---
 
 # Parallelismo e sincronizzazione
 
-| Sviluppo parallelo (Git Worktrees) | MCP (Model Context Protocol) |
-| --- | --- |
-| Branch multipli isolati sulla stessa codebase, senza contaminare la Source of Truth principale. | Collegamento tra stato OpenSpec e strumenti di tracking (es. Linear/Jira) tramite connettori MCP. |
-| Orchestrazione di attività su feature diverse in contemporanea, con merge guidato dal ciclo `Propose -> Apply -> Archive`. | Backlog e stato reale del codice possono restare allineati, riducendo disallineamenti operativi. |
-| Consolidamento finale nella Source of Truth con audit trail delle decisioni. | Aggiornamenti dei ticket più automatici e meno overhead amministrativo per il team. |
+OpenSpec scala su due assi:
+
+**Orizzontale — Sviluppo parallelo su branch**
+Più agenti (o sviluppatori) lavorano contemporaneamente su feature diverse, ognuno nel proprio branch con la propria cartella `changes/`. Il ciclo `Propose → Apply → Archive` guida il merge ordinato nella Source of Truth, senza conflitti di specifiche.
+
+**Verticale — Integrazione con il Project Management**
+Tramite MCP, OpenSpec può dialogare con strumenti di ticketing (es. Linear, Jira): il backlog aziendale resta allineato con lo stato reale del codice, riducendo il lavoro amministrativo e i disallineamenti tra piano e implementazione.
 
 **Messaggio chiave:** OpenSpec scala sia orizzontalmente, sia verticalmente
 
@@ -917,7 +919,7 @@ Come si introduce OpenSpec in un progetto esistente di 100.000 righe di codice s
 
 ---
 
-# Brownfield: adozione incrementale nei sistemi legacy
+# Brownfield adozione incrementale
 
 | La scala dell'adozione | `spec-gen` (reverse engineering) |
 | --- | --- |
@@ -929,7 +931,14 @@ Come si introduce OpenSpec in un progetto esistente di 100.000 righe di codice s
 
 # Principio guida
 
-L'adozione parte dal lavoro reale di oggi; `spec-gen` è un acceleratore, non un prerequisito.
+**Non serve documentare tutto prima di iniziare.**
+
+OpenSpec non richiede un Big Bang documentale: non si blocca lo sviluppo per scrivere mesi di specifiche retroattive.
+Il punto di ingresso è il lavoro che si sta già facendo: la prossima feature, il prossimo bug critico.
+
+- Ogni intervento sul codice diventa un'occasione per aggiungere una specifica.
+- La Source of Truth cresce ciclo dopo ciclo, in modo organico e sostenibile.
+- `spec-gen` può accelerare il processo su moduli complessi o poco documentati, ma è uno strumento opzionale — non un prerequisito per partire.
 
 ---
 

@@ -909,8 +909,6 @@ Invece di affidarsi a un singolo agente generico, il supervisore umano coordina 
 
 ---
 
-<!-- class: lead -->
-
 # Il Problema del Codice Legacy
 
 Come si introduce OpenSpec in un progetto esistente di 100.000 righe di codice senza documentazione?
@@ -1017,8 +1015,6 @@ Le Delta Specs non sono un vezzo sintattico: sono il contratto strutturale che p
 
 ---
 
-<!-- class: lead -->
-
 # Impatto strategico: qualità del software e scalabilità umano-AI
 
 ## Determinismo nell'esecuzione + Resilienza dell'intento = Scalabilità umano-AI
@@ -1089,49 +1085,9 @@ L'arte di definire l'intento è la competenza più preziosa del futuro.
 
 ---
 
-# Installazione su Windows
-
-Per installare OpenSpec su Windows serve prima di tutto **Node.js 20.19.0 o superiore**.
-
-```powershell
-node --version
-npm install -g @fission-ai/openspec@latest
-openspec --version
-```
-
-```powershell
-cd your-project
-openspec init
-```
-
-Link ufficiali:
-- Installazione: <https://github.com/Fission-AI/OpenSpec/blob/main/docs/installation.md>
-- Documentazione generale: <https://github.com/Fission-AI/OpenSpec/tree/main/docs>
-
----
-
-# Installazione OpenCode
-
-```powershell
-npm i -g opencode-ai
-```
-
-Documentazione ufficiale:
-- <https://opencode.ai/docs/it>
-
----
-
-# Installazione WezTerm
-
-```powershell
-winget install wez.wezterm
-```
-
----
-
 # Chi devo ringraziare per queste slide?
 
-- Gemini: per la riformattazione
+- Codex: per la riformattazione
 - Nano Banana Pro: per le immagini
 - NotebookLM: per la prima scaletta e i riassunti dei podcast e video
 - VSCode: per gestire il progetto GitHub

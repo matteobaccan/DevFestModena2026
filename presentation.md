@@ -1061,7 +1061,9 @@ Un **ingegnere di sistemi agentici** che padroneggia:
 ---
 
 # Conclusione
+
 OpenSpec non riguarda lo scrivere meno codice, ma garantire che il codice generato dalle intelligenze artificiali sia **esattamente quello necessario**.
+
 L'arte di definire l'intento è la competenza più preziosa del futuro.
 
 ---

@@ -1,39 +1,57 @@
-﻿---
+---
 marp: true
 theme: default
 paginate: true
 header: '**OpenSpec**'
-footer: 'OpenSpec | Matteo Baccan'
-backgroundImage: url('img/background.svg');
+footer: 'OpenSpec | Matteo Baccan | DevFest Modena 2026'
+backgroundImage: url('img/devfest-frame.svg');
 style: |
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+  :root {
+    --df-ink: #1e1e1e;
+    --df-blue: #4285f4;
+    --df-green: #34a853;
+    --df-yellow: #f9ab00;
+    --df-red: #ea4335;
+    --df-blue-pastel: #c3ecf6;
+    --df-yellow-pastel: #ffe7a5;
+    --df-green-pastel: #ccf6c5;
+    --df-red-pastel: #f8d8d8;
+    --df-grey: #f0f0f0;
+    --df-muted: #5f6368;
+  }
+
   section {
-    font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Google Sans Display', 'Google Sans', 'Product Sans', 'Poppins', 'Segoe UI', sans-serif;
     font-size: 26px;
-    padding: 38px 60px 40px 60px;
-    color: #1a1a2e;
-    background-color: transparent;
+    padding: 52px 70px 54px 70px;
+    color: var(--df-ink);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     line-height: 1.5;
     letter-spacing: 0.01em;
+    background-color: transparent;
   }
 
   h1 {
-    color: #002244;
+    color: var(--df-ink);
     font-size: 1.65em;
     margin-top: 0;
     margin-bottom: 0.5em;
     padding-bottom: 0.3em;
     font-weight: 800;
     border-bottom: none;
-    background: linear-gradient(90deg, #002244 0%, #0066aa 100%);
-    background-size: 100% 4px;
+    background: linear-gradient(90deg,
+      var(--df-blue) 0 25%, var(--df-red) 25% 50%,
+      var(--df-yellow) 50% 75%, var(--df-green) 75% 100%);
+    background-size: 380px 5px;
     background-repeat: no-repeat;
     background-position: bottom left;
   }
   h2 {
-    color: #003366;
+    color: var(--df-blue);
     font-size: 1.3em;
     margin-bottom: 0.4em;
     font-weight: 700;
@@ -47,48 +65,50 @@ style: |
   }
   li {
     margin-bottom: 0.45em;
-    color: #222;
+    color: var(--df-ink);
     text-align: left;
     line-height: 1.45;
   }
   li::marker {
-    color: #0066aa;
+    color: var(--df-blue);
     font-weight: 700;
   }
 
   strong {
-    color: #002244;
+    color: var(--df-ink);
     font-weight: 800;
   }
   em {
-    color: #444;
+    color: var(--df-muted);
     font-style: italic;
   }
 
   pre {
-    background: linear-gradient(135deg, #1e1e2e 0%, #252540 100%);
+    background: var(--df-ink);
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 18px 20px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    box-shadow: 0 4px 16px rgba(30,30,30,0.16);
     text-align: left;
     margin: 0.8em 0;
   }
   code {
     font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
-    color: #c62828;
-    background-color: rgba(0,34,68,0.06);
+    color: var(--df-ink);
+    background-color: rgba(249,171,0,0.18);
     padding: 2px 6px;
     border-radius: 4px;
     border: none;
     font-size: 0.92em;
+    font-weight: 600;
   }
   pre code {
-    color: #e0e0e0;
+    color: #f4f7fb;
     background-color: transparent;
     padding: 0;
     border: none;
     font-size: 0.88em;
+    font-weight: 400;
     line-height: 1.5;
   }
   pre, pre * {
@@ -96,13 +116,13 @@ style: |
   }
 
   blockquote {
-    background: linear-gradient(135deg, rgba(0,34,68,0.06) 0%, rgba(0,102,170,0.06) 100%);
-    border-left: 5px solid #0066aa;
+    background: var(--df-blue-pastel);
+    border-left: 5px solid var(--df-blue);
     border-radius: 0 8px 8px 0;
     margin: 1.2em 0;
     padding: 1em 24px;
     font-style: italic;
-    color: #1a1a2e;
+    color: var(--df-ink);
     font-size: 0.95em;
     font-weight: 500;
     text-align: left;
@@ -112,19 +132,17 @@ style: |
     border-collapse: separate;
     border-spacing: 0;
     width: 100%;
-    height: 100%;
     margin-top: 0.6em;
     font-size: 0.95em;
-    background-color: rgba(255,255,255,0.97);
+    background-color: #ffffff;
     text-align: left;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    flex: 1 1 auto;
+    box-shadow: 0 2px 10px rgba(30,30,30,0.10);
   }
   th {
-    background: #d1d3d5;
-    color: #f7fbff;
+    background: var(--df-ink);
+    color: #ffffff;
     padding: 14px 16px;
     text-align: left;
     border: none;
@@ -137,34 +155,34 @@ style: |
     font-weight: 800;
   }
   th code {
-    color: #f7fbff;
+    color: #ffffff;
     background-color: rgba(255,255,255,0.16);
     font-weight: 700;
   }
   td {
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--df-grey);
     border-right: none;
     border-left: none;
     padding: 16px;
-    color: #1a1a2e;
+    color: var(--df-ink);
     text-align: left;
     height: 1px;
   }
   tr:nth-child(even) {
-    background-color: rgba(0,102,170,0.04);
+    background-color: rgba(66,133,244,0.05);
   }
   tr:last-child td {
     border-bottom: none;
   }
 
   header {
-    top: 18px;
-    left: 60px;
-    right: 60px;
-    color: #002244;
+    top: 20px;
+    left: 70px;
+    right: 70px;
+    color: var(--df-ink);
     font-size: 16px;
     font-weight: 700;
-    border-bottom: 2px solid rgba(0,34,68,0.15);
+    border-bottom: none;
     padding-bottom: 8px;
     display: flex;
     justify-content: flex-start;
@@ -172,20 +190,20 @@ style: |
     text-align: left;
     letter-spacing: 0.03em;
     text-transform: uppercase;
-    padding-right: 160px;
-    background-image: url("img/pqe-logo-2024.png");
+    padding-right: 180px;
+    background-image: url("img/devfest-modena-logo.webp");
     background-repeat: no-repeat;
     background-position: right 8px center;
-    background-size: 92px auto;
+    background-size: 128px auto;
   }
   footer {
-    bottom: 18px;
-    left: 60px;
-    right: 60px;
-    color: #555;
+    bottom: 20px;
+    left: 70px;
+    right: 70px;
+    color: var(--df-muted);
     font-size: 14px;
     font-weight: 500;
-    border-top: 1px solid rgba(0,34,68,0.12);
+    border-top: none;
     padding-top: 8px;
     display: flex;
     justify-content: flex-start;
@@ -196,43 +214,53 @@ style: |
   section::after {
     font-size: 14px;
     font-weight: 600;
-    color: #888;
+    color: var(--df-muted);
     position: absolute;
-    bottom: 20px;
-    right: 60px;
+    bottom: 22px;
+    right: 70px;
   }
 
   section.lead {
-    background: linear-gradient(160deg, rgba(255,255,255,0.95) 0%, rgba(219,238,255,0.8) 100%);
-    color: #002244;
+    background-color: transparent;
+    color: var(--df-ink);
     justify-content: center;
     text-align: center;
-    padding: 60px 80px;
+    padding: 60px 90px;
   }
   section.lead h1 {
-    color: #002244;
+    color: var(--df-ink);
     background: none;
     border-bottom: none;
-    font-size: 2.1em;
+    font-size: 2.0em;
     line-height: 1.15;
-    font-weight: 900;
+    font-weight: 800;
     letter-spacing: -0.01em;
     margin-bottom: 0.3em;
   }
+  section.lead h1::before {
+    content: '{ ';
+    color: var(--df-yellow);
+    font-weight: 800;
+  }
+  section.lead h1::after {
+    content: ' }';
+    color: var(--df-yellow);
+    font-weight: 800;
+  }
   section.lead h2 {
-    color: #0055a0;
+    color: var(--df-blue);
     font-size: 1.15em;
     font-weight: 500;
     line-height: 1.4;
     margin-top: 0.2em;
   }
   section.lead strong {
-    color: #c62828;
+    color: var(--df-ink);
     font-weight: 800;
   }
   section.lead p {
     font-size: 0.95em;
-    color: #444;
+    color: var(--df-muted);
     margin-top: 0.8em;
   }
   section.lead footer {
@@ -243,40 +271,51 @@ style: |
   }
 
   section.section-title {
-    background-color: #dbeeff;
+    background-color: var(--df-yellow-pastel);
     justify-content: center;
     text-align: left;
-    padding: 60px 80px;
+    padding: 60px 90px;
   }
   section.section-title h1 {
-    color: #002244;
-    font-size: 2.5em;
+    color: var(--df-ink);
+    font-size: 2.3em;
     background: none;
     border-bottom: none;
     margin: 0;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    text-shadow: none;
+  }
+  section.section-title h1::before {
+    content: '{ ';
+    color: var(--df-yellow);
+    font-weight: 800;
+  }
+  section.section-title h1::after {
+    content: ' }';
+    color: var(--df-yellow);
+    font-weight: 800;
   }
 
   .qr-grid {
     display: flex;
     gap: 28px;
-    margin-top: 1.2em;
+    margin-top: 0.6em;
     align-items: stretch;
   }
   .qr-card {
-    flex: 1 1 0;
-    padding: 24px 20px 18px 20px;
+    flex: 0 1 470px;
+    padding: 16px 18px 12px 18px;
     border-radius: 18px;
-    background: rgba(255,255,255,0.9);
-    box-shadow: 0 6px 18px rgba(0,34,68,0.12);
+    background: #ffffff;
+    border: 2px solid var(--df-grey);
+    box-shadow: 0 6px 18px rgba(30,30,30,0.08);
     text-align: center;
   }
   .qr-card img {
     display: block;
     width: 100%;
-    max-width: 260px;
+    max-width: 290px;
     height: auto;
-    margin: 0 auto 14px auto;
+    margin: 0 auto 10px auto;
   }
   .qr-card strong {
     display: block;
@@ -299,15 +338,23 @@ style: |
     flex: 1 1 0;
     padding: 22px 20px 18px 20px;
     border-radius: 16px;
-    background: rgba(255,255,255,0.94);
-    border: 2px solid rgba(0,34,68,0.16);
-    box-shadow: 0 6px 18px rgba(0,34,68,0.10);
+    background: #ffffff;
+    border: 1px solid var(--df-grey);
+    border-top: 5px solid var(--df-blue);
+    box-shadow: 0 6px 18px rgba(30,30,30,0.08);
+  }
+  .pillar-card:nth-child(2) {
+    border-top-color: var(--df-green);
+  }
+  .pillar-card:nth-child(3) {
+    border-top-color: var(--df-yellow);
   }
   .pillar-card h2 {
     margin-top: 0;
     margin-bottom: 0.55em;
     font-size: 1.05em;
     line-height: 1.2;
+    color: var(--df-ink);
   }
   .pillar-card p {
     margin: 0 0 0.7em 0;
@@ -327,15 +374,17 @@ style: |
   .risk-card {
     padding: 16px 18px;
     border-radius: 14px;
-    background: rgba(255,255,255,0.95);
-    border: 2px solid rgba(204,140,33,0.55);
-    box-shadow: 0 6px 18px rgba(0,34,68,0.10);
+    background: #ffffff;
+    border: 2px solid var(--df-red-pastel);
+    border-left: 5px solid var(--df-red);
+    box-shadow: 0 6px 18px rgba(30,30,30,0.08);
   }
   .risk-card h2 {
     margin-top: 0;
     margin-bottom: 0.45em;
     font-size: 1em;
     line-height: 1.2;
+    color: var(--df-red);
   }
   .risk-card p {
     margin: 0 0 0.55em 0;
@@ -344,18 +393,19 @@ style: |
   }
 ---
 
-<!-- class: lead -->
+<!-- _class: lead -->
 
 # OpenSpec: Spec-Driven Development nell'era degli Agenti AI
 
 **Un nuovo paradigma per la collaborazione tra Umani e Intelligenza Artificiale**
 
 **Speaker:** Matteo Baccan
-**Evento:** Corso Spec Driven Development, 28 Aprile 2026
+**Evento:** DevFest Modena 2026 — 3/4 Ottobre 2026, Modena
+*Track: AI & Machine Intelligence*
 
 ---
 
-<!-- class: section-title -->
+<!-- _class: section-title -->
 
 # Dal Vibe Coding a OpenSpec
 
@@ -443,13 +493,13 @@ OpenSpec porta le specifiche direttamente nel repository, dove l'agente opera.
 ---
 
 # Indipendenza dagli Strumenti AI
-OpenSpec è universale. Supporta decine di agenti e ambienti di sviluppo diversi senza legarsi a un ecosistema proprietario.
+OpenSpec è universale. Supporta oltre 30 strumenti e ambienti di sviluppo diversi senza legarsi a un ecosistema proprietario.
 Se un team decide di cambiare modello AI, estensione IDE o piattaforma, processi e specifiche rimangono intatti e validi.
 Le specifiche vivono in Git: il valore resta tuo, non del vendor.
 
 ---
 
-# Ecosistema agnostico: zero lock-in come scelta strategica
+# Ecosistema agnostico: zero lock-in come scelta
 
 | Nodo centrale | Ecosistema collegabile |
 | --- | --- |
@@ -471,6 +521,8 @@ Molti framework AI sono ottimizzati per progetti nuovi (greenfield, 0→1).
 OpenSpec brilla nei progetti esistenti (brownfield, 1→n), dove l'integrazione di nuove funzionalità senza rompere le vecchie è cruciale.
 
 ---
+
+<!-- _class: section-title -->
 
 # La Meccanica di OpenSpec
 
@@ -602,7 +654,7 @@ Una cartella di modifica genera sempre un set standard di artefatti Markdown:
 | 3 | `tasks.md` | Come eseguiamo in modo verificabile? | Scompone in task atomici e sequenziali, eseguibili dall'agente senza ambiguità. |
 | 4 | Delta Specs | Cosa cambia nella Source of Truth? | Applica patch ai requisiti con sezioni `ADDED`, `MODIFIED`, `REMOVED`. |
 
-**Flusso completo:** `proposal.md`->`design.md`->`tasks.md`->Delta->consolidamento->`specs/`
+**Flusso completo:** `proposal.md` → `design.md` → `tasks.md` → Delta → consolidamento → `specs/`
 
 ---
 
@@ -612,12 +664,28 @@ Cattura l'intento strategico. Risponde alle domande "perché stiamo facendo ques
 
 È il punto di allineamento iniziale tra umano e macchina.
 
+```markdown
+## Why
+Gli utenti abbandonano la registrazione: serve il login social.
+
+## What Changes
+- Aggiunta autenticazione OAuth (Google) al flusso di login
+- Nessun impatto sul login email/password esistente
+```
+
 ---
 
 # L'Artefatto 2: `design.md`
 
 È l'ancora tecnica. Delinea scelte di database, flussi di dati e specifiche librerie da utilizzare.
 Impedisce all'agente di deviare dai pattern stabiliti "immaginando" soluzioni creative ma errate.
+
+```markdown
+## Decisioni tecniche
+- Libreria: passport con strategy passport-google-oauth20
+- Nel DB solo l'id utente Google: nessun token persistito
+- Sessioni: riuso del meccanismo esistente (Redis)
+```
 
 ---
 
@@ -626,6 +694,13 @@ Impedisce all'agente di deviare dai pattern stabiliti "immaginando" soluzioni cr
 Una checklist numerata di azioni da compiere.
 
 Funge da registro di avanzamento. L'agente aggiorna le spunte in tempo reale mentre scrive il codice, garantendo totale trasparenza.
+
+```markdown
+## 1. Backend
+- [x] 1.1 Aggiungere endpoint GET /auth/google
+- [x] 1.2 Gestire il callback e creare l'utente
+- [ ] 1.3 Test di integrazione del flusso completo
+```
 
 ---
 
@@ -662,11 +737,29 @@ Le Delta Specs utilizzano intestazioni chiare per istruire il processo di fusion
 Definisce comportamenti completamente nuovi.
 Esempio: L'aggiunta di un sistema di autenticazione a due fattori in un progetto che prima aveva solo login base.
 
+```markdown
+## ADDED Requirements
+### Requirement: Two-Factor Authentication
+The system SHALL richiedere un secondo fattore al login.
+
+#### Scenario: Login con 2FA attiva
+- WHEN un utente con 2FA invia credenziali valide
+- THEN viene richiesto un codice OTP prima di creare la sessione
+```
+
 ---
 
 # Delta Tags: MODIFIED
 Descrive l'alterazione di comportamenti esistenti.
 Richiede di riscrivere l'intero requisito aggiornato, garantendo che nessuna regola pregressa venga persa per distrazione dell'agente.
+
+```markdown
+## MODIFIED Requirements
+### Requirement: Session Duration
+The system SHALL scadere la sessione dopo 30 minuti di
+inattività (prima: 24 ore), mantenendo il "ricordami"
+per i dispositivi fidati.
+```
 
 ---
 
@@ -674,8 +767,17 @@ Richiede di riscrivere l'intero requisito aggiornato, garantendo che nessuna reg
 Segnala funzionalità deprecate o da rimuovere.
 Garantisce che il codice morto venga eliminato e che i vecchi test associati vengano disattivati correttamente.
 
+```markdown
+## REMOVED Requirements
+### Requirement: Legacy XML Export
+**Reason**: sostituito dall'export JSON
+**Migration**: i client devono passare a /api/export/json
+```
+
 ---
 
+
+<!-- _class: section-title -->
 
 # Il Linguaggio dell'Intento
 
@@ -737,6 +839,8 @@ Con una struttura GIVEN/WHEN/THEN chiara, l'agente AI è in grado di generare au
 ---
 
 
+<!-- _class: section-title -->
+
 # Il Ciclo di Esecuzione
 
 ---
@@ -745,11 +849,15 @@ Con una struttura GIVEN/WHEN/THEN chiara, l'agente AI è in grado di generare au
 
 OpenSpec definisce una macchina a stati immutabile a tre fasi per ogni modifica:
 
-1. Propose
-2. Apply
-3. Archive
+1. Propose — `/opsx:propose`
+2. Apply — `/opsx:apply`
+3. Archive — `/opsx:archive`
 
 Ogni transizione ha un output verificabile e impedisce di passare alla fase successiva senza allineamento.
+
+**Fase zero opzionale:** `/opsx:explore` — un "thinking partner" senza vincoli che legge il codice e pesa le alternative prima di formalizzare la proposta.
+
+Il profilo esteso aggiunge comandi come `/opsx:verify`, `/opsx:ff`, `/opsx:continue` e `/opsx:onboard`.
 
 ---
 
@@ -857,15 +965,18 @@ OpenSpec è compatibile con qualsiasi strumento che supporti branch isolati. Tea
 
 # Parallelismo e sincronizzazione
 
-OpenSpec scala su due assi:
+OpenSpec scala su tre assi:
 
-**Orizzontale — Sviluppo parallelo su branch**
-Più agenti (o sviluppatori) lavorano contemporaneamente su feature diverse, ognuno nel proprio branch con la propria cartella `changes/`. Il ciclo `Propose → Apply → Archive` guida il merge ordinato nella Source of Truth, senza conflitti di specifiche.
+**Orizzontale — branch paralleli**
+Più agenti su feature diverse, ognuno con la propria cartella `changes/`; il ciclo `Propose → Apply → Archive` guida il merge ordinato nella Source of Truth.
 
-**Verticale — Integrazione con il Project Management**
-Tramite MCP, OpenSpec può dialogare con strumenti di ticketing (es. Linear, Jira): il backlog aziendale resta allineato con lo stato reale del codice, riducendo il lavoro amministrativo e i disallineamenti tra piano e implementazione.
+**Verticale — Project Management**
+Via MCP dialoga con Linear/Jira: il backlog resta allineato allo stato reale del codice.
 
-**Messaggio chiave:** OpenSpec scala sia orizzontalmente, sia verticalmente
+**Cross-repo — Stores (beta)**
+La pianificazione vive in un repository dedicato e condiviso; i repo di codice si allineano dopo.
+
+**Messaggio chiave:** OpenSpec scala in orizzontale, in verticale e tra repository
 
 ---
 
@@ -907,6 +1018,8 @@ Invece di affidarsi a un singolo agente generico, il supervisore umano coordina 
 ---
 
 
+<!-- _class: section-title -->
+
 # Dal Team al Legacy
 
 ---
@@ -921,10 +1034,10 @@ Come si introduce OpenSpec in un progetto esistente di 100.000 righe di codice s
 
 # Brownfield adozione incrementale
 
-| La scala dell'adozione | `spec-gen` (reverse engineering) |
+| La scala dell'adozione | `/opsx:onboard` (reverse engineering) |
 | --- | --- |
-| **1. Non fermare il mondo**<br>Nessun bisogno di produrre specifiche upfront per milioni di righe. | Motore opzionale per accelerare la partenza su moduli complessi o poco documentati. |
-| **2. Sviluppo just-in-time**<br>Usa OpenSpec sulla prossima feature o sul bug critico, dove stai già intervenendo. | Analisi statica + pipeline LLM per estrarre regole di business dal codice esistente. |
+| **1. Non fermare il mondo**<br>Nessun bisogno di produrre specifiche upfront per milioni di righe. | Comando dedicato per accelerare la partenza su moduli complessi o poco documentati. |
+| **2. Sviluppo just-in-time**<br>Usa OpenSpec sulla prossima feature o sul bug critico, dove stai già intervenendo. | L'agente analizza il codice esistente per estrarre le regole di business già implementate. |
 | **3. Accumulo organico**<br>La Source of Truth cresce naturalmente ad ogni ciclo `Propose -> Apply -> Archive`. | Generazione assistita di file `spec.md` retroattivi, da rifinire e validare con il team. |
 
 ---
@@ -938,7 +1051,7 @@ Il punto di ingresso è il lavoro che si sta già facendo: la prossima feature, 
 
 - Ogni intervento sul codice diventa un'occasione per aggiungere una specifica.
 - La Source of Truth cresce ciclo dopo ciclo, in modo organico e sostenibile.
-- `spec-gen` può accelerare il processo su moduli complessi o poco documentati, ma è uno strumento opzionale — non un prerequisito per partire.
+- `/opsx:onboard` può accelerare il processo su moduli complessi o poco documentati, ma è uno strumento opzionale — non un prerequisito per partire.
 
 ---
 
@@ -949,7 +1062,7 @@ Se si deve modificare il modulo di pagamento, si documenta solo quello. Nel temp
 ---
 
 # Reverse Engineering delle Specifiche
-L'uso di tool di supporto (come motori di `spec-gen`) permette di analizzare staticamente il codice sorgente esistente per generare architetture OpenSpec di base tramite AI, accelerando l'adozione.
+Il comando `/opsx:onboard` analizza il codice sorgente esistente per generare architetture OpenSpec di base tramite AI, accelerando l'adozione su progetti già avviati.
 
 ---
 
@@ -973,13 +1086,13 @@ OpenSpec supporta un'architettura a **memoria episodica** che trasforma i fallim
 <div class="risk-grid">
   <div class="risk-card">
     <h2>Il cimitero delle proposte</h2>
-    <p><strong>Problema:</strong> dimenticare `Archive` e lasciare change mai consolidate.</p>
+    <p><strong>Problema:</strong> dimenticare <code>Archive</code> e lasciare change mai consolidate.</p>
     <p><strong>Fix:</strong> integrare l'archiviazione nel workflow operativo e nei controlli di qualità.</p>
   </div>
   <div class="risk-card">
     <h2>Il micro-management dell'AI</h2>
     <p><strong>Problema:</strong> scrivere dettagli implementativi nelle specifiche principali.</p>
-    <p><strong>Fix:</strong> tenere il comportamento nelle spec e spostare il "come" in `design.md`.</p>
+    <p><strong>Fix:</strong> tenere il comportamento nelle spec e spostare il "come" in <code>design.md</code>.</p>
   </div>
   <div class="risk-card">
     <h2>Burocrazia per modifiche banali</h2>
@@ -988,7 +1101,7 @@ OpenSpec supporta un'architettura a **memoria episodica** che trasforma i fallim
   </div>
   <div class="risk-card">
     <h2>Ignorare la formattazione Delta</h2>
-    <p><strong>Problema:</strong> non usare `ADDED`, `MODIFIED`, `REMOVED` in modo strutturato.</p>
+    <p><strong>Problema:</strong> non usare <code>ADDED</code>, <code>MODIFIED</code>, <code>REMOVED</code> in modo strutturato.</p>
     <p><strong>Fix:</strong> rispettare i metadati Delta per merge puliti e consolidamento affidabile.</p>
   </div>
 </div>
@@ -1020,17 +1133,19 @@ Le Delta Specs non sono un vezzo sintattico: sono il contratto strutturale che p
 ---
 
 
+<!-- _class: section-title -->
+
 # Perché Tutto Questo Conta
 
 ---
 
-# Impatto strategico: qualità del software e scalabilità umano-AI
+# Impatto strategico
 
-## Determinismo nell'esecuzione + Resilienza dell'intento = Scalabilità umano-AI
+## Determinismo + intento persistente = scalabilità umano-AI
 
 | Precisione | Resilienza | Evoluzione del ruolo |
 | --- | --- | --- |
-| L'esecuzione guidata da specifiche aumenta l'accuratezza al primo tentativo e riduce rilavorazioni e regressioni. | La conoscenza architetturale non muore nella chat: entra nel patrimonio del team e resiste al turnover. | Il valore umano si sposta dal "scrivere tutto" al garantire che il codice generato sia esattamente quello necessario. |
+| Specifiche eseguibili: più accuratezza al primo tentativo, meno rilavorazioni. | La conoscenza architetturale non muore nella chat: resta al team e resiste al turnover. | Il valore umano passa dallo "scrivere tutto" al garantire che il codice sia quello necessario. |
 
 **Sintesi:** quando l'implementazione è deterministica e l'intento rimane persistente, il sistema scala senza perdere qualità.
 
@@ -1068,7 +1183,11 @@ L'arte di definire l'intento è la competenza più preziosa del futuro.
 
 ---
 
-<!-- _backgroundImage: url('img/qea.webp') -->
+<!-- _class: lead -->
+
+# Q&A
+
+## Domande? Parliamone.
 
 ---
 
@@ -1076,28 +1195,20 @@ L'arte di definire l'intento è la competenza più preziosa del futuro.
 
 ![bg right:35%](img/matteo-baccan.jpg)
 
-## Grazie
-
-**<https://www.baccan.it>**
+<div class="qr-grid">
+  <div class="qr-card">
+    <img src="img/baccan.it.png" alt="QR code per baccan.it" />
+    <p>https://www.baccan.it</p>
+  </div>
+</div>
 
 > "Smetti di chattare, inizia a governare."
 
 ---
 
-# Chi sono
-
-<div class="qr-grid">
-  <div class="qr-card">
-    <img src="img/baccan.it.png" alt="QR code per baccan.it" />
-    <strong>baccan.it</strong>
-    <p><https://www.baccan.it></p>
-  </div>
-</div>
-
----
-
 # Chi devo ringraziare per queste slide?
 
+- Anthropic: per l'abbonamento Claude Code Max, regalato per i miei contributi al mondo open source
 - Codex: per la riformattazione
 - Nano Banana Pro: per le immagini
 - NotebookLM: per la prima scaletta e i riassunti dei podcast e video

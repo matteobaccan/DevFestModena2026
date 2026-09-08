@@ -2,60 +2,66 @@
 marp: true
 theme: default
 paginate: true
-header: '**OpenSpec**'
+header: 'OpenSpec'
 footer: 'OpenSpec | Matteo Baccan | DevFest Modena 2026'
-backgroundImage: url('img/devfest-frame.svg');
+backgroundImage: url('img/devfest-frame-content.png')
 style: |
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto+Mono:wght@100;300;400;500;700&display=swap');
 
+  /* Palette e tipografia ricavate dal template ufficiale
+     "DevFest Modena 2026 - Speaker Presentation Template":
+     sfondo #f0f0f0, card bianca con bordo #1e1e1e, headline Google Sans Bold,
+     subhead/etichette Roboto Mono Light, pastelli Google. */
   :root {
     --df-ink: #1e1e1e;
+    --df-paper: #f0f0f0;
     --df-blue: #4285f4;
     --df-green: #34a853;
     --df-yellow: #f9ab00;
-    --df-red: #ea4335;
+    --df-red: #d93025;
     --df-blue-pastel: #c3ecf6;
     --df-yellow-pastel: #ffe7a5;
     --df-green-pastel: #ccf6c5;
     --df-red-pastel: #f8d8d8;
-    --df-grey: #f0f0f0;
+    --df-pink-pastel: #fce8e6;
+    --df-grey: #e6e6e4;
     --df-muted: #5f6368;
+    --df-sans: 'Google Sans Display', 'Google Sans', 'Product Sans', 'Poppins', 'Segoe UI', sans-serif;
+    --df-mono: 'Roboto Mono', 'Google Sans Mono', 'Cascadia Code', 'Consolas', monospace;
   }
 
   section {
-    font-family: 'Google Sans Display', 'Google Sans', 'Product Sans', 'Poppins', 'Segoe UI', sans-serif;
-    font-size: 26px;
-    padding: 52px 70px 54px 70px;
+    font-family: var(--df-sans);
+    font-size: 23px;
+    /* padding calibrato per restare dentro la card bianca del frame */
+    padding: 88px 104px 76px 96px;
     color: var(--df-ink);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     line-height: 1.5;
     letter-spacing: 0.01em;
-    background-color: transparent;
+    background-color: var(--df-paper);
   }
 
   h1 {
     color: var(--df-ink);
-    font-size: 1.65em;
+    font-size: 1.7em;
     margin-top: 0;
-    margin-bottom: 0.5em;
-    padding-bottom: 0.3em;
-    font-weight: 800;
+    margin-bottom: 0.55em;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
     border-bottom: none;
-    background: linear-gradient(90deg,
-      var(--df-blue) 0 25%, var(--df-red) 25% 50%,
-      var(--df-yellow) 50% 75%, var(--df-green) 75% 100%);
-    background-size: 380px 5px;
-    background-repeat: no-repeat;
-    background-position: bottom left;
   }
   h2 {
-    color: var(--df-blue);
-    font-size: 1.3em;
-    margin-bottom: 0.4em;
-    font-weight: 700;
-    letter-spacing: 0.02em;
+    font-family: var(--df-mono);
+    color: var(--df-ink);
+    font-size: 1.05em;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.35;
   }
 
   ul, ol {
@@ -64,19 +70,19 @@ style: |
     padding-left: 0.6em;
   }
   li {
-    margin-bottom: 0.45em;
+    margin-bottom: 0.4em;
     color: var(--df-ink);
     text-align: left;
-    line-height: 1.45;
+    line-height: 1.5;
   }
   li::marker {
-    color: var(--df-blue);
+    color: var(--df-ink);
     font-weight: 700;
   }
 
   strong {
     color: var(--df-ink);
-    font-weight: 800;
+    font-weight: 700;
   }
   em {
     color: var(--df-muted);
@@ -84,44 +90,41 @@ style: |
   }
 
   pre {
-    background: var(--df-ink);
-    border: none;
-    border-radius: 12px;
-    padding: 18px 20px;
-    box-shadow: 0 4px 16px rgba(30,30,30,0.16);
+    background: #ffffff;
+    border: 2px solid var(--df-ink);
+    border-radius: 16px;
+    padding: 18px 22px;
+    box-shadow: none;
     text-align: left;
     margin: 0.8em 0;
   }
   code {
-    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    font-family: var(--df-mono);
     color: var(--df-ink);
-    background-color: rgba(249,171,0,0.18);
-    padding: 2px 6px;
-    border-radius: 4px;
+    background-color: var(--df-yellow-pastel);
+    padding: 2px 7px;
+    border-radius: 6px;
     border: none;
-    font-size: 0.92em;
-    font-weight: 600;
+    font-size: 0.9em;
+    font-weight: 500;
   }
   pre code {
-    color: #f4f7fb;
+    color: var(--df-ink);
     background-color: transparent;
     padding: 0;
     border: none;
     font-size: 0.88em;
     font-weight: 400;
-    line-height: 1.5;
-  }
-  pre, pre * {
-    color: #f4f7fb !important;
+    line-height: 1.55;
   }
 
   blockquote {
     background: var(--df-blue-pastel);
-    border-left: 5px solid var(--df-blue);
-    border-radius: 0 8px 8px 0;
+    border: 2px solid var(--df-ink);
+    border-radius: 16px;
     margin: 1.2em 0;
-    padding: 1em 24px;
-    font-style: italic;
+    padding: 0.9em 24px;
+    font-style: normal;
     color: var(--df-ink);
     font-size: 0.95em;
     font-weight: 500;
@@ -133,17 +136,18 @@ style: |
     border-spacing: 0;
     width: 100%;
     margin-top: 0.6em;
-    font-size: 0.95em;
+    font-size: 0.92em;
     background-color: #ffffff;
     text-align: left;
-    border-radius: 10px;
+    border: 2px solid var(--df-ink);
+    border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(30,30,30,0.10);
+    box-shadow: none;
   }
   th {
     background: var(--df-ink);
     color: #ffffff;
-    padding: 14px 16px;
+    padding: 10px 14px;
     text-align: left;
     border: none;
     font-weight: 700;
@@ -152,147 +156,180 @@ style: |
   }
   th strong {
     color: inherit;
-    font-weight: 800;
+    font-weight: 700;
   }
   th code {
     color: #ffffff;
     background-color: rgba(255,255,255,0.16);
-    font-weight: 700;
+    font-weight: 500;
   }
   td {
     border-bottom: 1px solid var(--df-grey);
     border-right: none;
     border-left: none;
-    padding: 16px;
+    padding: 10px 14px;
     color: var(--df-ink);
     text-align: left;
     height: 1px;
   }
   tr:nth-child(even) {
-    background-color: rgba(66,133,244,0.05);
+    background-color: #f7f7f5;
   }
   tr:last-child td {
     border-bottom: none;
   }
 
+  /* Etichette fuori dalla card, in Roboto Mono come nel template */
   header {
-    top: 20px;
-    left: 70px;
-    right: 70px;
-    color: var(--df-ink);
-    font-size: 16px;
-    font-weight: 700;
+    top: 16px;
+    left: 100px;
+    right: auto;
+    color: var(--df-muted);
+    font-family: var(--df-mono);
+    font-size: 13px;
+    font-weight: 500;
     border-bottom: none;
-    padding-bottom: 8px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: left;
-    letter-spacing: 0.03em;
+    padding: 0;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    padding-right: 180px;
-    background-image: url("img/devfest-modena-logo.webp");
-    background-repeat: no-repeat;
-    background-position: right 8px center;
-    background-size: 128px auto;
+    background: none;
   }
   footer {
-    bottom: 20px;
-    left: 70px;
-    right: 70px;
+    bottom: 14px;
+    left: 100px;
+    right: 460px;
     color: var(--df-muted);
-    font-size: 14px;
-    font-weight: 500;
+    font-family: var(--df-mono);
+    font-size: 12px;
+    font-weight: 400;
     border-top: none;
-    padding-top: 8px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    padding: 0;
     text-align: left;
   }
 
   section::after {
-    font-size: 14px;
-    font-weight: 600;
+    font-family: var(--df-mono);
+    font-size: 13px;
+    font-weight: 500;
     color: var(--df-muted);
     position: absolute;
-    bottom: 22px;
-    right: 70px;
+    top: 14px;
+    right: 26px;
+    bottom: auto;
   }
 
+  /* Slide titolo: frame ufficiale con logo { DevFest } e pill della città */
   section.lead {
-    background-color: transparent;
-    color: var(--df-ink);
-    justify-content: center;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 240px 130px 90px 112px;
+  }
+  section.lead::before {
+    /* scrive "Modena" nella pill vuota del logo DevFest del frame */
+    content: 'Modena';
+    position: absolute;
+    left: 114px;
+    top: 130px;
+    width: 222px;
+    height: 32px;
+    line-height: 32px;
     text-align: center;
-    padding: 60px 90px;
+    font-family: var(--df-sans);
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--df-ink);
   }
   section.lead h1 {
     color: var(--df-ink);
-    background: none;
-    border-bottom: none;
-    font-size: 2.0em;
-    line-height: 1.15;
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    margin-bottom: 0.3em;
-  }
-  section.lead h1::before {
-    content: '{ ';
-    color: var(--df-yellow);
-    font-weight: 800;
-  }
-  section.lead h1::after {
-    content: ' }';
-    color: var(--df-yellow);
-    font-weight: 800;
+    font-size: 2.05em;
+    line-height: 1.12;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin-bottom: 0.4em;
   }
   section.lead h2 {
-    color: var(--df-blue);
-    font-size: 1.15em;
+    font-family: var(--df-sans);
+    color: var(--df-muted);
+    font-size: 1.1em;
     font-weight: 500;
     line-height: 1.4;
     margin-top: 0.2em;
   }
-  section.lead strong {
-    color: var(--df-ink);
-    font-weight: 800;
-  }
   section.lead p {
     font-size: 0.95em;
-    color: var(--df-muted);
-    margin-top: 0.8em;
+    color: var(--df-ink);
+    margin-top: 0.6em;
   }
+  section.lead .speaker {
+    margin-top: auto;
+    font-family: var(--df-mono);
+    font-size: 0.72em;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--df-ink);
+  }
+  section.lead header,
   section.lead footer {
-    display: block;
+    display: none;
   }
-  section.lead header {
+  section.lead::after {
     display: none;
   }
 
+  /* Slide di sezione: numero grande Roboto Mono Thin + titolo nella card */
   section.section-title {
-    background-color: var(--df-yellow-pastel);
-    justify-content: center;
+    justify-content: flex-start;
     text-align: left;
-    padding: 60px 90px;
+    padding: 104px 120px 80px 460px;
+  }
+  section.section-title .section-num {
+    position: absolute;
+    left: 88px;
+    top: 52px;
+    font-family: var(--df-mono);
+    font-weight: 100;
+    font-size: 96px;
+    line-height: 1;
+    color: var(--df-ink);
   }
   section.section-title h1 {
     color: var(--df-ink);
-    font-size: 2.3em;
-    background: none;
-    border-bottom: none;
-    margin: 0;
-    text-shadow: none;
+    font-size: 2.35em;
+    line-height: 1.12;
+    margin: 0 0 0.4em 0;
   }
-  section.section-title h1::before {
-    content: '{ ';
-    color: var(--df-yellow);
-    font-weight: 800;
+  section.section-title h2 {
+    font-family: var(--df-mono);
+    font-weight: 300;
+    font-size: 0.95em;
+    color: var(--df-ink);
   }
-  section.section-title h1::after {
-    content: ' }';
-    color: var(--df-yellow);
-    font-weight: 800;
+  section.section-title header,
+  section.section-title footer {
+    display: none;
+  }
+
+  /* Slide molto dense: corpo ridotto per restare dentro la card del frame */
+  section.dense {
+    font-size: 20px;
+    padding-top: 80px;
+    padding-bottom: 70px;
+  }
+  section.dense h1 {
+    font-size: 1.75em;
+  }
+
+  .contact-grid {
+    display: flex;
+    gap: 36px;
+    margin-top: 0.4em;
+    align-items: center;
+  }
+  .contact-photo {
+    height: 330px;
+    width: auto;
+    border-radius: 16px;
+    border: 2px solid var(--df-ink);
   }
 
   .qr-grid {
@@ -304,10 +341,10 @@ style: |
   .qr-card {
     flex: 0 1 470px;
     padding: 16px 18px 12px 18px;
-    border-radius: 18px;
+    border-radius: 16px;
     background: #ffffff;
-    border: 2px solid var(--df-grey);
-    box-shadow: 0 6px 18px rgba(30,30,30,0.08);
+    border: 2px solid var(--df-ink);
+    box-shadow: none;
     text-align: center;
   }
   .qr-card img {
@@ -323,7 +360,8 @@ style: |
   }
   .qr-card p {
     margin: 0;
-    font-size: 0.78em;
+    font-family: var(--df-mono);
+    font-size: 0.72em;
     line-height: 1.35;
     word-break: break-word;
   }
@@ -336,33 +374,37 @@ style: |
   }
   .pillar-card {
     flex: 1 1 0;
-    padding: 22px 20px 18px 20px;
+    padding: 18px 18px 14px 18px;
     border-radius: 16px;
-    background: #ffffff;
-    border: 1px solid var(--df-grey);
-    border-top: 5px solid var(--df-blue);
-    box-shadow: 0 6px 18px rgba(30,30,30,0.08);
+    background: var(--df-blue-pastel);
+    border: 2px solid var(--df-ink);
+    box-shadow: none;
   }
   .pillar-card:nth-child(2) {
-    border-top-color: var(--df-green);
+    background: var(--df-green-pastel);
   }
   .pillar-card:nth-child(3) {
-    border-top-color: var(--df-yellow);
+    background: var(--df-yellow-pastel);
   }
   .pillar-card h2 {
+    font-family: var(--df-sans);
     margin-top: 0;
     margin-bottom: 0.55em;
-    font-size: 1.05em;
+    font-size: 1.02em;
     line-height: 1.2;
+    font-weight: 700;
     color: var(--df-ink);
   }
   .pillar-card p {
     margin: 0 0 0.7em 0;
-    font-size: 0.88em;
-    line-height: 1.32;
+    font-size: 0.82em;
+    line-height: 1.35;
   }
   .pillar-card p:last-child {
     margin-bottom: 0;
+  }
+  .pillar-card code {
+    background-color: rgba(255,255,255,0.7);
   }
 
   .risk-grid {
@@ -374,38 +416,48 @@ style: |
   .risk-card {
     padding: 16px 18px;
     border-radius: 14px;
-    background: #ffffff;
-    border: 2px solid var(--df-red-pastel);
-    border-left: 5px solid var(--df-red);
-    box-shadow: 0 6px 18px rgba(30,30,30,0.08);
+    background: var(--df-pink-pastel);
+    border: 2px solid var(--df-ink);
+    box-shadow: none;
   }
   .risk-card h2 {
+    font-family: var(--df-sans);
     margin-top: 0;
     margin-bottom: 0.45em;
-    font-size: 1em;
+    font-size: 0.98em;
     line-height: 1.2;
+    font-weight: 700;
     color: var(--df-red);
   }
   .risk-card p {
     margin: 0 0 0.55em 0;
-    font-size: 0.84em;
-    line-height: 1.3;
+    font-size: 0.82em;
+    line-height: 1.32;
+  }
+  .risk-card code {
+    background-color: rgba(255,255,255,0.7);
   }
 ---
 
 <!-- _class: lead -->
+<!-- _backgroundImage: url('img/devfest-frame-title.png') -->
 
 # OpenSpec: Spec-Driven Development nell'era degli Agenti AI
 
-**Un nuovo paradigma per la collaborazione tra Umani e Intelligenza Artificiale**
+## Un nuovo paradigma per la collaborazione tra Umani e Intelligenza Artificiale
 
-**Speaker:** Matteo Baccan
-**Evento:** DevFest Modena 2026 — 3/4 Ottobre 2026, Modena
-*Track: AI & Machine Intelligence*
+<div class="speaker">
+Matteo Baccan<br>
+DevFest Modena 2026 — 3/4 Ottobre 2026, Modena<br>
+Track: AI &amp; Machine Intelligence
+</div>
 
 ---
 
 <!-- _class: section-title -->
+<!-- _backgroundImage: url('img/devfest-frame-section.png') -->
+
+<span class="section-num">01</span>
 
 # Dal Vibe Coding a OpenSpec
 
@@ -499,6 +551,8 @@ Le specifiche vivono in Git: il valore resta tuo, non del vendor.
 
 ---
 
+<!-- _class: dense -->
+
 # Ecosistema agnostico: zero lock-in come scelta
 
 | Nodo centrale | Ecosistema collegabile |
@@ -523,6 +577,9 @@ OpenSpec brilla nei progetti esistenti (brownfield, 1→n), dove l'integrazione 
 ---
 
 <!-- _class: section-title -->
+<!-- _backgroundImage: url('img/devfest-frame-section.png') -->
+
+<span class="section-num">02</span>
 
 # La Meccanica di OpenSpec
 
@@ -624,6 +681,8 @@ Garantisce che l'agente non dimentichi mai lo stack del team.
 
 ---
 
+<!-- _class: dense -->
+
 # Governance attiva: come `config.yaml` guida ogni richiesta
 
 | `config.yaml` | Funzione | Effetto sull'agente |
@@ -644,6 +703,8 @@ Una cartella di modifica genera sempre un set standard di artefatti Markdown:
 * Le Delta Specs
 
 ---
+
+<!-- _class: dense -->
 
 # Anatomia end-to-end di una proposta
 
@@ -778,6 +839,9 @@ Garantisce che il codice morto venga eliminato e che i vecchi test associati ven
 
 
 <!-- _class: section-title -->
+<!-- _backgroundImage: url('img/devfest-frame-section.png') -->
+
+<span class="section-num">03</span>
 
 # Il Linguaggio dell'Intento
 
@@ -788,6 +852,8 @@ Le specifiche non devono essere istruzioni di programmazione step-by-step.
 Devono descrivere il comportamento osservabile del sistema dall'esterno. Sono contratti di business, non tutorial di codice.
 
 ---
+
+<!-- _class: dense -->
 
 # Il linguaggio dell'intento: EARS + BDD
 
@@ -840,10 +906,15 @@ Con una struttura GIVEN/WHEN/THEN chiara, l'agente AI è in grado di generare au
 
 
 <!-- _class: section-title -->
+<!-- _backgroundImage: url('img/devfest-frame-section.png') -->
+
+<span class="section-num">04</span>
 
 # Il Ciclo di Esecuzione
 
 ---
+
+<!-- _class: dense -->
 
 # Il Ciclo Operativo (Workflow)
 
@@ -860,6 +931,8 @@ Ogni transizione ha un output verificabile e impedisce di passare alla fase succ
 Il profilo esteso aggiunge comandi come `/opsx:verify`, `/opsx:ff`, `/opsx:continue` e `/opsx:onboard`.
 
 ---
+
+<!-- _class: dense -->
 
 # La macchina a stati di OpenSpec
 
@@ -963,6 +1036,8 @@ OpenSpec è compatibile con qualsiasi strumento che supporti branch isolati. Tea
 
 ---
 
+<!-- _class: dense -->
+
 # Parallelismo e sincronizzazione
 
 OpenSpec scala su tre assi:
@@ -1019,6 +1094,9 @@ Invece di affidarsi a un singolo agente generico, il supervisore umano coordina 
 
 
 <!-- _class: section-title -->
+<!-- _backgroundImage: url('img/devfest-frame-section.png') -->
+
+<span class="section-num">05</span>
 
 # Dal Team al Legacy
 
@@ -1066,6 +1144,8 @@ Il comando `/opsx:onboard` analizza il codice sorgente esistente per generare ar
 
 ---
 
+<!-- _class: dense -->
+
 # Memoria Episodica per il Codice Legacy
 
 In un contesto brownfield un singolo prompt iniziale non basta.
@@ -1080,6 +1160,8 @@ OpenSpec supporta un'architettura a **memoria episodica** che trasforma i fallim
 **L'agente impara dai propri errori e non li ripete nella stessa sessione.**
 
 ---
+
+<!-- _class: dense -->
 
 # Mitigazione dei rischi: 4 anti-pattern da evitare
 
@@ -1134,6 +1216,9 @@ Le Delta Specs non sono un vezzo sintattico: sono il contratto strutturale che p
 
 
 <!-- _class: section-title -->
+<!-- _backgroundImage: url('img/devfest-frame-section.png') -->
+
+<span class="section-num">06</span>
 
 # Perché Tutto Questo Conta
 
@@ -1184,6 +1269,7 @@ L'arte di definire l'intento è la competenza più preziosa del futuro.
 ---
 
 <!-- _class: lead -->
+<!-- _backgroundImage: url('img/devfest-frame-title.png') -->
 
 # Q&A
 
@@ -1193,9 +1279,8 @@ L'arte di definire l'intento è la competenza più preziosa del futuro.
 
 # Contatti
 
-![bg right:35%](img/matteo-baccan.jpg)
-
-<div class="qr-grid">
+<div class="contact-grid">
+  <img class="contact-photo" src="img/matteo-baccan.jpg" alt="Matteo Baccan" />
   <div class="qr-card">
     <img src="img/baccan.it.png" alt="QR code per baccan.it" />
     <p>https://www.baccan.it</p>

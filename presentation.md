@@ -3,7 +3,7 @@ marp: true
 theme: default
 paginate: true
 header: 'OpenSpec'
-footer: 'OpenSpec | Matteo Baccan | DevFest Modena 2026'
+footer: 'OpenSpec | Matteo Baccan | DevFest Modena 2026 | ultimo aggiornamento del %date% %time%'
 backgroundImage: url('img/devfest-frame-content.png')
 style: |
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto+Mono:wght@100;300;400;500;700&display=swap');

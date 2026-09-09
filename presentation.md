@@ -6,7 +6,7 @@ header: 'OpenSpec'
 footer: 'OpenSpec | Matteo Baccan | DevFest Modena 2026 | ultimo aggiornamento del %date% %time%'
 backgroundImage: url('img/devfest-frame-content.png')
 style: |
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto+Mono:wght@100;300;400;500;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto+Mono:wght@100;300;400;500;700&family=JetBrains+Mono:wght@100;300&display=swap');
 
   /* Palette e tipografia ricavate dal template ufficiale
      "DevFest Modena 2026 - Speaker Presentation Template":
@@ -41,7 +41,9 @@ style: |
     justify-content: flex-start;
     line-height: 1.5;
     letter-spacing: 0.01em;
-    background-color: var(--df-paper);
+    /* l'interno della card nei PNG del frame è trasparente:
+       il bianco della section diventa il bianco della card */
+    background-color: #ffffff;
   }
 
   h1 {
@@ -59,7 +61,7 @@ style: |
     color: var(--df-ink);
     font-size: 1.05em;
     margin-bottom: 0.5em;
-    font-weight: 400;
+    font-weight: 300;
     letter-spacing: 0;
     line-height: 1.35;
   }
@@ -78,6 +80,7 @@ style: |
   li::marker {
     color: var(--df-ink);
     font-weight: 700;
+    font-size: 1.25em;
   }
 
   strong {
@@ -90,7 +93,8 @@ style: |
   }
 
   pre {
-    background: #ffffff;
+    /* i blocchi di codice staccano dalla card bianca col grigio della palette */
+    background: var(--df-grey);
     border: 2px solid var(--df-ink);
     border-radius: 16px;
     padding: 18px 22px;
@@ -280,28 +284,44 @@ style: |
   section.section-title {
     justify-content: flex-start;
     text-align: left;
-    padding: 104px 120px 80px 460px;
+    /* dal template pptx: il titolo visibile parte a ~181px dall'alto */
+    padding: 180px 120px 80px 460px;
   }
   section.section-title .section-num {
+    /* box coincidente con la linguetta bianca del frame (misurata sul PNG):
+       il numero viene centrato dal flex, non posizionato a mano */
     position: absolute;
-    left: 88px;
-    top: 52px;
-    font-family: var(--df-mono);
+    left: 53px;
+    top: 54px;
+    width: 331px;
+    height: 153px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* 61pt del template (base 405pt) = ~108px sulla slide Marp da 720px.
+       JetBrains Mono Thin: zero col puntino come il Google Sans Mono del template */
+    font-family: 'JetBrains Mono', 'Roboto Mono', monospace;
     font-weight: 100;
-    font-size: 96px;
+    font-size: 108px;
+    letter-spacing: 0;
     line-height: 1;
     color: var(--df-ink);
   }
   section.section-title h1 {
     color: var(--df-ink);
-    font-size: 2.35em;
-    line-height: 1.12;
-    margin: 0 0 0.4em 0;
+    /* template: Google Sans Bold 45pt (~80px), interlinea 90%;
+       qui 3em (~69px) per dare respiro ai titoli su due righe */
+    font-size: 3em;
+    line-height: 1.08;
+    margin: 0;
   }
   section.section-title h2 {
     font-family: var(--df-mono);
     font-weight: 300;
-    font-size: 0.95em;
+    /* template: subhead Roboto Mono Light 18pt (~32px) a ~321px dall'alto */
+    font-size: 1.35em;
+    line-height: 1.45;
+    margin-top: 56px;
     color: var(--df-ink);
   }
   section.section-title header,
@@ -437,6 +457,54 @@ style: |
   .risk-card code {
     background-color: rgba(255,255,255,0.7);
   }
+
+  .tagline {
+    margin-top: 26px;
+    font-family: var(--df-mono);
+    font-weight: 300;
+    font-size: 1em;
+    letter-spacing: 0.02em;
+    color: var(--df-ink);
+  }
+  .tagline strong {
+    font-weight: 500;
+    background-color: var(--df-yellow-pastel);
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+
+  .agenda {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px 44px;
+    margin-top: 1.1em;
+  }
+  .agenda-item {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .agenda-num {
+    font-family: 'JetBrains Mono', var(--df-mono);
+    font-weight: 100;
+    font-size: 2.1em;
+    line-height: 1.05;
+    color: var(--df-ink);
+  }
+  .agenda-item strong {
+    display: block;
+    font-size: 1em;
+    line-height: 1.25;
+    margin-bottom: 0.25em;
+  }
+  .agenda-item span {
+    display: block;
+    font-family: var(--df-mono);
+    font-weight: 300;
+    font-size: 0.72em;
+    line-height: 1.4;
+    color: var(--df-muted);
+  }
 ---
 
 <!-- _class: lead -->
@@ -454,12 +522,27 @@ Track: AI &amp; Machine Intelligence
 
 ---
 
+# Di cosa parleremo
+
+<div class="agenda">
+  <div class="agenda-item"><span class="agenda-num">01</span><div><strong>Dal Vibe Coding a OpenSpec</strong><span>Perché i prompt improvvisati non scalano e serve una struttura</span></div></div>
+  <div class="agenda-item"><span class="agenda-num">02</span><div><strong>La Meccanica di OpenSpec</strong><span>Directory, artefatti e Delta Specs: l'anatomia del framework</span></div></div>
+  <div class="agenda-item"><span class="agenda-num">03</span><div><strong>Il Linguaggio dell'Intento</strong><span>EARS + BDD: specifiche che l'agente non può fraintendere</span></div></div>
+  <div class="agenda-item"><span class="agenda-num">04</span><div><strong>Il Ciclo di Esecuzione</strong><span>Propose → Apply → Archive: la macchina a stati delle modifiche</span></div></div>
+  <div class="agenda-item"><span class="agenda-num">05</span><div><strong>Dal Team al Legacy</strong><span>Adozione incrementale sul brownfield e anti-pattern da evitare</span></div></div>
+  <div class="agenda-item"><span class="agenda-num">06</span><div><strong>Perché Tutto Questo Conta</strong><span>Determinismo, intento persistente e il ruolo dell'Agentic Engineer</span></div></div>
+</div>
+
+---
+
 <!-- _class: section-title -->
 <!-- _backgroundImage: url('img/devfest-frame-section.png') -->
 
 <span class="section-num">01</span>
 
 # Dal Vibe Coding a OpenSpec
+
+## Perché i prompt improvvisati non scalano e serve una struttura
 
 ---
 
@@ -492,9 +575,9 @@ Non richiede paywall o API key proprietarie per esistere come metodo, non è vin
 
 È un sistema basato su file Markdown che funge da "controllo di versione per l'intento"
 
-- **zero lock-in**
-- specifiche portabili
-- valore che resta nel repository.
+- **Zero lock-in**
+- Specifiche portabili
+- Valore che resta nel repository.
 
 ---
 
@@ -532,6 +615,7 @@ Il risultato non nasce da un'interpretazione libera: con OpenSpec c'è **solo in
 
 # Living Documentation
 Le specifiche sono mantenute in Git accanto al codice sorgente.
+
 Non diventano mai obsolete perché si evolvono in parallelo al sistema, rendendo la documentazione un prodotto vivo dello sviluppo.
 
 ---
@@ -546,7 +630,9 @@ OpenSpec porta le specifiche direttamente nel repository, dove l'agente opera.
 
 # Indipendenza dagli Strumenti AI
 OpenSpec è universale. Supporta oltre 30 strumenti e ambienti di sviluppo diversi senza legarsi a un ecosistema proprietario.
+
 Se un team decide di cambiare modello AI, estensione IDE o piattaforma, processi e specifiche rimangono intatti e validi.
+
 Le specifiche vivono in Git: il valore resta tuo, non del vendor.
 
 ---
@@ -583,6 +669,8 @@ OpenSpec brilla nei progetti esistenti (brownfield, 1→n), dove l'integrazione 
 
 # La Meccanica di OpenSpec
 
+## Directory, artefatti e Delta Specs: l'anatomia del framework
+
 ---
 
 # L'Architettura del Framework
@@ -600,8 +688,8 @@ Questa directory agisce come la memoria a lungo termine dell'agente AI.
 
 Il framework separa fisicamente:
 
-1. La descrizione dello stato attuale del sistema.
-2. Le proposte per le modifiche future.
+* La descrizione dello stato attuale del sistema.
+* Le proposte per le modifiche future.
 
 Questa distinzione garantisce transizioni sicure e modifiche parallele.
 
@@ -780,6 +868,7 @@ La vera innovazione di OpenSpec. Invece di riscrivere l'intera specifica di sist
 # Perché usare le Delta Specs?
 
 In codebase enormi, rigenerare tutta la documentazione consumerebbe troppi token e tempo.
+
 Le Delta Specs si focalizzano solo sull'incremento funzionale, ottimizzando i costi e mantenendo alta l'accuratezza.
 
 ---
@@ -788,14 +877,15 @@ Le Delta Specs si focalizzano solo sull'incremento funzionale, ottimizzando i co
 
 Le Delta Specs utilizzano intestazioni chiare per istruire il processo di fusione futuro:
 
-1. `ADDED Requirements`
-2. `MODIFIED Requirements`
-3. `REMOVED Requirements`
+* `ADDED Requirements`
+* `MODIFIED Requirements`
+* `REMOVED Requirements`
 
 ---
 
 # Delta Tags: ADDED
 Definisce comportamenti completamente nuovi.
+
 Esempio: L'aggiunta di un sistema di autenticazione a due fattori in un progetto che prima aveva solo login base.
 
 ```markdown
@@ -812,6 +902,7 @@ The system SHALL richiedere un secondo fattore al login.
 
 # Delta Tags: MODIFIED
 Descrive l'alterazione di comportamenti esistenti.
+
 Richiede di riscrivere l'intero requisito aggiornato, garantendo che nessuna regola pregressa venga persa per distrazione dell'agente.
 
 ```markdown
@@ -826,6 +917,7 @@ per i dispositivi fidati.
 
 # Delta Tags: REMOVED
 Segnala funzionalità deprecate o da rimuovere.
+
 Garantisce che il codice morto venga eliminato e che i vecchi test associati vengano disattivati correttamente.
 
 ```markdown
@@ -845,10 +937,13 @@ Garantisce che il codice morto venga eliminato e che i vecchi test associati ven
 
 # Il Linguaggio dell'Intento
 
+## EARS + BDD: specifiche che l'agente non può fraintendere
+
 ---
 
 # Scrivere Specifiche Efficaci
 Le specifiche non devono essere istruzioni di programmazione step-by-step.
+
 Devono descrivere il comportamento osservabile del sistema dall'esterno. Sono contratti di business, non tutorial di codice.
 
 ---
@@ -870,24 +965,28 @@ Devono descrivere il comportamento osservabile del sistema dall'esterno. Sono co
 
 # Sintassi EARS
 OpenSpec adotta l'approccio EARS (Easy Approach to Requirements Syntax).
+
 L'obiettivo è minimizzare l'ambiguità utilizzando parole chiave vincolanti per definire i livelli di obbligazione.
 
 ---
 
 # Le parole chiave: SHALL e MUST
 Rappresentano comportamenti obbligatori e non negoziabili.
+
 Se un test fallisce su un requisito `SHALL`, l'agente sa che l'implementazione è categoricamente errata.
 
 ---
 
 # La parola chiave: SHOULD
 Indica una raccomandazione o un comportamento desiderato, ma con margini di flessibilità.
+
 Permette all'agente di adattarsi a vincoli tecnici imprevisti durante la scrittura del codice.
 
 ---
 
 # Scenari Verificabili
 Ogni requisito deve essere accompagnato da scenari pratici derivati dal Behavior-Driven Development (BDD).
+
 Forniscono all'agente esempi inequivocabili di successo e fallimento.
 
 ---
@@ -912,6 +1011,8 @@ Con una struttura GIVEN/WHEN/THEN chiara, l'agente AI è in grado di generare au
 
 # Il Ciclo di Esecuzione
 
+## Propose → Apply → Archive: la macchina a stati delle modifiche
+
 ---
 
 <!-- _class: dense -->
@@ -920,9 +1021,9 @@ Con una struttura GIVEN/WHEN/THEN chiara, l'agente AI è in grado di generare au
 
 OpenSpec definisce una macchina a stati immutabile a tre fasi per ogni modifica:
 
-1. Propose — `/opsx:propose`
-2. Apply — `/opsx:apply`
-3. Archive — `/opsx:archive`
+* Propose — `/opsx:propose`
+* Apply — `/opsx:apply`
+* Archive — `/opsx:archive`
 
 Ogni transizione ha un output verificabile e impedisce di passare alla fase successiva senza allineamento.
 
@@ -953,6 +1054,7 @@ L'agente non scrive codice. Analizza la richiesta dell'umano e genera la cartell
 
 # La Revisione dell'Intento
 Questo è il momento chiave per lo sviluppatore umano.
+
 Modificare un file Markdown errato richiede pochi secondi. Correggere un'architettura software errata dopo che è stata scritta richiede giorni.
 
 ---
@@ -963,9 +1065,9 @@ Perché separare proposta e implementazione aumenta la qualità del codice gener
 
 Nel vibe coding il modello divide il proprio **budget di attenzione** tra tre compiti contemporaneamente:
 
-1. Risolvere il problema di business
-2. Progettare l'architettura software
-3. Scrivere codice sintatticamente corretto
+* Risolvere il problema di business
+* Progettare l'architettura software
+* Scrivere codice sintatticamente corretto
 
 Risultato: precisione ridotta su tutti e tre i fronti, più iterazioni, più errori architetturali.
 
@@ -987,12 +1089,14 @@ Con OpenSpec ogni fase riceve l'intera capacità computazionale del modello:
 
 # Fase 2: Implementazione (Apply)
 Solo quando gli artefatti sono approvati, l'agente inizia l'implementazione vera e propria.
+
 Legge i compiti in `tasks.md` e produce il codice rigorosamente entro i confini stabiliti nel `design.md`.
 
 ---
 
 # L'Esecuzione dell'Agente
 Durante l'Apply, l'agente AI si trasforma in un mero esecutore.
+
 Smette di indovinare le intenzioni e si limita a tradurre specifiche perfette in codice funzionante.
 
 ---
@@ -1004,18 +1108,21 @@ Prima di considerare chiusa la fase di implementazione, l'agente verifica il cod
 
 # Fase 3: Archiviazione (Archive)
 Una volta che il codice funziona ed è stato testato, la modifica viene conclusa.
+
 Questo è il momento in cui l'intento temporaneo diventa documentazione permanente.
 
 ---
 
 # La Fusione della Verità
 Il sistema unisce automaticamente le Delta Specs nei file originali della cartella `specs/`.
+
 Il sistema si aggiorna: la nuova funzionalità fa ora ufficialmente parte della "Source of Truth" del progetto.
 
 ---
 
 # L'Archivio Storico
 La cartella originale della modifica viene spostata in un archivio storico (es. ordinato per data).
+
 Si preserva così l'audit trail delle decisioni architetturali per i futuri sviluppatori.
 
 ---
@@ -1027,6 +1134,7 @@ Team diversi hanno processi diversi. OpenSpec permette di definire schemi person
 
 # Sviluppo in Parallelo
 In team numerosi, la SDD scala brillantemente.
+
 La separazione in cartelle di modifica (`changes/`) consente di gestire backlog complessi senza corrompere la specifica di base del sistema.
 
 ---
@@ -1057,6 +1165,7 @@ La pianificazione vive in un repository dedicato e condiviso; i repo di codice s
 
 # Sincronizzazione con il Project Management
 A livello enterprise, OpenSpec può dialogare tramite protocolli MCP con strumenti di ticket come Linear o Jira.
+
 Il backlog aziendale resta allineato con lo stato reale del codice, riducendo il lavoro amministrativo e i disallineamenti tra piano e implementazione.
 
 ---
@@ -1100,6 +1209,8 @@ Invece di affidarsi a un singolo agente generico, il supervisore umano coordina 
 
 # Dal Team al Legacy
 
+## Adozione incrementale sul brownfield e anti-pattern da evitare
+
 ---
 
 # Il Problema del Codice Legacy
@@ -1125,6 +1236,7 @@ Come si introduce OpenSpec in un progetto esistente di 100.000 righe di codice s
 **Non serve documentare tutto prima di iniziare.**
 
 OpenSpec non richiede un Big Bang documentale: non si blocca lo sviluppo per scrivere mesi di specifiche retroattive.
+
 Il punto di ingresso è il lavoro che si sta già facendo: la prossima feature, il prossimo bug critico.
 
 - Ogni intervento sul codice diventa un'occasione per aggiungere una specifica.
@@ -1135,6 +1247,7 @@ Il punto di ingresso è il lavoro che si sta già facendo: la prossima feature, 
 
 # Adozione Incrementale
 La strategia suggerita è documentare solo ciò che si tocca.
+
 Se si deve modificare il modulo di pagamento, si documenta solo quello. Nel tempo, la documentazione crescerà organicamente.
 
 ---
@@ -1149,6 +1262,7 @@ Il comando `/opsx:onboard` analizza il codice sorgente esistente per generare ar
 # Memoria Episodica per il Codice Legacy
 
 In un contesto brownfield un singolo prompt iniziale non basta.
+
 OpenSpec supporta un'architettura a **memoria episodica** che trasforma i fallimenti in istruzioni correttive persistenti:
 
 | Componente | Funzione |
@@ -1192,24 +1306,28 @@ OpenSpec supporta un'architettura a **memoria episodica** che trasforma i fallim
 
 # Anti-Pattern 1: Debito Speculativo
 Il più grave errore è dimenticarsi di completare la fase di `Archive`.
+
 Creare modifiche che rimangono perennemente in sospeso distrugge l'affidabilità della "Source of Truth", riportando il team al caos.
 
 ---
 
 # Anti-Pattern 2: Micro-management dell'AI
 Scrivere dettagli implementativi nelle specifiche principali significa trasformare i requisiti in pseudo-codice.
+
 Le specifiche devono descrivere il comportamento; il "come" va spostato in `design.md`, lasciando all'agente solo esecuzione e verifica.
 
 ---
 
 # Anti-Pattern 3: Burocrazia per modifiche banali
 Usare una SDD completa per un cambiamento minimo e non rischioso introduce attrito inutile.
+
 Serve progressive rigor: più la modifica è piccola, più il processo deve restare leggero e orientato alla chiarezza.
 
 ---
 
 # Anti-Pattern 4: Ignorare la formattazione Delta
 Saltare i tag `ADDED`, `MODIFIED`, `REMOVED` rompe il meccanismo di consolidamento e rende i merge meno affidabili.
+
 Le Delta Specs non sono un vezzo sintattico: sono il contratto strutturale che permette fusioni pulite nella Source of Truth.
 
 ---
@@ -1221,6 +1339,8 @@ Le Delta Specs non sono un vezzo sintattico: sono il contratto strutturale che p
 <span class="section-num">06</span>
 
 # Perché Tutto Questo Conta
+
+## Determinismo, intento persistente e il ruolo dell'Agentic Engineer
 
 ---
 
@@ -1238,6 +1358,7 @@ Le Delta Specs non sono un vezzo sintattico: sono il contratto strutturale che p
 
 # L'Impatto Strategico
 La SDD trasforma l'incertezza dei prompt in un processo ingegneristico prevedibile.
+
 * Accuratezza al primo tentativo elevatissima.
 * Protezione del know-how aziendale.
 * Scalabilità del team.
@@ -1287,14 +1408,14 @@ L'arte di definire l'intento è la competenza più preziosa del futuro.
   </div>
 </div>
 
-> "Smetti di chattare, inizia a governare."
+<p class="tagline"><strong>"Smetti di chattare, inizia a governare."</strong></p>
 
 ---
 
 # Chi devo ringraziare per queste slide?
 
 - Anthropic: per l'abbonamento Claude Code Max, regalato per i miei contributi al mondo open source
-- Codex: per la riformattazione
+- Claude: per aver convertito il template PowerPoint in un template Marp in markdown
 - Nano Banana Pro: per le immagini
 - NotebookLM: per la prima scaletta e i riassunti dei podcast e video
 - VSCode: per gestire il progetto GitHub

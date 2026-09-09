@@ -152,7 +152,7 @@ Riferimenti ufficiali:
 Per preparare queste slide devo ringraziare:
 
 - Anthropic, per l'abbonamento Claude Code Max regalato per i miei contributi al mondo open source.
-- Codex, per la riformattazione.
+- Claude, per aver convertito il template PowerPoint in un template Marp in markdown.
 - Nano Banana Pro, per le immagini.
 - NotebookLM, per la prima scaletta e i riassunti dei podcast e video.
 - VS Code, per la gestione del repository.

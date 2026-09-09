@@ -13,6 +13,8 @@ L'idea centrale che porto avanti è semplice: il problema non è "usare l'AI per
 - **Talk:** OpenSpec: Spec-Driven Development nell'era degli Agenti AI — un nuovo paradigma per la collaborazione tra Umani e Intelligenza Artificiale
 - **Speaker:** Matteo Baccan
 
+![La sala che ospita la presentazione al DevFest Modena 2026](img/teatro.webp)
+
 ## Tesi
 
 La tesi che sostengo è che il vero salto non sia la velocità di generazione del codice, ma il controllo dell'intento.
@@ -115,6 +117,7 @@ Il codice è l'output. La specifica è la competenza.
 ## Struttura del repository
 
 - `presentation.md`: sorgente Marp della presentazione completa.
+- `presentation30min.md`: versione ridotta da 30 minuti (30 slide, ritmo 1 slide/minuto) con l'essenza del talk.
 - `presentation.pdf`: export PDF della presentazione.
 - `img/`: immagini e asset grafici usati nelle slide.
 - `.github/`: metadati del repository.
@@ -125,6 +128,7 @@ Per rigenerare il PDF uso Node.js e questo comando:
 
 ```powershell
 npx @marp-team/marp-cli presentation.md --pdf --allow-local-files
+npx @marp-team/marp-cli presentation30min.md --pdf --allow-local-files
 ```
 
 ## Installazione di OpenSpec su Windows

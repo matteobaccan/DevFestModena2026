@@ -17,12 +17,14 @@ jobs:
 
     - name: Generate pdf
       run: |
-        cp 'presentation.md' 'presentation-backup.md'
-        sed -i "s/%date%/$(date +'%Y-%m-%d')/g" 'presentation.md'
-        sed -i "s/%time%/$(date +'%H:%M')/g" 'presentation.md'
-        npx @marp-team/marp-cli@latest 'presentation.md' --pdf --allow-local-files --pdf-outlines --pdf-outlines.pages=false
-        rm 'presentation.md'
-        mv 'presentation-backup.md' 'presentation.md'
+        for deck in 'presentation' 'presentation30min'; do
+          cp "$deck.md" "$deck-backup.md"
+          sed -i "s/%date%/$(date +'%Y-%m-%d')/g" "$deck.md"
+          sed -i "s/%time%/$(date +'%H:%M')/g" "$deck.md"
+          npx @marp-team/marp-cli@latest "$deck.md" --pdf --allow-local-files --pdf-outlines --pdf-outlines.pages=false
+          rm "$deck.md"
+          mv "$deck-backup.md" "$deck.md"
+        done
 
     - name: commit & push
       run: |

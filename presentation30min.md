@@ -136,6 +136,10 @@ style: |
   }
 
   table {
+    /* Marp applica display:block + width:max-content alla tabella: senza questo
+       il 100% finisce sul box esterno e le colonne non si distendono */
+    display: table;
+    overflow: visible;
     border-collapse: separate;
     border-spacing: 0;
     width: 100%;
@@ -145,9 +149,15 @@ style: |
     text-align: left;
     border: 2px solid var(--df-ink);
     border-radius: 14px;
-    overflow: hidden;
     box-shadow: none;
   }
+
+  /* angoli arrotondati senza overflow:hidden, che renderebbe la tabella un
+     contenitore di scorrimento impedendo alle colonne di distendersi al 100% */
+  th:first-child { border-top-left-radius: 12px; }
+  th:last-child { border-top-right-radius: 12px; }
+  tr:last-child td:first-child { border-bottom-left-radius: 12px; }
+  tr:last-child td:last-child { border-bottom-right-radius: 12px; }
   th {
     background: var(--df-ink);
     color: #ffffff;
@@ -280,7 +290,7 @@ style: |
     display: none;
   }
 
-  /* Slide di sezione: numero grande + titolo nella card */
+  /* Slide di sezione: numero grande Roboto Mono Thin + titolo nella card */
   section.section-title {
     justify-content: flex-start;
     text-align: left;
@@ -339,6 +349,32 @@ style: |
     font-size: 1.75em;
   }
 
+  /* Slide AMA: contenuto centrato verticalmente nella card */
+  section.ama {
+    /* il blocco deve restare sopra la tacca in basso a destra della cornice */
+    justify-content: flex-start;
+    padding-top: 245px;
+    padding-bottom: 90px;
+  }
+  /* la AMA eredita da .lead la rimozione del numero: qui lo riattiva */
+  section.ama::after {
+    display: block;
+  }
+  section.ama h1 {
+    font-size: 2.8em;
+    margin-bottom: 0.2em;
+  }
+  section.ama h2 {
+    font-family: var(--df-mono);
+    font-weight: 300;
+    font-size: 1.2em;
+    color: var(--df-ink);
+  }
+  section.ama .pillar-card p {
+    font-size: 1.05em;
+    line-height: 1.3;
+  }
+
   .contact-grid {
     display: flex;
     gap: 36px;
@@ -350,6 +386,80 @@ style: |
     width: auto;
     border-radius: 16px;
     border: 2px solid var(--df-ink);
+  }
+  .contact-grid .qr-card {
+    flex: 0 1 380px;
+  }
+  .contact-info {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+  }
+  .contact-info strong {
+    font-size: 1.35em;
+    line-height: 1.2;
+  }
+  .contact-info span {
+    font-family: var(--df-mono);
+    font-weight: 300;
+    font-size: 0.8em;
+    line-height: 1.45;
+    color: var(--df-muted);
+  }
+
+  /* Slide di chiusura BeeAPro: riproduce la slide ufficiale del corner BeeAPro Lab.
+     Geometria ricavata dal pptx (9144000x5143500 EMU) e riscalata su 1280x720px. */
+  section.beeapro {
+    padding: 0;
+  }
+  section.beeapro header,
+  section.beeapro footer {
+    display: none;
+  }
+  section.beeapro::after {
+    display: none;
+  }
+  .beeapro-city,
+  .beeapro-year {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--df-ink);
+  }
+  .beeapro-city {
+    left: 116px;
+    top: 125px;
+    width: 232px;
+    height: 45px;
+    font-family: var(--df-sans);
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .beeapro-year {
+    left: 931px;
+    top: 67px;
+    width: 273px;
+    height: 137px;
+    font-family: 'Roboto Mono', var(--df-mono);
+    font-weight: 200;
+    font-size: 80px;
+    line-height: 1;
+  }
+  .beeapro-promo {
+    position: absolute;
+    left: 180px;
+    top: 242px;
+    width: 558px;
+    height: 385px;
+  }
+  .beeapro-qr {
+    position: absolute;
+    left: 920px;
+    top: 223px;
+    width: 273px;
+    height: 273px;
   }
 
   .qr-grid {
@@ -568,20 +678,6 @@ Lo **Spec-Driven Development** inverte il paradigma: **la struttura prima del co
 
 ---
 
-# Cos'è OpenSpec?
-
-OpenSpec è un framework open-source progettato per la Spec-Driven Development.
-
-Non richiede paywall o API key proprietarie, non è vincolato a un IDE specifico o a un singolo vendor AI.
-
-È un sistema basato su file Markdown che funge da "controllo di versione per l'intento"
-
-- **Zero lock-in**
-- Specifiche portabili
-- Valore che resta nel repository.
-
----
-
 # OpenSpec: i tre pilastri
 
 <div class="pillar-grid">
@@ -602,15 +698,7 @@ Non richiede paywall o API key proprietarie, non è vincolato a un IDE specifico
   </div>
 </div>
 
----
-
-# La specifica è la fonte della verità
-
-I documenti sono **istruzioni eseguibili e vincolanti** per gli agenti AI, non suggerimenti: solo intento deterministico, espresso in un contratto scritto.
-
-* **Living documentation**: le specifiche vivono in Git accanto al codice e si evolvono col sistema, senza diventare obsolete
-* A differenza dei ticket (Jira, Linear), stanno dove l'agente opera: **nel repository**
-* Supporta oltre 30 strumenti: cambi modello, IDE o vendor e il processo resta intatto
+**La specifica è la fonte della verità, non il codice:** i documenti sono istruzioni eseguibili e vincolanti per l'agente, non suggerimenti.
 
 ---
 
@@ -712,6 +800,7 @@ inattività (prima: 24 ore).
 
 ---
 
+
 <!-- _class: section-title -->
 <!-- _backgroundImage: url('img/devfest-frame-section.png') -->
 
@@ -738,6 +827,17 @@ inattività (prima: 24 ore).
 
 ---
 
+# Sintassi EARS
+OpenSpec adotta l'approccio EARS (Easy Approach to Requirements Syntax).
+
+L'obiettivo è minimizzare l'ambiguità utilizzando parole chiave vincolanti per definire i livelli di obbligazione.
+
+> **Non nasce nel software.** EARS viene da Rolls-Royce: Alistair Mavin e colleghi la ricavarono analizzando le normative di aeronavigabilità del sistema di controllo di un motore a reazione, e la pubblicarono a IEEE RE'09 nel 2009.
+
+Oggi è adottata da Airbus, Bosch, Honeywell, Intel, NASA e Siemens: la stessa sintassi che tiene in volo un motore ora vincola un agente AI.
+
+---
+
 # Dallo scenario al test
 
 Le specifiche descrivono il comportamento osservabile, non i passi di implementazione: sono contratti di business, non tutorial di codice.
@@ -749,6 +849,7 @@ Le specifiche descrivono il comportamento osservabile, non i passi di implementa
 Con scenari così strutturati, l'agente genera automaticamente i test unitari o e2e corrispondenti, chiudendo il ciclo della qualità.
 
 ---
+
 
 <!-- _class: section-title -->
 <!-- _backgroundImage: url('img/devfest-frame-section.png') -->
@@ -775,9 +876,16 @@ Con scenari così strutturati, l'agente genera automaticamente i test unitari o 
 
 ---
 
+# La Revisione dell'Intento
+Questo è il momento chiave per lo sviluppatore umano.
+
+Modificare un file Markdown errato richiede pochi secondi. Correggere un'architettura software errata dopo che è stata scritta richiede giorni.
+
+---
+
 # Focalizzazione: il 100% su un compito alla volta
 
-Nel vibe coding il modello divide l'attenzione fra business, architettura e sintassi. Con OpenSpec ogni fase riceve l'intera capacità del modello:
+Con OpenSpec ogni fase riceve l'intera capacità computazionale del modello:
 
 | Fase | Focus dell'agente |
 | --- | --- |
@@ -789,13 +897,47 @@ Nel vibe coding il modello divide l'attenzione fra business, architettura e sint
 
 ---
 
-# OpenSpec scala col team
+<!-- _class: dense -->
 
-* **Orizzontale (branch paralleli):** più agenti su feature diverse, ognuno con la propria cartella `changes/`; il ciclo guida il merge ordinato
-* **Verticale (Project Management):** via MCP dialoga con Linear/Jira, il backlog resta allineato allo stato reale del codice
-* **Multi-agente:** un Architetto pianifica, un Orchestratore delega, team di agenti specializzati eseguono in parallelo i task atomici
+# Parallelismo e sincronizzazione
+
+OpenSpec scala su tre assi:
+
+**Orizzontale: branch paralleli**
+Più agenti su feature diverse, ognuno con la propria cartella `changes/`; il ciclo `Propose → Apply → Archive` guida il merge ordinato nella Source of Truth.
+
+**Verticale: Project Management**
+Via MCP dialoga con Linear/Jira: il backlog resta allineato allo stato reale del codice.
+
+**Cross-repo: Stores (beta)**
+La pianificazione vive in un repository dedicato e condiviso; i repo di codice si allineano dopo.
+
+**Messaggio chiave:** OpenSpec scala in orizzontale, in verticale e tra repository
 
 ---
+
+# I Ruoli nel Sistema Multi-Agente
+
+<div class="pillar-grid">
+  <div class="pillar-card">
+    <h2>Agente Architetto</h2>
+    <p>Consuma <code>config.yaml</code> e produce Record di Decisione Architetturale (ADR).</p>
+    <p>Genera la struttura iniziale OpenSpec e pianifica la suddivisione logica del sistema.</p>
+  </div>
+  <div class="pillar-card">
+    <h2>Agente Orchestratore</h2>
+    <p>Legge il <code>tasks.md</code> prodotto dall'architetto e delega il lavoro ai team specializzati.</p>
+    <p>Supervisiona l'avanzamento senza scrivere codice direttamente.</p>
+  </div>
+  <div class="pillar-card">
+    <h2>Team di Sviluppo AI</h2>
+    <p>Agenti iperspecializzati per dominio: Data Access, Business Logic, Frontend.</p>
+    <p>Lavorano in parallelo sui propri task atomici, vincolati alle specifiche.</p>
+  </div>
+</div>
+
+---
+
 
 <!-- _class: section-title -->
 <!-- _backgroundImage: url('img/devfest-frame-section.png') -->
@@ -808,13 +950,15 @@ Nel vibe coding il modello divide l'attenzione fra business, architettura e sint
 
 ---
 
-# Brownfield: adottare senza fermare il mondo
+# Brownfield adozione incrementale
 
-Come si introduce OpenSpec in 100.000 righe di codice senza documentazione? **Non riscrivendo tutto da zero.**
+| La scala dell'adozione | `/opsx:onboard` (reverse engineering) |
+| --- | --- |
+| **1. Non fermare il mondo**<br>Nessun bisogno di produrre specifiche upfront per milioni di righe. | Comando dedicato per accelerare la partenza su moduli complessi o poco documentati. |
+| **2. Sviluppo just-in-time**<br>Usa OpenSpec sulla prossima feature o sul bug critico, dove stai già intervenendo. | L'agente analizza il codice esistente per estrarre le regole di business già implementate. |
+| **3. Accumulo organico**<br>La Source of Truth cresce naturalmente ad ogni ciclo `Propose -> Apply -> Archive`. | Generazione assistita di file `spec.md` retroattivi, da rifinire e validare con il team. |
 
-* **Sviluppo just-in-time:** documenta solo ciò che tocchi, partendo dalla prossima feature o dal prossimo bug critico
-* **Accumulo organico:** la Source of Truth cresce ad ogni ciclo `Propose → Apply → Archive`
-* **Reverse engineering:** `/opsx:onboard` analizza il codice esistente e genera specifiche retroattive da validare col team (opzionale, non un prerequisito)
+**Non serve documentare tutto prima di iniziare.**
 
 ---
 
@@ -847,6 +991,7 @@ Come si introduce OpenSpec in 100.000 righe di codice senza documentazione? **No
 
 ---
 
+
 <!-- _class: section-title -->
 <!-- _backgroundImage: url('img/devfest-frame-section.png') -->
 
@@ -868,14 +1013,6 @@ Come si introduce OpenSpec in 100.000 righe di codice senza documentazione? **No
 
 **Sintesi:** quando l'implementazione è deterministica e l'intento rimane persistente, il sistema scala senza perdere qualità.
 
----
-
-# Il nuovo professionista: l'Agentic Engineer
-
-Un ingegnere di sistemi agentici che padroneggia la progettazione del contesto, la segmentazione in task atomici e il coordinamento di collaboratori sintetici specializzati.
-
-OpenSpec non riguarda lo scrivere meno codice, ma garantire che il codice generato sia **esattamente quello necessario**.
-
 **Il codice è l'output. La specifica è la competenza.**
 
 ---
@@ -890,10 +1027,14 @@ OpenSpec non riguarda lo scrivere meno codice, ma garantire che il codice genera
 
 ---
 
-# Grazie! Domande? Parliamone.
+# Grazie! Ask Me Anything
 
 <div class="contact-grid">
   <img class="contact-photo" src="img/matteo-baccan.jpg" alt="Matteo Baccan" />
+  <div class="contact-info">
+    <strong>Matteo Baccan</strong>
+    <span>Rivoluzione Digitale<br>head of development</span>
+  </div>
   <div class="qr-card">
     <img src="img/baccan.it.png" alt="QR code per baccan.it" />
     <p>https://www.baccan.it</p>
@@ -901,3 +1042,14 @@ OpenSpec non riguarda lo scrivere meno codice, ma garantire che il codice genera
 </div>
 
 <p class="tagline"><strong>"Smetti di chattare, inizia a governare."</strong></p>
+
+---
+
+<!-- _class: beeapro -->
+<!-- _backgroundImage: url('img/devfest-frame-outro.png') -->
+
+<span class="beeapro-city">Modena 2026</span>
+<span class="beeapro-year">2026</span>
+
+<img class="beeapro-promo" src="img/beeapro-rivivi-devfest.png" alt="Rivivi il 100% del DevFest: riassunti, interviste e materiale ufficiale di ogni talk, raccolti su BeeAPro" />
+<img class="beeapro-qr" src="img/beeapro-qr.jpg" alt="QR code del corner BeeAPro Lab" />

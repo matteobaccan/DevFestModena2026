@@ -119,7 +119,7 @@ Il codice è l'output. La specifica è la competenza.
 ## Struttura del repository
 
 - `presentation.md`: sorgente Marp della presentazione completa.
-- `presentation30min.md`: versione ridotta da 30 minuti (30 slide, ritmo 1 slide/minuto) con l'essenza del talk.
+- `presentation30min.md`: versione ridotta da 30 minuti (30 slide, ritmo 1 slide/minuto) con l'essenza del talk, più la slide di chiusura del corner BeeAPro Lab.
 - `presentation.pdf`: export PDF della presentazione.
 - `img/`: immagini e asset grafici usati nelle slide.
 - `.github/`: metadati del repository.

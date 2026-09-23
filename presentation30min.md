@@ -958,7 +958,7 @@ La pianificazione vive in un repository dedicato e condiviso; i repo di codice s
 | **2. Sviluppo just-in-time**<br>Usa OpenSpec sulla prossima feature o sul bug critico, dove stai già intervenendo. | L'agente analizza il codice esistente per estrarre le regole di business già implementate. |
 | **3. Accumulo organico**<br>La Source of Truth cresce naturalmente ad ogni ciclo `Propose -> Apply -> Archive`. | Generazione assistita di file `spec.md` retroattivi, da rifinire e validare con il team. |
 
-**Non serve documentare tutto prima di iniziare.**
+**Per partire:** `npm install -g @fission-ai/openspec` e `openspec init`
 
 ---
 

@@ -1281,6 +1281,22 @@ Come si introduce OpenSpec in un progetto esistente di 100.000 righe di codice s
 
 ---
 
+# Come si parte
+
+Servono Node.js `20.19.0` o superiore e un package manager supportato.
+
+```powershell
+npm install -g @fission-ai/openspec@latest
+openspec --version
+
+cd your-project
+openspec init
+```
+
+`openspec init` genera la struttura nel progetto esistente: da lì il primo ciclo `Propose -> Apply -> Archive` parte sulla prossima feature.
+
+---
+
 <!-- _class: dense -->
 
 # Memoria Episodica per il Codice Legacy

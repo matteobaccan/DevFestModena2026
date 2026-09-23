@@ -122,6 +122,8 @@ Il codice è l'output. La specifica è la competenza.
 - `presentation30min.md`: versione ridotta da 30 minuti (30 slide, ritmo 1 slide/minuto) con l'essenza del talk, più la slide di chiusura del corner BeeAPro Lab.
 - `presentation.pdf`: export PDF della presentazione.
 - `img/`: immagini e asset grafici usati nelle slide.
+- `template/`: template PowerPoint ufficiali forniti dagli organizzatori.
+- `LICENSE`: testo completo della licenza CC BY 4.0 e materiali esclusi.
 - `.github/`: metadati del repository.
 
 ## Generazione delle slide
@@ -163,6 +165,16 @@ Per preparare queste slide devo ringraziare:
 - NotebookLM, per la prima scaletta e i riassunti dei podcast e video.
 - VS Code, per la gestione del repository.
 - Marp, per la generazione della presentazione.
+
+## Licenza
+
+I contenuti originali di questo repository (slide, testi, struttura del talk) sono rilasciati con licenza [Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/deed.it).
+
+Sei libero di condividerli e adattarli, anche per fini commerciali, a condizione di citare la fonte:
+
+> "OpenSpec: Spec-Driven Development nell'era degli Agenti AI" di Matteo Baccan (<https://www.baccan.it>), CC BY 4.0.
+
+Restano esclusi dalla licenza i marchi, i loghi e i template di terze parti presenti nel repository, in particolare quelli di DevFest, GDG, Google e BeeAPro: appartengono ai rispettivi titolari e il loro riutilizzo richiede una specifica autorizzazione. L'elenco completo è nel file [`LICENSE`](LICENSE).
 
 ## Autore
 

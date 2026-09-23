@@ -13,6 +13,8 @@ L'idea centrale che porto avanti è semplice: il problema non è "usare l'AI per
 - **Talk:** OpenSpec: Spec-Driven Development nell'era degli Agenti AI — un nuovo paradigma per la collaborazione tra Umani e Intelligenza Artificiale
 - **Speaker:** Matteo Baccan
 
+<img src="img/devfest-baccan.png" alt="Locandina di promozione del talk OpenSpec: Spec-Driven Development nell'era degli Agenti AI, DevFest Modena 2026" width="420">
+
 ![La sala che ospita la presentazione al DevFest Modena 2026](img/teatro.webp)
 
 ## Tesi
@@ -166,5 +168,7 @@ Per preparare queste slide devo ringraziare:
 
 Matteo Baccan  
 Sito: <https://www.baccan.it>
+
+<img src="img/04.Matteo_Baccan%20%286.3%20x8.8%20cm%29.png" alt="Carta Magic personalizzata di Matteo Baccan: Creatura Leggendaria, Umano Operatore 2/2 con Rapidita" width="300">
 
 > "Smetti di chattare, inizia a governare."

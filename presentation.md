@@ -136,6 +136,10 @@ style: |
   }
 
   table {
+    /* Marp applica display:block + width:max-content alla tabella: senza questo
+       il 100% finisce sul box esterno e le colonne non si distendono */
+    display: table;
+    overflow: visible;
     border-collapse: separate;
     border-spacing: 0;
     width: 100%;
@@ -145,9 +149,15 @@ style: |
     text-align: left;
     border: 2px solid var(--df-ink);
     border-radius: 14px;
-    overflow: hidden;
     box-shadow: none;
   }
+
+  /* angoli arrotondati senza overflow:hidden, che renderebbe la tabella un
+     contenitore di scorrimento impedendo alle colonne di distendersi al 100% */
+  th:first-child { border-top-left-radius: 12px; }
+  th:last-child { border-top-right-radius: 12px; }
+  tr:last-child td:first-child { border-bottom-left-radius: 12px; }
+  tr:last-child td:last-child { border-bottom-right-radius: 12px; }
   th {
     background: var(--df-ink);
     color: #ffffff;
@@ -339,21 +349,30 @@ style: |
     font-size: 1.75em;
   }
 
-  /* Slide Q&A: contenuto centrato verticalmente nella card */
-  section.qa {
-    justify-content: center;
-    padding-top: 260px;
-    padding-bottom: 150px;
+  /* Slide AMA: contenuto centrato verticalmente nella card */
+  section.ama {
+    /* il blocco deve restare sopra la tacca in basso a destra della cornice */
+    justify-content: flex-start;
+    padding-top: 245px;
+    padding-bottom: 90px;
   }
-  section.qa h1 {
-    font-size: 3.2em;
-    margin-bottom: 0.25em;
+  /* la AMA eredita da .lead la rimozione del numero: qui lo riattiva */
+  section.ama::after {
+    display: block;
   }
-  section.qa h2 {
+  section.ama h1 {
+    font-size: 2.8em;
+    margin-bottom: 0.2em;
+  }
+  section.ama h2 {
     font-family: var(--df-mono);
     font-weight: 300;
-    font-size: 1.35em;
+    font-size: 1.2em;
     color: var(--df-ink);
+  }
+  section.ama .pillar-card p {
+    font-size: 1.05em;
+    line-height: 1.3;
   }
 
   .contact-grid {
@@ -367,6 +386,80 @@ style: |
     width: auto;
     border-radius: 16px;
     border: 2px solid var(--df-ink);
+  }
+  .contact-grid .qr-card {
+    flex: 0 1 380px;
+  }
+  .contact-info {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+  }
+  .contact-info strong {
+    font-size: 1.35em;
+    line-height: 1.2;
+  }
+  .contact-info span {
+    font-family: var(--df-mono);
+    font-weight: 300;
+    font-size: 0.8em;
+    line-height: 1.45;
+    color: var(--df-muted);
+  }
+
+  /* Slide di chiusura BeeAPro: riproduce la slide ufficiale del corner BeeAPro Lab.
+     Geometria ricavata dal pptx (9144000x5143500 EMU) e riscalata su 1280x720px. */
+  section.beeapro {
+    padding: 0;
+  }
+  section.beeapro header,
+  section.beeapro footer {
+    display: none;
+  }
+  section.beeapro::after {
+    display: none;
+  }
+  .beeapro-city,
+  .beeapro-year {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--df-ink);
+  }
+  .beeapro-city {
+    left: 116px;
+    top: 125px;
+    width: 232px;
+    height: 45px;
+    font-family: var(--df-sans);
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .beeapro-year {
+    left: 931px;
+    top: 67px;
+    width: 273px;
+    height: 137px;
+    font-family: 'Roboto Mono', var(--df-mono);
+    font-weight: 200;
+    font-size: 80px;
+    line-height: 1;
+  }
+  .beeapro-promo {
+    position: absolute;
+    left: 180px;
+    top: 242px;
+    width: 558px;
+    height: 385px;
+  }
+  .beeapro-qr {
+    position: absolute;
+    left: 920px;
+    top: 223px;
+    width: 273px;
+    height: 273px;
   }
 
   .qr-grid {
@@ -645,27 +738,18 @@ OpenSpec porta le specifiche direttamente nel repository, dove l'agente opera.
 
 ---
 
-# Indipendenza dagli Strumenti AI
-OpenSpec è universale. Supporta oltre 30 strumenti e ambienti di sviluppo diversi senza legarsi a un ecosistema proprietario.
-
-Se un team decide di cambiare modello AI, estensione IDE o piattaforma, processi e specifiche rimangono intatti e validi.
-
-Le specifiche vivono in Git: il valore resta tuo, non del vendor.
-
----
-
 <!-- _class: dense -->
 
 # Ecosistema agnostico: zero lock-in come scelta
 
 | Nodo centrale | Ecosistema collegabile |
 | --- | --- |
-| **OpenSpec** come livello stabile di intento e governance nel repository | Kilo Code, Cursor, Claude Code, Windsurf, GitHub Copilot e altri agenti compatibili |
+| **OpenSpec** come livello stabile di intento e governance nel repository | Kilo Code, Cursor, Claude Code, Windsurf, GitHub Copilot e oltre 30 strumenti compatibili |
 
 | Capacità | Impatto operativo |
 | --- | --- |
 | **Integrazioni intensive** | Uso tramite CLI e slash commands nativi nei principali IDE/LLM, senza riscrivere le specifiche |
-| **Supporto universale (`AGENTS.md`)** | Le istruzioni restano leggibili da assistenti diversi (anche futuri), preservando storico e coerenza del processo |
+| **Supporto universale (`AGENTS.md`)** | Le istruzioni restano leggibili da assistenti diversi (anche futuri), preservando storico e coerenza del processo. Sta diventando lo standard de facto: da Claude Code 2.1.277, in mancanza di `CLAUDE.md` viene letto `AGENTS.md` |
 
 **Risultato:** cambi strumento quando vuoi, senza perdere memoria progettuale né controllo sull'intento.
 
@@ -730,6 +814,8 @@ Documentazione del comportamento attuale del sistema, organizzata per domini log
 
 Laboratorio isolato per ogni nuova feature o bug fix. Nessun conflitto con le specifiche principali finché non si archivia.
 
+Più sviluppatori (e più agenti AI) possono preparare funzionalità diverse simultaneamente, senza inquinare la logica base.
+
 * `changes/add-oauth-login/`
   * `proposal.md`
   * `design.md`
@@ -738,51 +824,11 @@ Laboratorio isolato per ogni nuova feature o bug fix. Nessun conflitto con le sp
 
 ---
 
-# Il Cuore: La Directory `specs/`
-
-Contiene la documentazione consolidata del comportamento attuale del software.
-
-È la **"Source of Truth"** a cui l'agente deve attenersi prima di proporre o scrivere codice.
-
----
-
-# Organizzazione per Domini
-
-I file in `specs/` sono organizzati per domini logici (es. `auth/`, `payments/`, `ui/`).
-
-Ogni cartella ospita un file `spec.md` che descrive esattamente le capacità di quel comparto.
-
----
-
-# Il Workspace: La Directory `changes/`
-
-Ospita le proposte di modifica. Ogni nuova feature o bug fix ottiene una propria cartella isolata.
-
-Questo permette al team di preparare modifiche architetturali in modo pulito e strutturato.
-
----
-
-# Isolamento delle Modifiche
-
-Lavorare in `changes/` previene i conflitti. 
-
-Più sviluppatori (e più agenti AI) possono preparare funzionalità diverse simultaneamente, senza inquinare la logica base finché non sono pronti.
-
----
-
 # Configurazione: Il File `config.yaml`
 
 Funziona come la "costituzione" tecnica del progetto.
 
 Sostituisce configurazioni frammentate fornendo un set di regole chiare, stack tecnologici e convenzioni di sviluppo.
-
----
-
-# Iniezione Attiva del Contesto
-
-A differenza di un normale `README`, il contenuto di `config.yaml` viene **iniettato attivamente** nella finestra di contesto dell'agente in ogni interazione di pianificazione.
-
-Garantisce che l'agente non dimentichi mai lo stack del team.
 
 ---
 
@@ -985,6 +1031,10 @@ OpenSpec adotta l'approccio EARS (Easy Approach to Requirements Syntax).
 
 L'obiettivo è minimizzare l'ambiguità utilizzando parole chiave vincolanti per definire i livelli di obbligazione.
 
+> **Non nasce nel software.** EARS viene da Rolls-Royce: Alistair Mavin e colleghi la ricavarono analizzando le normative di aeronavigabilità del sistema di controllo di un motore a reazione, e la pubblicarono a IEEE RE'09 nel 2009.
+
+Oggi è adottata da Airbus, Bosch, Honeywell, Intel, NASA e Siemens: la stessa sintassi che tiene in volo un motore ora vincola un agente AI.
+
 ---
 
 # Le parole chiave: SHALL e MUST
@@ -1149,18 +1199,6 @@ Team diversi hanno processi diversi. OpenSpec permette di definire schemi person
 
 ---
 
-# Sviluppo in Parallelo
-In team numerosi, la SDD scala brillantemente.
-
-La separazione in cartelle di modifica (`changes/`) consente di gestire backlog complessi senza corrompere la specifica di base del sistema.
-
----
-
-# Sviluppo Parallelo su Branch
-OpenSpec è compatibile con qualsiasi strumento che supporti branch isolati. Team e agenti possono lavorare su specifiche diverse in parallelo, su branch separati, e integrare le modifiche nella Source of Truth principale solo quando pronte.
-
----
-
 <!-- _class: dense -->
 
 # Parallelismo e sincronizzazione
@@ -1177,13 +1215,6 @@ Via MCP dialoga con Linear/Jira: il backlog resta allineato allo stato reale del
 La pianificazione vive in un repository dedicato e condiviso; i repo di codice si allineano dopo.
 
 **Messaggio chiave:** OpenSpec scala in orizzontale, in verticale e tra repository
-
----
-
-# Sincronizzazione con il Project Management
-A livello enterprise, OpenSpec può dialogare tramite protocolli MCP con strumenti di ticket come Linear o Jira.
-
-Il backlog aziendale resta allineato con lo stato reale del codice, riducendo il lavoro amministrativo e i disallineamenti tra piano e implementazione.
 
 ---
 
@@ -1246,31 +1277,7 @@ Come si introduce OpenSpec in un progetto esistente di 100.000 righe di codice s
 | **2. Sviluppo just-in-time**<br>Usa OpenSpec sulla prossima feature o sul bug critico, dove stai già intervenendo. | L'agente analizza il codice esistente per estrarre le regole di business già implementate. |
 | **3. Accumulo organico**<br>La Source of Truth cresce naturalmente ad ogni ciclo `Propose -> Apply -> Archive`. | Generazione assistita di file `spec.md` retroattivi, da rifinire e validare con il team. |
 
----
-
-# Principio guida
-
 **Non serve documentare tutto prima di iniziare.**
-
-OpenSpec non richiede un Big Bang documentale: non si blocca lo sviluppo per scrivere mesi di specifiche retroattive.
-
-Il punto di ingresso è il lavoro che si sta già facendo: la prossima feature, il prossimo bug critico.
-
-- Ogni intervento sul codice diventa un'occasione per aggiungere una specifica.
-- La Source of Truth cresce ciclo dopo ciclo, in modo organico e sostenibile.
-- `/opsx:onboard` può accelerare il processo su moduli complessi o poco documentati, ma è uno strumento opzionale, non un prerequisito per partire.
-
----
-
-# Adozione Incrementale
-La strategia suggerita è documentare solo ciò che si tocca.
-
-Se si deve modificare il modulo di pagamento, si documenta solo quello. Nel tempo, la documentazione crescerà organicamente.
-
----
-
-# Reverse Engineering delle Specifiche
-Il comando `/opsx:onboard` analizza il codice sorgente esistente per generare architetture OpenSpec di base tramite AI, accelerando l'adozione su progetti già avviati.
 
 ---
 
@@ -1321,34 +1328,6 @@ OpenSpec supporta un'architettura a **memoria episodica** che trasforma i fallim
 
 ---
 
-# Anti-Pattern 1: Debito Speculativo
-Il più grave errore è dimenticarsi di completare la fase di `Archive`.
-
-Creare modifiche che rimangono perennemente in sospeso distrugge l'affidabilità della "Source of Truth", riportando il team al caos.
-
----
-
-# Anti-Pattern 2: Micro-management dell'AI
-Scrivere dettagli implementativi nelle specifiche principali significa trasformare i requisiti in pseudo-codice.
-
-Le specifiche devono descrivere il comportamento; il "come" va spostato in `design.md`, lasciando all'agente solo esecuzione e verifica.
-
----
-
-# Anti-Pattern 3: Burocrazia per modifiche banali
-Usare una SDD completa per un cambiamento minimo e non rischioso introduce attrito inutile.
-
-Serve progressive rigor: più la modifica è piccola, più il processo deve restare leggero e orientato alla chiarezza.
-
----
-
-# Anti-Pattern 4: Ignorare la formattazione Delta
-Saltare i tag `ADDED`, `MODIFIED`, `REMOVED` rompe il meccanismo di consolidamento e rende i merge meno affidabili.
-
-Le Delta Specs non sono un vezzo sintattico: sono il contratto strutturale che permette fusioni pulite nella Source of Truth.
-
----
-
 
 <!-- _class: section-title -->
 <!-- _backgroundImage: url('img/devfest-frame-section.png') -->
@@ -1370,15 +1349,6 @@ Le Delta Specs non sono un vezzo sintattico: sono il contratto strutturale che p
 | Specifiche eseguibili: più accuratezza al primo tentativo, meno rilavorazioni. | La conoscenza architetturale non muore nella chat: resta al team e resiste al turnover. | Il valore umano passa dallo "scrivere tutto" al garantire che il codice sia quello necessario. |
 
 **Sintesi:** quando l'implementazione è deterministica e l'intento rimane persistente, il sistema scala senza perdere qualità.
-
----
-
-# L'Impatto Strategico
-La SDD trasforma l'incertezza dei prompt in un processo ingegneristico prevedibile.
-
-* Accuratezza al primo tentativo elevatissima.
-* Protezione del know-how aziendale.
-* Scalabilità del team.
 
 ---
 
@@ -1406,12 +1376,21 @@ L'arte di definire l'intento è la competenza più preziosa del futuro.
 
 ---
 
-<!-- _class: lead qa -->
+<!-- _class: lead ama -->
 <!-- _backgroundImage: url('img/devfest-frame-title.png') -->
 
-# Q&A
+# AMA
 
-## Domande? Parliamone.
+## Ask Me Anything: chiedimi quello che vuoi.
+
+<div class="pillar-grid">
+  <div class="pillar-card">
+    <p>Le mucche dormono in piedi?</p>
+  </div>
+  <div class="pillar-card">
+    <p>Quante uova fa una gallina in un anno?</p>
+  </div>
+</div>
 
 ---
 
@@ -1419,6 +1398,10 @@ L'arte di definire l'intento è la competenza più preziosa del futuro.
 
 <div class="contact-grid">
   <img class="contact-photo" src="img/matteo-baccan.jpg" alt="Matteo Baccan" />
+  <div class="contact-info">
+    <strong>Matteo Baccan</strong>
+    <span>Rivoluzione Digitale<br>head of development</span>
+  </div>
   <div class="qr-card">
     <img src="img/baccan.it.png" alt="QR code per baccan.it" />
     <p>https://www.baccan.it</p>
@@ -1431,9 +1414,21 @@ L'arte di definire l'intento è la competenza più preziosa del futuro.
 
 # Chi devo ringraziare per queste slide?
 
+- DevFest Modena: per avermi invitato a parlare qui per la prima volta
 - Anthropic: per l'abbonamento Claude Code Max, regalato per i miei contributi al mondo open source
 - Claude: per aver convertito il template PowerPoint in un template Marp in markdown
 - Nano Banana Pro: per le immagini
 - NotebookLM: per la prima scaletta e i riassunti dei podcast e video
 - VSCode: per gestire il progetto GitHub
 - Marp: per la presentazione
+
+---
+
+<!-- _class: beeapro -->
+<!-- _backgroundImage: url('img/devfest-frame-outro.png') -->
+
+<span class="beeapro-city">Modena 2026</span>
+<span class="beeapro-year">2026</span>
+
+<img class="beeapro-promo" src="img/beeapro-rivivi-devfest.png" alt="Rivivi il 100% del DevFest: riassunti, interviste e materiale ufficiale di ogni talk, raccolti su BeeAPro" />
+<img class="beeapro-qr" src="img/beeapro-qr.jpg" alt="QR code del corner BeeAPro Lab" />

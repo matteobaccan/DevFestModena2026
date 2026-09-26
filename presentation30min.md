@@ -536,6 +536,9 @@ style: |
   .pillar-card code {
     background-color: rgba(255,255,255,0.7);
   }
+  .pillar-note {
+    margin-top: 1em;
+  }
 
   .risk-grid {
     display: grid;
@@ -698,7 +701,7 @@ Lo **Spec-Driven Development** inverte il paradigma: **la struttura prima del co
   </div>
 </div>
 
-**La specifica è la fonte della verità, non il codice:** i documenti sono istruzioni eseguibili e vincolanti per l'agente, non suggerimenti.
+<p class="pillar-note"><strong>La specifica è la fonte della verità, non il codice:</strong> i documenti sono istruzioni eseguibili e vincolanti per l'agente, non suggerimenti.</p>
 
 ---
 
@@ -794,8 +797,7 @@ La vera innovazione: invece di riscrivere l'intera specifica, l'agente descrive 
 ```markdown
 ## MODIFIED Requirements
 ### Requirement: Session Duration
-The system SHALL scadere la sessione dopo 30 minuti di
-inattività (prima: 24 ore).
+The system SHALL scadere la sessione dopo 30 minuti di inattività (prima: 24 ore).
 ```
 
 ---

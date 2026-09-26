@@ -773,6 +773,19 @@ Gli utenti abbandonano la registrazione: serve il login social.
 
 ---
 
+# Le decisioni in pratica: `design.md`
+
+È l'ancora tecnica: fissa librerie, dati e pattern, così l'agente non "immagina" soluzioni creative ma errate.
+
+```markdown
+## Decisioni tecniche
+- Libreria: passport con strategy passport-google-oauth20
+- Nel DB solo l'id utente Google: nessun token persistito
+- Sessioni: riuso del meccanismo esistente (Redis)
+```
+
+---
+
 # L'esecuzione in pratica: `tasks.md`
 
 Una checklist di azioni atomiche: l'agente aggiorna le spunte in tempo reale mentre scrive il codice, garantendo totale trasparenza.

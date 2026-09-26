@@ -83,6 +83,14 @@ style: |
     font-size: 1.25em;
   }
 
+  mark {
+    /* evidenziatore nel giallo pastello della palette DevFest */
+    background: var(--df-yellow-pastel);
+    color: var(--df-ink);
+    font-weight: 700;
+    padding: 0 6px;
+    border-radius: 6px;
+  }
   strong {
     color: var(--df-ink);
     font-weight: 700;
@@ -623,9 +631,9 @@ style: |
 <!-- _class: lead -->
 <!-- _backgroundImage: url('img/devfest-frame-title.png') -->
 
-# OpenSpec: Spec-Driven Development nell'era degli Agenti AI
+# OpenSpec: Spec-Driven Development nell'era degli agenti AI
 
-## Un nuovo paradigma per la collaborazione tra Umani e Intelligenza Artificiale
+## Un nuovo paradigma per la collaborazione tra umani e intelligenza artificiale
 
 <div class="speaker">
 Matteo Baccan<br>
@@ -638,12 +646,12 @@ Track: AI &amp; Machine Intelligence
 # Di cosa parleremo
 
 <div class="agenda">
-  <div class="agenda-item"><span class="agenda-num">01</span><div><strong>Dal Vibe Coding a OpenSpec</strong><span>Perché i prompt improvvisati non scalano e serve una struttura</span></div></div>
-  <div class="agenda-item"><span class="agenda-num">02</span><div><strong>La Meccanica di OpenSpec</strong><span>Directory, artefatti e Delta Specs: l'anatomia del framework</span></div></div>
-  <div class="agenda-item"><span class="agenda-num">03</span><div><strong>Il Linguaggio dell'Intento</strong><span>EARS + BDD: specifiche che l'agente non può fraintendere</span></div></div>
-  <div class="agenda-item"><span class="agenda-num">04</span><div><strong>Il Ciclo di Esecuzione</strong><span>Propose → Apply → Archive: la macchina a stati delle modifiche</span></div></div>
-  <div class="agenda-item"><span class="agenda-num">05</span><div><strong>Dal Team al Legacy</strong><span>Adozione incrementale sul brownfield e anti-pattern da evitare</span></div></div>
-  <div class="agenda-item"><span class="agenda-num">06</span><div><strong>Perché Tutto Questo Conta</strong><span>Determinismo, intento persistente e il ruolo dell'Agentic Engineer</span></div></div>
+  <div class="agenda-item"><span class="agenda-num">01</span><div><strong>Dal vibe coding a OpenSpec</strong><span>Perché i prompt improvvisati non scalano e serve una struttura</span></div></div>
+  <div class="agenda-item"><span class="agenda-num">02</span><div><strong>La meccanica di OpenSpec</strong><span>Directory, artefatti e Delta Specs: l'anatomia del framework</span></div></div>
+  <div class="agenda-item"><span class="agenda-num">03</span><div><strong>Il linguaggio dell'intento</strong><span>Requisiti e scenari: specifiche che l'agente non può fraintendere</span></div></div>
+  <div class="agenda-item"><span class="agenda-num">04</span><div><strong>Il ciclo di esecuzione</strong><span>Propose → Apply → Archive: la macchina a stati delle modifiche</span></div></div>
+  <div class="agenda-item"><span class="agenda-num">05</span><div><strong>Nel mondo reale</strong><span>Adozione incrementale sul brownfield e anti-pattern da evitare</span></div></div>
+  <div class="agenda-item"><span class="agenda-num">06</span><div><strong>Perché tutto questo conta</strong><span>Ripetibilità, intento persistente e il ruolo dell'Agentic Engineer</span></div></div>
 </div>
 
 ---
@@ -653,13 +661,17 @@ Track: AI &amp; Machine Intelligence
 
 <span class="section-num">01</span>
 
-# Dal Vibe Coding a OpenSpec
+# Dal vibe coding a OpenSpec
 
 ## Perché i prompt improvvisati non scalano e serve una struttura
 
 ---
 
-# Il Problema: Agenti AI senza struttura
+# Il problema: agenti AI senza struttura
+
+<!--
+BATTUTA: Un agente senza spec è uno stagista impazzito: il primo giorno non capisce il progetto, non gli piace, e decide di cambiarne metà. Gli chiedo di sistemarmi il login, dopo venti minuti risponde: "Fatto! E già che c'ero ho migliorato l'architettura". Quando un idraulico ti dice "già che c'ero", sai che devi rifare il bagno.
+-->
 
 Gli agenti AI sono collaboratori attivi, ma senza struttura generano **vibe coding**: prompt informali, contesto volatile, drift dei requisiti.
 
@@ -669,11 +681,11 @@ Gli agenti AI sono collaboratori attivi, ma senza struttura generano **vibe codi
 
 ---
 
-# La Soluzione: Spec-Driven Development
+# La soluzione: Spec-Driven Development
 
 Lo **Spec-Driven Development** inverte il paradigma: **la struttura prima del codice**.
 
-| | Vibe Coding | Spec-Driven Development |
+| | Vibe coding | Spec-Driven Development |
 | --- | --- | --- |
 | **Flusso** | Prompt → Codice | Idea → Specifica → Architettura → Task → Codice |
 | **Artefatti** | Nessuno (solo chat) | `proposal.md`, `design.md`, `tasks.md`, Delta Specs |
@@ -683,25 +695,29 @@ Lo **Spec-Driven Development** inverte il paradigma: **la struttura prima del co
 
 # OpenSpec: i tre pilastri
 
+<!--
+BATTUTA (pilastro 3): Zero lock-in: è un divorzio consensuale. L'agente se ne va, le specifiche restano nel repository e nessuno litiga per il cane.
+-->
+
 <div class="pillar-grid">
   <div class="pillar-card">
-    <h2>Pilastro 1: Brownfield-First (1→n)</h2>
-    <p>Ottimizzato per l'evoluzione di codebase esistenti, non solo per prototipi greenfield (0→1).</p>
-    <p>Permette di modificare logiche complesse in sicurezza, senza riscrivere tutto da zero.</p>
+    <h2>Pilastro 1: brownfield-first (1→n)</h2>
+    <p>Obiettivo condiviso dai framework SDD maturi: far evolvere codebase esistenti, non solo prototipi (0→1).</p>
+    <p>OpenSpec ci arriva con le Delta Specs: descrivi solo cosa cambia.</p>
   </div>
   <div class="pillar-card">
-    <h2>Pilastro 2: Architettura Leggera</h2>
+    <h2>Pilastro 2: architettura leggera</h2>
     <p>Markdown + Git come base operativa: niente infrastruttura pesante, niente database complessi.</p>
     <p>Il metodo resta trasparente, versionabile e vicino al flusso reale del team.</p>
   </div>
   <div class="pillar-card">
-    <h2>Pilastro 3: Agnosticismo Totale</h2>
+    <h2>Pilastro 3: agnosticismo totale</h2>
     <p>Zero lock-in verso IDE, modelli o vendor: il valore vive nelle specifiche, non nella piattaforma.</p>
     <p>Se cambi agente o ambiente, il processo resta intatto perché l'intento rimane nel repository.</p>
   </div>
 </div>
 
-<p class="pillar-note"><strong>La specifica è la fonte della verità, non il codice:</strong> i documenti sono istruzioni eseguibili e vincolanti per l'agente, non suggerimenti.</p>
+<p class="pillar-note"><strong>La specifica è la fonte della verità:</strong> istruzioni vincolanti per l'agente, non suggerimenti (anche se ogni tanto i modelli se ne sbattono).</p>
 
 ---
 
@@ -710,7 +726,7 @@ Lo **Spec-Driven Development** inverte il paradigma: **la struttura prima del co
 
 <span class="section-num">02</span>
 
-# La Meccanica di OpenSpec
+# La meccanica di OpenSpec
 
 ## Directory, artefatti e Delta Specs: l'anatomia del framework
 
@@ -732,6 +748,10 @@ Questa distinzione garantisce transizioni sicure e modifiche parallele.
 <!-- _class: dense -->
 
 # Governance attiva: come `config.yaml` guida ogni richiesta
+
+<!--
+BATTUTA (rules): Nelle rules scrivo: "non usare librerie deprecate", "rispetta lo stile del progetto", "non dirmi che ho perfettamente ragione". Le prime due le rispetta.
+-->
 
 | `config.yaml` | Funzione | Effetto sull'agente |
 | --- | --- | --- |
@@ -801,7 +821,13 @@ Una checklist di azioni atomiche: l'agente aggiorna le spunte in tempo reale men
 
 # Delta Specs: patch per i requisiti
 
-La vera innovazione: invece di riscrivere l'intera specifica, l'agente descrive solo cosa cambia: meno token, più accuratezza.
+<style scoped>
+  /* avvicina l'esempio all'elenco dei tag Delta */
+  ul { margin-bottom: 0; }
+  pre { margin-top: 0.3em; }
+</style>
+
+La vera innovazione: invece di riscrivere l'intera specifica, l'agente descrive solo cosa cambia. Lo facciamo per ridurre il contesto da leggere e scrivere (meno token) e tenere l'agente concentrato sul cambiamento (più accuratezza).
 
 * `ADDED Requirements`: comportamenti completamente nuovi
 * `MODIFIED Requirements`: requisiti riscritti per intero, senza perdere regole pregresse
@@ -809,8 +835,7 @@ La vera innovazione: invece di riscrivere l'intera specifica, l'agente descrive 
 
 ```markdown
 ## MODIFIED Requirements
-### Requirement: Session Duration
-The system SHALL scadere la sessione dopo 30 minuti di inattività (prima: 24 ore).
+The application SHALL support 5 languages for all UI labels
 ```
 
 ---
@@ -821,35 +846,45 @@ The system SHALL scadere la sessione dopo 30 minuti di inattività (prima: 24 or
 
 <span class="section-num">03</span>
 
-# Il Linguaggio dell'Intento
+# Il linguaggio dell'intento
 
-## EARS + BDD: specifiche che l'agente non può fraintendere
+## Requisiti e scenari: specifiche che l'agente non può fraintendere
 
 ---
 
 <!-- _class: dense -->
 
-# Il linguaggio dell'intento: EARS + BDD
+# Il linguaggio dell'intento: requisiti + scenari
 
-| Asse | EARS (obbligazione) | BDD (esecuzione) |
+| Asse | Requisito (RFC 2119 + EARS) | Scenario (BDD) |
 | --- | --- | --- |
 | Scopo | Ridurre ambiguità nei requisiti | Rendere verificabili i comportamenti |
-| Forma | Parole chiave normative: `SHALL`, `MUST`, `SHOULD` | Struttura scenario: `GIVEN`, `WHEN`, `THEN` |
+| Forma | Parole chiave `SHALL`, `MUST`, `SHOULD` in frasi EARS | Struttura scenario: `GIVEN`, `WHEN`, `THEN` |
 | Domanda a cui risponde | "Cosa è obbligatorio?" | "Come si osserva il risultato?" |
 | Esito pratico | Contratti chiari per l'agente | Test di accettazione derivabili |
 
-**Regola operativa:** prima definiamo il vincolo con EARS, poi ne proviamo l'esecuzione con BDD.
+**Regola operativa:** prima definiamo il vincolo con il requisito, poi ne proviamo l'esecuzione con lo scenario.
 
 ---
 
+<!-- _class: dense -->
+
 # Sintassi EARS
-OpenSpec adotta l'approccio EARS (Easy Approach to Requirements Syntax).
 
-L'obiettivo è minimizzare l'ambiguità utilizzando parole chiave vincolanti per definire i livelli di obbligazione.
+<!--
+BATTUTA (dopo Rolls-Royce): Da oggi potete dire in giro che le vostre specifiche sono Rolls-Royce. Il codice resta una Duna, ma le specifiche sono Rolls-Royce.
+KIRO: se qualcuno lo nomina qui, Kiro di AWS usa EARS come notazione nativa nel suo requirements.md (dettagli nella nota della slide sulle alternative).
+-->
+OpenSpec usa le parole chiave RFC 2119 (`SHALL`, `MUST`, `SHOULD`). Per scrivere la frase senza ambiguità: gli schemi **EARS**.
 
-> **Non nasce nel software.** EARS viene da Rolls-Royce: Alistair Mavin e colleghi la ricavarono analizzando le normative di aeronavigabilità del sistema di controllo di un motore a reazione, e la pubblicarono a IEEE RE'09 nel 2009.
+| Schema | Forma |
+| --- | --- |
+| Sempre valido | The `<system>` SHALL `<response>` |
+| Evento | WHEN `<trigger>`, the `<system>` SHALL `<response>` |
+| Stato | WHILE `<stato>`, the `<system>` SHALL `<response>` |
+| Comportamento indesiderato | IF `<condizione>`, THEN the `<system>` SHALL `<response>` |
 
-Oggi è adottata da Airbus, Bosch, Honeywell, Intel, NASA e Siemens: la stessa sintassi che tiene in volo un motore ora vincola un agente AI.
+> **L'RFC descrive le parole chiave, EARS di Rolls-Royce struttura la frase.**
 
 ---
 
@@ -861,7 +896,7 @@ Le specifiche descrivono il comportamento osservabile, non i passi di implementa
 * **WHEN:** L'azione scatenante (es. "Quando visita la dashboard").
 * **THEN:** Il risultato atteso (es. "Allora viene reindirizzato al login").
 
-Con scenari così strutturati, l'agente genera automaticamente i test unitari o e2e corrispondenti, chiudendo il ciclo della qualità.
+Strutturiamo gli scenari così proprio per questo: dare all'agente una base da cui derivare i test unitari o e2e, che poi rivediamo, e chiudere il ciclo della qualità.
 
 ---
 
@@ -871,7 +906,7 @@ Con scenari così strutturati, l'agente genera automaticamente i test unitari o 
 
 <span class="section-num">04</span>
 
-# Il Ciclo di Esecuzione
+# Il ciclo di esecuzione
 
 ## Propose → Apply → Archive: la macchina a stati delle modifiche
 
@@ -887,26 +922,28 @@ Con scenari così strutturati, l'agente genera automaticamente i test unitari o 
 | Apply | Implementare senza deviazioni dai vincoli | Codice + test aderenti a `design.md` e `tasks.md` | Verifica qualità su MUST/SHALL |
 | Archive | Consolidare la modifica nella verità di sistema | Fusione Delta Specs in `specs/` + archivio storico della change | Stato aggiornato e audit trail persistente |
 
-**Logica del ciclo:** cattura presto il disallineamento (Propose), esegui in modo deterministico (Apply), consolida nella Source of Truth (Archive).
+**Logica del ciclo:** cattura presto il disallineamento (Propose), esegui in modo ripetibile (Apply), consolida nella Source of Truth (Archive).
 
 ---
 
-# La Revisione dell'Intento
+# La revisione dell'intento
 Questo è il momento chiave per lo sviluppatore umano.
 
-Modificare un file Markdown errato richiede pochi secondi. Correggere un'architettura software errata dopo che è stata scritta richiede giorni.
+* Correggere un file Markdown errato: <mark>pochi secondi</mark>
+* Correggere un'architettura errata dopo che è stata scritta: <mark>giorni</mark>
+* Correggerla dopo che è andata in produzione: un <mark>avvocato</mark>
 
 ---
 
-# Focalizzazione: il 100% su un compito alla volta
+# Focalizzazione: un compito alla volta
 
-Con OpenSpec ogni fase riceve l'intera capacità computazionale del modello:
+Con OpenSpec ogni fase lavora con un contesto dedicato: il modello non insegue tre obiettivi nello stesso prompt.
 
 | Fase | Focus dell'agente |
 | --- | --- |
-| **Propose** | 100% sull'architettura e le decisioni di design |
-| **Apply** | 100% sulla correttezza e completezza del codice |
-| **Archive** | 100% sulla coerenza documentale e la Source of Truth |
+| **Propose** | Solo architettura e decisioni di design |
+| **Apply** | Solo correttezza e completezza del codice |
+| **Archive** | Solo coerenza documentale e Source of Truth |
 
 **Più focus su un compito → Meno errori → Meno cicli di correzione**
 
@@ -916,40 +953,39 @@ Con OpenSpec ogni fase riceve l'intera capacità computazionale del modello:
 
 # Parallelismo e sincronizzazione
 
-OpenSpec scala su tre assi:
+OpenSpec scala su due assi:
 
 **Orizzontale: branch paralleli**
 Più agenti su feature diverse, ognuno con la propria cartella `changes/`; il ciclo `Propose → Apply → Archive` guida il merge ordinato nella Source of Truth.
 
-**Verticale: Project Management**
-Via MCP dialoga con Linear/Jira: il backlog resta allineato allo stato reale del codice.
-
 **Cross-repo: Stores (beta)**
-La pianificazione vive in un repository dedicato e condiviso; i repo di codice si allineano dopo.
+La pianificazione vive in un repository dedicato e condiviso; i repo di codice si allineano dopo ([openspec.dev/docs/stores](https://openspec.dev/docs/stores)).
 
-**Messaggio chiave:** OpenSpec scala in orizzontale, in verticale e tra repository
+**Messaggio chiave:** OpenSpec scala in orizzontale e tra repository
 
 ---
 
-# I Ruoli nel Sistema Multi-Agente
+# I ruoli in un sistema multi-agente
 
 <div class="pillar-grid">
   <div class="pillar-card">
-    <h2>Agente Architetto</h2>
+    <h2>Agente architetto</h2>
     <p>Consuma <code>config.yaml</code> e produce Record di Decisione Architetturale (ADR).</p>
     <p>Genera la struttura iniziale OpenSpec e pianifica la suddivisione logica del sistema.</p>
   </div>
   <div class="pillar-card">
-    <h2>Agente Orchestratore</h2>
+    <h2>Agente orchestratore</h2>
     <p>Legge il <code>tasks.md</code> prodotto dall'architetto e delega il lavoro ai team specializzati.</p>
     <p>Supervisiona l'avanzamento senza scrivere codice direttamente.</p>
   </div>
   <div class="pillar-card">
-    <h2>Team di Sviluppo AI</h2>
+    <h2>Team di sviluppo AI</h2>
     <p>Agenti iperspecializzati per dominio: Data Access, Business Logic, Frontend.</p>
     <p>Lavorano in parallelo sui propri task atomici, vincolati alle specifiche.</p>
   </div>
 </div>
+
+<p class="pillar-note"><strong>Schema d'uso, non una funzione di OpenSpec:</strong> sono gli artefatti in <code>changes/</code> a rendere possibile dividere il lavoro tra agenti.</p>
 
 ---
 
@@ -959,7 +995,7 @@ La pianificazione vive in un repository dedicato e condiviso; i repo di codice s
 
 <span class="section-num">05</span>
 
-# Dal Team al Legacy
+# Nel mondo reale
 
 ## Adozione incrementale sul brownfield e anti-pattern da evitare
 
@@ -967,11 +1003,11 @@ La pianificazione vive in un repository dedicato e condiviso; i repo di codice s
 
 # Brownfield adozione incrementale
 
-| La scala dell'adozione | `/opsx:onboard` (reverse engineering) |
+| La scala dell'adozione | Gli strumenti per partire |
 | --- | --- |
-| **1. Non fermare il mondo**<br>Nessun bisogno di produrre specifiche upfront per milioni di righe. | Comando dedicato per accelerare la partenza su moduli complessi o poco documentati. |
-| **2. Sviluppo just-in-time**<br>Usa OpenSpec sulla prossima feature o sul bug critico, dove stai già intervenendo. | L'agente analizza il codice esistente per estrarre le regole di business già implementate. |
-| **3. Accumulo organico**<br>La Source of Truth cresce naturalmente ad ogni ciclo `Propose -> Apply -> Archive`. | Generazione assistita di file `spec.md` retroattivi, da rifinire e validare con il team. |
+| **1. Non fermare il mondo**<br>Nessun bisogno di produrre specifiche upfront per milioni di righe. | `/opsx:explore`: l'agente legge l'area da toccare prima di proporre. |
+| **2. Sviluppo just-in-time**<br>Usa OpenSpec sulla prossima feature o sul bug critico, dove stai già intervenendo. | PRD e documenti esistenti: materiale di partenza per una Delta Spec mirata. |
+| **3. Accumulo organico**<br>La Source of Truth cresce naturalmente ad ogni ciclo `Propose -> Apply -> Archive`. | `/opsx:onboard`: tour guidato che porta una piccola modifica reale fino all'archivio. |
 
 **Per partire:** `npm install -g @fission-ai/openspec` e `openspec init`
 
@@ -1012,23 +1048,47 @@ La pianificazione vive in un repository dedicato e condiviso; i repo di codice s
 
 <span class="section-num">06</span>
 
-# Perché Tutto Questo Conta
+# Perché tutto questo conta
 
-## Determinismo, intento persistente e il ruolo dell'Agentic Engineer
+## Ripetibilità, intento persistente e il ruolo dell'Agentic Engineer
 
 ---
 
 # Impatto strategico
 
-## Determinismo + intento persistente = scalabilità umano-AI
+## Ripetibilità + intento persistente = scalabilità umano-AI
 
 | Precisione | Resilienza | Evoluzione del ruolo |
 | --- | --- | --- |
 | Specifiche eseguibili: più accuratezza al primo tentativo, meno rilavorazioni. | La conoscenza architetturale non muore nella chat: resta al team e resiste al turnover. | Il valore umano passa dallo "scrivere tutto" al garantire che il codice sia quello necessario. |
 
-**Sintesi:** quando l'implementazione è deterministica e l'intento rimane persistente, il sistema scala senza perdere qualità.
+**Sintesi:** quando l'implementazione è ripetibile (o, come dicono quelli bravi, *deterministica*) e l'intento rimane persistente, il sistema scala senza perdere qualità.
 
 **Il codice è l'output. La specifica è la competenza.**
+
+---
+
+<!-- _class: dense -->
+
+# Non solo OpenSpec: le alternative
+
+<!--
+KIRO (se esce nel Q&A o qui):
+- Kiro è l'IDE agentico di AWS, presentato il 14 luglio 2025 nel post "Introducing Kiro" (kiro.dev/blog/introducing-kiro) di Nikhil Swaminathan e Deepak Singh.
+- Anche Kiro divide la spec in tre file: requirements.md (o bugfix.md), design.md, tasks.md. Stessa idea di OpenSpec: l'analisi vive nel progetto.
+- Differenza tecnica: Kiro usa EARS come notazione nativa. Dalla doc: "Each requirement follows this pattern: WHEN [condition/event] THE SYSTEM SHALL [expected behavior]". Esempio ufficiale: "WHEN a user submits a form with invalid data THE SYSTEM SHALL display validation errors next to the relevant fields".
+- Differenza di approccio: Kiro nasce come IDE, OpenSpec è un formato nel repository che funziona con qualunque agente.
+- Citazione dal post di lancio: "Sometimes it's better to take a step back, think through decisions, and you'll end up with a better application that you can easily maintain."
+- Risposta breve: "Kiro conferma la tesi di questa slide: anche AWS ha deciso che l'analisi deve uscire dalla chat ed entrare nel progetto."
+-->
+
+| | OpenSpec | Spec Kit (GitHub) | BMAD Method |
+| --- | --- | --- | --- |
+| **Approccio** | Change leggere su codice esistente (brownfield-first) | Una feature alla volta: `constitution` → `specify` → `plan` → `tasks` → `implement` | Metodo agile con ruoli specializzati: product, architettura, UX, sviluppo, test |
+| **Dove vive l'analisi** | `openspec/specs/` + `openspec/changes/` | `.specify/memory/constitution.md` + `specs/NNN-feature/` | `_bmad-output/`: brief, PRD, architettura, epic e story |
+| **Punto di forza** | Delta Specs, overhead minimo | Gate di revisione espliciti tra le fasi | Copre tutto il ciclo, dall'idea alla story |
+
+**Strumenti diversi, stessa scelta di fondo:** l'analisi esce dalla chat, entra nel repository e viene mantenuta insieme al codice.
 
 ---
 
@@ -1036,7 +1096,7 @@ La pianificazione vive in un repository dedicato e condiviso; i repo di codice s
 
 * **Installa:** `npm install -g @fission-ai/openspec`, poi `openspec init` nel tuo progetto esistente
 * **Parti piccolo:** documenta solo la prossima feature o il prossimo bug critico, niente Big Bang documentale
-* **Scrivi per l'agente:** requisiti EARS (`SHALL`/`SHOULD`) + scenari `GIVEN`/`WHEN`/`THEN` verificabili
+* **Scrivi per l'agente:** requisiti con `SHALL`/`MUST` (schemi EARS se servono) + scenari `GIVEN`/`WHEN`/`THEN` verificabili
 * **Separa le fasi:** prima rivedi la proposta (secondi), poi lascia scrivere il codice (l'architettura sbagliata costa giorni)
 * **Archivia sempre:** le Delta Specs fuse in `specs/` sono la tua Source of Truth, non la chat
 

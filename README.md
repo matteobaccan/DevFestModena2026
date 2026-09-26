@@ -1,4 +1,4 @@
-# OpenSpec: Spec-Driven Development nell'era degli Agenti AI
+# OpenSpec: Spec-Driven Development nell'era degli agenti AI
 
 In questo repository raccolgo la mia presentazione per il **DevFest Modena 2026** (3/4 ottobre 2026, Modena — track *AI & Machine Intelligence*), dedicata a OpenSpec e allo Spec-Driven Development come approccio operativo per lavorare con agenti AI in modo rigoroso, ripetibile e verificabile.
 
@@ -10,10 +10,10 @@ L'idea centrale che porto avanti è semplice: il problema non è "usare l'AI per
 - **Data:** 3/4 ottobre 2026
 - **Luogo:** Modena
 - **Track:** AI & Machine Intelligence
-- **Talk:** OpenSpec: Spec-Driven Development nell'era degli Agenti AI — un nuovo paradigma per la collaborazione tra Umani e Intelligenza Artificiale
+- **Talk:** OpenSpec: Spec-Driven Development nell'era degli agenti AI — un nuovo paradigma per la collaborazione tra umani e intelligenza artificiale
 - **Speaker:** Matteo Baccan
 
-<img src="img/devfest-baccan.png" alt="Locandina di promozione del talk OpenSpec: Spec-Driven Development nell'era degli Agenti AI, DevFest Modena 2026" width="420">
+<img src="img/devfest-baccan.png" alt="Locandina di promozione del talk OpenSpec: Spec-Driven Development nell'era degli agenti AI, DevFest Modena 2026" width="420">
 
 ![La sala che ospita la presentazione al DevFest Modena 2026](img/teatro.webp)
 
@@ -25,35 +25,35 @@ Presento OpenSpec come un sistema che trasforma conversazioni effimere in artefa
 
 - nessuna dipendenza da paywall o API key proprietarie come metodo di lavoro;
 - zero lock-in verso IDE, modelli o vendor AI;
-- solo intento deterministico, espresso in specifiche che l'agente deve seguire.
+- intento esplicito e ripetibile, espresso in specifiche che l'agente deve seguire.
 
 ## Cosa racconta la presentazione
 
 Ho costruito il deck in sei sezioni:
 
-1. Dal Vibe Coding a OpenSpec.
+1. Dal vibe coding a OpenSpec.
    Parto dal problema: agenti AI senza struttura generano vibe coding, con contesto volatile, drift dei requisiti e debito tecnico invisibile. Presento lo Spec-Driven Development come risposta, con la tabella comparativa flusso/artefatti/verificabilità, e introduco OpenSpec: cos'è, i tre pilastri, la filosofia della specifica come fonte della verità, la living documentation, il confronto con gli strumenti di project management e l'agnosticismo verso oltre 30 strumenti AI.
 
-2. La Meccanica di OpenSpec.
+2. La meccanica di OpenSpec.
    Descrivo come la directory `openspec/` funga da memoria a lungo termine dell'agente: la separazione tra `specs/` (l'Essere) e `changes/` (il Divenire), il ruolo di `config.yaml` come costituzione tecnica iniettata attivamente nel contesto, gli artefatti di pianificazione (`proposal.md`, `design.md`, `tasks.md`) e le Delta Specs con i tag `ADDED`, `MODIFIED`, `REMOVED`.
 
-3. Il Linguaggio dell'Intento.
-   Mostro come EARS definisca l'obbligazione (`SHALL`, `MUST`, `SHOULD`) e BDD ne definisca la verifica (`GIVEN`, `WHEN`, `THEN`), fino alla generazione automatica dei test dalle specifiche.
+3. Il linguaggio dell'intento.
+   Mostro come le parole chiave RFC 2119 (`SHALL`, `MUST`, `SHOULD`) definiscano l'obbligazione, come gli schemi EARS nati in Rolls-Royce aiutino a strutturare la frase del requisito e come gli scenari BDD (`GIVEN`, `WHEN`, `THEN`) ne definiscano la verifica, dando all'agente una base da cui derivare i test.
 
-4. Il Ciclo di Esecuzione.
-   Descrivo OpenSpec come una macchina a stati: `Propose -> Apply -> Archive`, con gate chiari tra allineamento, implementazione e consolidamento. Spiego perché la scissione cognitiva (100% del focus su un compito alla volta) aumenta la qualità, e come il modello scali con lo sviluppo parallelo su branch, la sincronizzazione via MCP con Linear/Jira e l'orchestrazione multi-agente (Architetto, Orchestratore, Team di Sviluppo AI).
+4. Il ciclo di esecuzione.
+   Descrivo OpenSpec come una macchina a stati: `Propose -> Apply -> Archive`, con gate chiari tra allineamento, implementazione e consolidamento. Spiego perché dare a ogni fase un contesto dedicato, un compito alla volta, aumenta la qualità, e come il modello scali con lo sviluppo parallelo su branch e tra repository (Stores, in beta). Chiudo con uno schema d'uso multi-agente (architetto, orchestratore, team di sviluppo AI) che si costruisce sopra gli artefatti di OpenSpec.
 
-5. Dal Team al Legacy.
-   Affronto la brownfield adoption incrementale, il reverse engineering con `/opsx:onboard`, la memoria episodica (Agente Riflettore, Agente Curatore, Playbook eseguibile) e i quattro anti-pattern da evitare.
+5. Nel mondo reale.
+   Affronto l'adozione incrementale sul brownfield con `/opsx:explore` e `/opsx:onboard`, la memoria episodica come schema complementare (agente riflettore, agente curatore, playbook eseguibile) e i quattro anti-pattern da evitare.
 
-6. Perché Tutto Questo Conta.
-   Chiudo sull'impatto strategico, sulla nascita dell'Agentic Engineer e sulla formula finale: determinismo + intento persistente = scalabilità umano-AI.
+6. Perché tutto questo conta.
+   Chiudo sull'impatto strategico, sulla nascita dell'Agentic Engineer, sul confronto con le alternative (Spec Kit e BMAD: strumenti diversi, stessa scelta di portare l'analisi nel repository) e sulla formula finale: ripetibilità + intento persistente = scalabilità umano-AI.
 
 ## I tre pilastri
 
-- `Brownfield-First (1→n)`: OpenSpec è ottimizzato per evolvere codebase esistenti, non solo per prototipi greenfield (0→1).
-- `Architettura Leggera`: Markdown + Git come base operativa, senza infrastruttura pesante e senza database complessi.
-- `Agnosticismo Totale`: zero lock-in verso IDE, modelli o vendor; le specifiche restano nel repository e sopravvivono al cambio di strumento, modello o ambiente.
+- `Brownfield-first (1→n)`: far evolvere codebase esistenti, non solo prototipi greenfield (0→1), è un obiettivo condiviso dai framework SDD maturi; OpenSpec ci arriva con le Delta Specs.
+- `Architettura leggera`: Markdown + Git come base operativa, senza infrastruttura pesante e senza database complessi.
+- `Agnosticismo totale`: zero lock-in verso IDE, modelli o vendor; le specifiche restano nel repository e sopravvivono al cambio di strumento, modello o ambiente.
 
 ## Concetti chiave di OpenSpec
 
@@ -89,9 +89,9 @@ L'adozione può essere incrementale:
 
 - si documenta solo ciò che si tocca, partendo dalla prossima feature o dal prossimo bug critico;
 - la Source of Truth cresce organicamente ad ogni ciclo `Propose -> Apply -> Archive`;
-- `/opsx:onboard` può accelerare il reverse engineering delle specifiche su moduli complessi o poco documentati, ma è uno strumento opzionale, non un prerequisito per partire.
+- `/opsx:explore` fa leggere all'agente l'area che si sta per toccare prima di proporre, e `/opsx:onboard` offre un tour guidato che porta una piccola modifica reale fino all'archivio: entrambi opzionali, nessuno dei due è un prerequisito per partire.
 
-A supporto del brownfield presento anche la memoria episodica: un Agente Riflettore analizza la cronologia e identifica gli errori, un Agente Curatore li traduce in regole, e un Playbook eseguibile fa sì che l'agente non ripeta gli stessi errori nella sessione.
+Come schema complementare, non incluso in OpenSpec, presento anche la memoria episodica: un agente riflettore analizza la cronologia e identifica gli errori, un agente curatore li traduce in regole, e un playbook eseguibile fa sì che l'agente non ripeta gli stessi errori nella sessione.
 
 ## Rischi e anti-pattern
 
@@ -106,7 +106,7 @@ Evidenzio quattro errori da evitare:
 
 La formula finale che propongo è questa:
 
-`determinismo nell'esecuzione` + `resilienza dell'intento` = `scalabilità umano-AI`
+`ripetibilità nell'esecuzione` + `resilienza dell'intento` = `scalabilità umano-AI`
 
 Nel concreto, questo significa:
 
@@ -119,8 +119,8 @@ Il codice è l'output. La specifica è la competenza.
 ## Struttura del repository
 
 - `presentation.md`: sorgente Marp della presentazione completa.
-- `presentation30min.md`: versione ridotta da 30 minuti (30 slide, ritmo 1 slide/minuto) con l'essenza del talk, più la slide di chiusura del corner BeeAPro Lab.
-- `presentation.pdf`: export PDF della presentazione.
+- `presentation30min.md`: versione ridotta da 30 minuti con l'essenza del talk, più la slide di chiusura del corner BeeAPro Lab.
+- `presentation.pdf`, `presentation30min.pdf`: export PDF delle due versioni, rigenerati dalla GitHub Action a ogni push.
 - `img/`: immagini e asset grafici usati nelle slide.
 - `template/`: template PowerPoint ufficiali forniti dagli organizzatori.
 - `LICENSE`: testo completo della licenza CC BY 4.0 e materiali esclusi.
@@ -172,7 +172,7 @@ I contenuti originali di questo repository (slide, testi, struttura del talk) so
 
 Sei libero di condividerli e adattarli, anche per fini commerciali, a condizione di citare la fonte:
 
-> "OpenSpec: Spec-Driven Development nell'era degli Agenti AI" di Matteo Baccan (<https://www.baccan.it>), CC BY 4.0.
+> "OpenSpec: Spec-Driven Development nell'era degli agenti AI" di Matteo Baccan (<https://www.baccan.it>), CC BY 4.0.
 
 Restano esclusi dalla licenza i marchi, i loghi e i template di terze parti presenti nel repository, in particolare quelli di DevFest, GDG, Google e BeeAPro: appartengono ai rispettivi titolari e il loro riutilizzo richiede una specifica autorizzazione. L'elenco completo è nel file [`LICENSE`](LICENSE).
 
